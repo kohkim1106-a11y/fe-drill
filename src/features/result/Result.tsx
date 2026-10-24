@@ -6,6 +6,7 @@ import { FIELDS, FIELD_SHORT, choiceLabel, sourceLabel } from "@/features/labels
 import { lastResult, retryWrong, type SessionResult } from "@/features/session/state";
 import { PASS_LINE, type Field } from "@/types";
 import "./result.css";
+import { Furigana } from "@/ui/Furigana";
 
 export function ResultScreen() {
   const r = lastResult.value;
@@ -80,7 +81,7 @@ function ResultView({ r }: { r: SessionResult }) {
             return (
               <details key={n} class="wrong">
                 <summary class="wrong__summary">
-                  <span class="wrong__stem">{q.stem}</span>
+                  <span class="wrong__stem"><Furigana text={q.stem} /></span>
                   <Icon name="chevronRight" size={16} />
                 </summary>
                 <div class="wrong__body">
@@ -89,14 +90,14 @@ function ResultView({ r }: { r: SessionResult }) {
                     {it.order.map((orig, i) => (
                       <li key={orig} class={orig === q.answer ? "is-correct" : orig === a.picked ? "is-wrong" : undefined}>
                         <span class="wrong__label">{choiceLabel(i)}</span>
-                        {q.choices[orig]}
+                        <Furigana text={q.choices[orig]!} />
                       </li>
                     ))}
                   </ol>
                   <p class="small">
                     正解 <strong>{label(q.answer)}</strong> ／ あなたの解答 <strong>{label(a.picked)}</strong>
                   </p>
-                  <p class="wrong__exp">{q.explanation}</p>
+                  <p class="wrong__exp"><Furigana text={q.explanation} /></p>
                   <p class="muted small">出典：{sourceLabel(q.source)}</p>
                 </div>
               </details>

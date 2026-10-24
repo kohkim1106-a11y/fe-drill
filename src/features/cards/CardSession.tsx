@@ -5,6 +5,7 @@ import { Icon } from "@/ui/Icon";
 import type { Term } from "@/types";
 import { cardSession, continueRun, judge, nextStart, sessionSize, type CardSession } from "./deck";
 import "./cards.css";
+import { Furigana } from "@/ui/Furigana";
 
 export const SWIPE_X_PX = 100;
 
@@ -133,8 +134,8 @@ function Deck({ term, behind }: { term: Term; behind: number }) {
             </div>
             {flipped ? (
               <div class="flash__center flash__center--back">
-                <p class="flash__term-sm">{term.term}</p>
-                <p class="flash__meaning">{term.meaning}</p>
+                <p class="flash__term-sm"><Furigana text={term.term} /></p>
+                <p class="flash__meaning"><Furigana text={term.meaning} /></p>
               </div>
             ) : (
               <div class="flash__center">

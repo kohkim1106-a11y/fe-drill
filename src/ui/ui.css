@@ -239,7 +239,7 @@
   justify-content: center;
   gap: 4px;
   color: var(--c-muted);
-  font-size: 11px;
+  font-size: 12px;
   text-decoration: none;
   border-radius: var(--r-sm);
 }

@@ -1,4 +1,4 @@
-// S01 ホーム (B-Home / B2-Home). The primary action sits at the bottom for thumb reach.
+// S01 ホーム (B-Home / B2-Home). Settings live behind the gear at the top right.
 import { useState } from "preact/hooks";
 import { href } from "@/router";
 import { settings } from "@/store";
@@ -35,9 +35,14 @@ export function Home() {
           <h1 class="home__app">基本情報ドリル</h1>
           <p class="home__greet">{greeting(new Date().getHours())}</p>
         </div>
-        <div class="pill" aria-label={`連続${s.streak}日`}>
-          <span class="pill__icon"><Icon name="flame" size={16} /></span>
-          連続 <span class="num pill__num">{s.streak}</span>日
+        <div class="home__actions">
+          <div class="pill" aria-label={`連続${s.streak}日`}>
+            <span class="pill__icon"><Icon name="flame" size={16} /></span>
+            連続 <span class="num pill__num">{s.streak}</span>日
+          </div>
+          <a class="icon-btn home__settings" href={href("/settings")} aria-label="設定（テーマ・試験日・ふりがな など）">
+            <Icon name="settings" size={22} />
+          </a>
         </div>
       </header>
 

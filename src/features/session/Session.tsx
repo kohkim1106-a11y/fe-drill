@@ -7,6 +7,7 @@ import { FIELD_SHORT, choiceLabel, isMock, sourceLabel } from "@/features/labels
 import type { SessionItem } from "@/types";
 import { activeSession, answer, exitSession, next, saveMock, tick, type ActiveSession } from "./state";
 import "./session.css";
+import { Furigana } from "@/ui/Furigana";
 
 export function SessionScreen() {
   const s = activeSession.value;
@@ -92,7 +93,7 @@ function SessionView({ s }: { s: ActiveSession }) {
           <span class="tag">{item.question.minor || FIELD_SHORT[item.question.field]}</span>
         </div>
         <h1 class="quiz__stem" ref={stemRef} tabIndex={-1}>
-          {item.question.stem}
+          <Furigana text={item.question.stem} />
         </h1>
         {item.question.code && (
           <pre class="code" tabIndex={0} aria-label="コード">
@@ -175,7 +176,7 @@ function Choices({ item, picked, reveal, disabled }: { item: SessionItem; picked
             onClick={() => answer(orig)}
           >
             <span class="choice__label">{choiceLabel(i)}</span>
-            <span class="choice__text">{question.choices[orig]}</span>
+            <span class="choice__text"><Furigana text={question.choices[orig]!} /></span>
           </button>
         );
       })}
@@ -203,7 +204,7 @@ function Feedback({ item, picked, correct }: { item: SessionItem; picked: number
       </div>
       <div class="feedback__body" data-sheet-scroll>
         <div class="feedback__label">解説</div>
-        <p class="feedback__text">{question.explanation}</p>
+        <p class="feedback__text"><Furigana text={question.explanation} /></p>
         <div class="feedback__source">
           出典：
           {src.type === "ipa" && src.url ? (

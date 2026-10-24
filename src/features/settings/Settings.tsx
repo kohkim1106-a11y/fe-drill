@@ -1,6 +1,6 @@
 // S08 設定.
 import { useEffect, useState } from "preact/hooks";
-import { href } from "@/router";
+import { navigate } from "@/router";
 import { days, progress, savedSession, settings, updateSettings } from "@/store";
 import { syncAvailable } from "@/sync";
 import { Icon } from "@/ui/Icon";
@@ -8,7 +8,14 @@ import { SyncRow } from "@/features/stats/Stats";
 import type { ThemePref } from "@/types";
 import { IS_NATIVE } from "@/native";
 import { ReminderSetting } from "./ReminderSetting";
+import { furiganaOn, setFurigana } from "@/ui/Furigana";
 import "./settings.css";
+
+// Settings opens from both ホーム and 分析, so "back" returns to wherever the user came from.
+function goBack() {
+  if (history.length > 1) history.back();
+  else navigate("/");
+}
 
 const THEMES: Array<{ id: ThemePref; label: string }> = [
   { id: "system", label: "システム" },
@@ -21,9 +28,9 @@ export function SettingsScreen() {
   return (
     <div class="page settings">
       <div class="settings__top">
-        <a class="icon-btn" href={href("/stats")} aria-label="分析に戻る">
+        <button type="button" class="icon-btn" aria-label="戻る" onClick={goBack}>
           <Icon name="chevronLeft" size={22} />
-        </a>
+        </button>
         <h1 class="page__title">設定</h1>
       </div>
 
@@ -42,6 +49,26 @@ export function SettingsScreen() {
               {t.label}
             </button>
           ))}
+        </div>
+      </section>
+
+      <section class="settings__group" aria-labelledby="set-display">
+        <h2 id="set-display" class="section-title">表示</h2>
+        <div class="list">
+          <label class="list__row settings__field">
+            <span>
+              難しい漢字にふりがなを表示
+              <span class="list__sub">例：<ruby>危殆化<rt>きたいか</rt></ruby>、<ruby>冪等<rt>べきとう</rt></ruby></span>
+            </span>
+            <input
+              id="furigana"
+              type="checkbox"
+              role="switch"
+              class="settings__switch"
+              checked={furiganaOn.value}
+              onChange={(e) => setFurigana(e.currentTarget.checked)}
+            />
+          </label>
         </div>
       </section>
 

@@ -1,8 +1,10 @@
 /* S01 ホーム (B / B2) */
 .home__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.home__actions { display: flex; align-items: center; gap: 4px; flex: none; }
+.home__settings { color: var(--c-muted); margin-right: -10px; }
 .home__titles { display: flex; flex-direction: column; gap: 4px; }
-.home__app { font-size: var(--fs-sm); font-weight: 400; color: var(--c-muted); }
-.home__greet { font-size: var(--fs-xl); font-weight: 700; line-height: 1.4; color: var(--c-heading); }
+.home__app { font-size: var(--fs-sm); font-weight: 500; color: var(--c-muted); }
+.home__greet { font-size: var(--fs-lg); font-weight: 700; line-height: 1.4; color: var(--c-heading); text-wrap: balance; }
 
 .pill {
   display: flex;

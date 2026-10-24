@@ -9,6 +9,7 @@ body {
   color: var(--c-text);
   font-family: var(--f-sans);
   font-size: var(--fs-md);
+  font-weight: 500; /* Plex at 400 reads thin on phones */
   line-height: 1.7;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
@@ -27,6 +28,10 @@ p { margin: 0; }
 button { font: inherit; color: inherit; cursor: pointer; }
 button:disabled { cursor: default; }
 :focus-visible { outline: 2px solid var(--c-info); outline-offset: 2px; }
+
+/* furigana: small and quiet so the base text stays the focus */
+ruby { ruby-position: over; }
+rt { font-size: 0.5em; font-weight: 500; color: var(--c-muted); letter-spacing: 0; }
 
 /* utilities shared by every screen */
 .num { font-family: var(--f-num); font-variant-numeric: tabular-nums; }
