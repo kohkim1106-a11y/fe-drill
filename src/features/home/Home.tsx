@@ -76,6 +76,21 @@ export function Home() {
         <EmptyState title="問題データがまだありません">問題が追加されると、ここから演習を始められます。用語カードと基数変換ドリルは使えます。</EmptyState>
       )}
 
+      <section class="card home__review" aria-labelledby="review-title">
+        <div class="home__review-head">
+          <h2 id="review-title" class="home__review-title">今日の復習</h2>
+          <div class="muted small">
+            期限が来た問題 <span class="num home__due marker">{s.dueToday}</span>問
+          </div>
+        </div>
+        {s.dueToday === 0 && hasQuestions && <p class="muted small">期限の問題はありません。まだ解いていない問題から出題します。</p>}
+        {notice && <p class="notice" role="status">{notice}</p>}
+        <button type="button" class="btn-primary" disabled={!hasQuestions} onClick={startReview}>
+          復習を始める
+          <Icon name="arrowRight" size={18} stroke={2.2} />
+        </button>
+      </section>
+
       <section class="home__section">
         <h2 class="section-title">学習メニュー</h2>
         <nav class="list" aria-label="学習メニュー">
@@ -92,21 +107,6 @@ export function Home() {
             <Icon name="chevronRight" size={16} />
           </a>
         </nav>
-      </section>
-
-      <section class="card home__review" aria-labelledby="review-title">
-        <div class="home__review-head">
-          <h2 id="review-title" class="home__review-title">今日の復習</h2>
-          <div class="muted small">
-            期限が来た問題 <span class="num home__due marker">{s.dueToday}</span>問
-          </div>
-        </div>
-        {s.dueToday === 0 && hasQuestions && <p class="muted small">期限の問題はありません。まだ解いていない問題から出題します。</p>}
-        {notice && <p class="notice" role="status">{notice}</p>}
-        <button type="button" class="btn-primary" disabled={!hasQuestions} onClick={startReview}>
-          復習を始める
-          <Icon name="arrowRight" size={18} stroke={2.2} />
-        </button>
       </section>
     </div>
   );

@@ -29,7 +29,7 @@
 
 .home__section { display: flex; flex-direction: column; gap: 6px; }
 
-.home__review { margin-top: auto; gap: 12px; }
+.home__review { gap: 12px; }
 .home__review-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
 .home__review-title { font-size: var(--fs-md); }
 .home__due { font-size: 18px; font-weight: 600; color: var(--c-heading); padding: 0 3px; }
