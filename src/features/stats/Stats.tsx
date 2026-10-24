@@ -54,7 +54,7 @@ export function Stats() {
         </div>
         <div class="card stats__tile">
           <span class="card__label">正答率</span>
-          <span><span class="num stats__tile-n marker">{pct(s.total.rate)}</span><span class="small"> %</span></span>
+          <span><span class="num stats__tile-n">{pct(s.total.rate ?? 0)}</span><span class="small"> %</span></span>
         </div>
       </div>
 
