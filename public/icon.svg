@@ -1,5 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="112" fill="#101828"/>
-  <rect x="112" y="300" width="288" height="56" rx="10" fill="#F5D547" opacity="0.55"/>
-  <text x="256" y="330" text-anchor="middle" font-family="IBM Plex Sans JP, Hiragino Sans, sans-serif" font-size="200" font-weight="700" fill="#E8ECF3">FE</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- Flashcard on a navy ground with a marker stroke and a check: the app's study loop. No text, so it rasterizes anywhere. -->
+  <rect width="1024" height="1024" fill="#101828"/>
+  <rect x="250" y="250" width="560" height="620" rx="64" fill="#1C2638" transform="rotate(-6 530 560)"/>
+  <rect x="214" y="190" width="596" height="644" rx="68" fill="#E8ECF3"/>
+  <rect x="290" y="330" width="444" height="70" rx="35" fill="#F5D547"/>
+  <rect x="318" y="348" width="300" height="34" rx="17" fill="#101828"/>
+  <rect x="290" y="450" width="444" height="30" rx="15" fill="#B7C0CF"/>
+  <rect x="290" y="520" width="360" height="30" rx="15" fill="#B7C0CF"/>
+  <path d="M330 700 l80 80 l190 -200" fill="none" stroke="#101828" stroke-width="64" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

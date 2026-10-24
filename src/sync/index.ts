@@ -6,7 +6,8 @@ import type { AuthUser, DayLog, ItemProgress, Settings } from "@/types";
 import { mergeRemote, onLocalChange, type ChangeSet } from "@/store";
 import { firebaseConfig } from "./firebase-config";
 
-export const syncAvailable: boolean = firebaseConfig.apiKey !== "";
+// iOS v1.0 ships local-only (no sign-in, nothing collected), so sync stays off in the app build.
+export const syncAvailable: boolean = firebaseConfig.apiKey !== "" && import.meta.env.VITE_TARGET !== "ios";
 export const authUser = signal<AuthUser | null>(null);
 
 const PUSH_DELAY_MS = 1500;

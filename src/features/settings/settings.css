@@ -17,3 +17,4 @@
 .settings__confirm { border-color: var(--c-ng); gap: 12px; }
 .settings__confirm-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .settings__reset { display: flex; flex-direction: column; gap: 8px; }
+.settings__switch { width: 24px; height: 24px; accent-color: var(--c-accent); }

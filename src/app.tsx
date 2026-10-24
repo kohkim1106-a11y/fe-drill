@@ -18,6 +18,7 @@ import { CardMenu } from "./features/cards/CardMenu";
 import { CardSessionScreen } from "./features/cards/CardSession";
 import { Stats } from "./features/stats/Stats";
 import { SettingsScreen } from "./features/settings/Settings";
+import { IS_NATIVE, syncStatusBar } from "./native";
 import "./ui/ui.css";
 
 const SCREENS: Record<Route, FunctionComponent> = {
@@ -38,6 +39,7 @@ export function App({ pwa = true }: { pwa?: boolean }) {
 
   useSignalEffect(() => {
     applyTheme(settings.value.theme);
+    void syncStatusBar(settings.value.theme);
   });
 
   const current = route.value;
@@ -70,7 +72,7 @@ export function App({ pwa = true }: { pwa?: boolean }) {
     <>
       {body}
       {!focus && status !== "loading" && <TabBar current={current} />}
-      {pwa && <UpdateToast />}
+      {pwa && !IS_NATIVE && <UpdateToast />}
     </>
   );
 }

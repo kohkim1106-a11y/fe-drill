@@ -6,6 +6,8 @@ import { syncAvailable } from "@/sync";
 import { Icon } from "@/ui/Icon";
 import { SyncRow } from "@/features/stats/Stats";
 import type { ThemePref } from "@/types";
+import { IS_NATIVE } from "@/native";
+import { ReminderSetting } from "./ReminderSetting";
 import "./settings.css";
 
 const THEMES: Array<{ id: ThemePref; label: string }> = [
@@ -61,6 +63,13 @@ export function SettingsScreen() {
           </label>
         </div>
       </section>
+
+      {IS_NATIVE && (
+        <section class="settings__group" aria-labelledby="set-reminder">
+          <h2 id="set-reminder" class="section-title">学習リマインダー</h2>
+          <ReminderSetting />
+        </section>
+      )}
 
       {syncAvailable && (
         <section class="settings__group" aria-labelledby="set-sync">

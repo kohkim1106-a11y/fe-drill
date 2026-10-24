@@ -6,6 +6,8 @@ import { fileURLToPath, URL } from "node:url";
 
 // GitHub Pages serves the app under /<repo>/, so the base path is set at build time.
 const base = process.env.BASE_PATH ?? "/";
+// The iOS app bundles every file, so the service worker is only built for the web.
+const isNative = process.env.VITE_TARGET === "ios";
 
 export default defineConfig({
   base,
@@ -15,8 +17,9 @@ export default defineConfig({
   plugins: [
     preact(),
     VitePWA({
+      disable: isNative,
       registerType: "prompt",
-      includeAssets: ["icon.svg"],
+      includeAssets: ["icon.svg", "apple-touch-icon.png"],
       manifest: {
         name: "基本情報ドリル",
         short_name: "FEドリル",
@@ -27,11 +30,16 @@ export default defineConfig({
         display: "standalone",
         start_url: base,
         scope: base,
-        icons: [{ src: "icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any maskable" }],
+        icons: [
+          { src: "icon-192.png", sizes: "192x192", type: "image/png" },
+          { src: "icon-512.png", sizes: "512x512", type: "image/png" },
+          { src: "icon-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
+          { src: "icon.svg", sizes: "any", type: "image/svg+xml" },
+        ],
       },
       workbox: {
         // Japanese font subsets are ~3MB in total, so they are cached on first use instead of precached.
-        globPatterns: ["**/*.{js,css,html,svg,json}"],
+        globPatterns: ["**/*.{js,css,html,svg,png,json}"],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         runtimeCaching: [
           {
