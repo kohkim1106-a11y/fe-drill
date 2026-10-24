@@ -2,9 +2,8 @@
 import { useEffect, useRef, useState } from "preact/hooks";
 import { navigate } from "@/router";
 import { Icon } from "@/ui/Icon";
-import { terms } from "@/features/content";
 import type { Term } from "@/types";
-import { cardFilter, cardSession, judge, sessionSize, startCards, type CardSession } from "./deck";
+import { cardSession, continueRun, judge, nextStart, sessionSize, type CardSession } from "./deck";
 import "./cards.css";
 
 export const SWIPE_X_PX = 100;
@@ -171,9 +170,9 @@ function Deck({ term, behind }: { term: Term; behind: number }) {
 }
 
 function Finished({ s, onExit }: { s: CardSession; onExit: () => void }) {
-  const filter = cardFilter.value;
-  const pool = filter === "all" ? terms.value : terms.value.filter((t) => t.field === filter);
-  const [none, setNone] = useState(false);
+  const from = nextStart(s);
+  const left = s.pool.length - from;
+  const nextCount = Math.min(sessionSize.value, left);
   return (
     <main class="flash__done">
       <h1 class="page__title">おつかれさまでした</h1>
@@ -187,13 +186,16 @@ function Finished({ s, onExit }: { s: CardSession; onExit: () => void }) {
           <span class="num flash__sum-n">{s.notYet}</span>
         </div>
       </div>
-      <p class="muted small">「まだ」のカードは今日のうちにもう一度出ます。</p>
-      {none && <p class="muted small" role="status">出せるカードがありません。</p>}
+      <p class="muted small">
+        {left > 0 ? `残り${left}枚。` : "この学習元は最後まで終わりました。"}「まだ」にした単語は、カードメニューの「「まだ」の単語」から復習できます。
+      </p>
       <div class="flash__done-actions">
-        <button type="button" class="btn-primary" onClick={() => setNone(!startCards(pool))}>
-          続けて{sessionSize.value}枚
-        </button>
-        <button type="button" class="btn-secondary btn-block" onClick={onExit}>
+        {left > 0 && (
+          <button type="button" class="btn-primary" onClick={() => continueRun()}>
+            {s.source === "order" ? `続けて${from + 1}〜${from + nextCount}語目` : `続けて次の${nextCount}枚`}
+          </button>
+        )}
+        <button type="button" class={left > 0 ? "btn-secondary btn-block" : "btn-primary"} onClick={onExit}>
           カードメニューへ
         </button>
       </div>
