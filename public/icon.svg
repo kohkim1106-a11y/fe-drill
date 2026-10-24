@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#101828"/>
+  <rect x="112" y="300" width="288" height="56" rx="10" fill="#F5D547" opacity="0.55"/>
+  <text x="256" y="330" text-anchor="middle" font-family="IBM Plex Sans JP, Hiragino Sans, sans-serif" font-size="200" font-weight="700" fill="#E8ECF3">FE</text>
+</svg>

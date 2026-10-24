@@ -1,0 +1,553 @@
+<title>基本情報ドリル</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=M+PLUS+1+Code:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+/* Layout: a single answer-sheet column; choices are mark-sheet bubbles inked in OMR pink */
+:root {
+  --paper: #F6F7F9;
+  --sheet: #FFFFFF;
+  --ink: #1D2228;
+  --muted: #646B76;
+  --rule: #E9D7DE;
+  --omr: #C9295F;
+  --omr-soft: #FBE7EE;
+  --ok: #23794D;
+  --ok-soft: #E3F3EA;
+  --ng: #B8322B;
+  --ng-soft: #FBE9E7;
+  --f-display: "Dela Gothic One", "Hiragino Sans", sans-serif;
+  --f-body: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --f-mono: "M PLUS 1 Code", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #131519; --sheet: #1B1E23; --ink: #E6E8EC; --muted: #9AA1AC; --rule: #3B2A31;
+  --omr: #F0699A; --omr-soft: #3A1E29; --ok: #6FD39C; --ok-soft: #173025; --ng: #FF8A80; --ng-soft: #3A1D1B;
+  color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --paper: #131519; --sheet: #1B1E23; --ink: #E6E8EC; --muted: #9AA1AC; --rule: #3B2A31;
+  --omr: #F0699A; --omr-soft: #3A1E29; --ok: #6FD39C; --ok-soft: #173025; --ng: #FF8A80; --ng-soft: #3A1D1B;
+  color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--f-body); font-size: 15px; line-height: 1.75;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 24px 64px;
+}
+.wrap { max-width: 720px; margin: 0 auto; display: grid; gap: 20px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, .choice:focus-visible { outline: 2px solid var(--omr); outline-offset: 2px; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+header.top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.logo { font-family: var(--f-display); font-size: 26px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+.logo .bubble { width: 22px; height: 30px; border: 2px solid var(--omr); border-radius: 50%; display: inline-grid; place-items: center; font-size: 12px; color: var(--omr); font-family: var(--f-body); font-weight: 700; }
+.meta { color: var(--muted); font-size: 12.5px; }
+
+.sheet { background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 20px; position: relative; }
+.sheet.timing { padding-left: 34px; }
+.sheet.timing::before {
+  content: ""; position: absolute; left: 10px; top: 18px; bottom: 18px; width: 8px;
+  background: repeating-linear-gradient(to bottom, var(--ink) 0 4px, transparent 4px 14px); opacity: .55;
+}
+.label { font-size: 11.5px; letter-spacing: .12em; color: var(--muted); font-weight: 700; }
+
+/* home */
+.summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.stat { display: grid; gap: 2px; }
+.stat b { font-family: var(--f-mono); font-size: 26px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.stat small { color: var(--muted); font-size: 12px; }
+.bars { display: grid; gap: 10px; margin-top: 16px; }
+.bar-row { display: grid; grid-template-columns: 8.5em 1fr 4.5em; gap: 10px; align-items: center; font-size: 13.5px; }
+.bar { height: 8px; background: var(--omr-soft); border-radius: 4px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--omr); border-radius: 4px; }
+.bar-row .mono { text-align: right; font-size: 12.5px; color: var(--muted); }
+
+.modes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.mode { text-align: left; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; display: grid; gap: 2px; transition: border-color .15s, transform .15s; }
+.mode:hover { border-color: var(--omr); transform: translateY(-1px); }
+.mode strong { font-size: 15px; }
+.mode span { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+.mode.primary { background: var(--omr); border-color: var(--omr); color: var(--sheet); }
+.mode.primary span { color: var(--sheet); opacity: .85; }
+.mode[disabled] { opacity: .45; cursor: not-allowed; transform: none; }
+.cats { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1px solid var(--rule); background: var(--sheet); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; }
+.chip:hover { border-color: var(--omr); color: var(--omr); }
+.chip em { font-style: normal; color: var(--muted); font-family: var(--f-mono); font-size: 12px; margin-left: 4px; }
+
+/* quiz */
+.qhead { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.qhead .left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.tag { font-size: 12px; border: 1px solid var(--omr); color: var(--omr); border-radius: 3px; padding: 0 8px; font-weight: 700; }
+.topic { font-size: 12.5px; color: var(--muted); }
+.progress { height: 3px; background: var(--rule); border-radius: 2px; overflow: hidden; }
+.progress i { display: block; height: 100%; background: var(--omr); transition: width .25s; }
+.qno { font-family: var(--f-display); font-size: 20px; }
+.qtext { font-size: 16.5px; line-height: 1.85; margin: 12px 0 0; white-space: pre-line; }
+pre.code { font-family: var(--f-mono); font-size: 13.5px; line-height: 1.7; background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 14px; overflow-x: auto; margin: 14px 0 0; }
+.choices { display: grid; gap: 8px; margin-top: 18px; }
+.choice { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: center; text-align: left; background: transparent; border: 1px solid var(--rule); border-radius: 6px; padding: 10px 14px; min-width: 0; }
+.choice:hover:not([disabled]) { border-color: var(--omr); }
+.choice .ov { width: 24px; height: 32px; border: 1.5px solid var(--omr); border-radius: 50%; display: grid; place-items: center; font-size: 13px; color: var(--omr); font-weight: 700; justify-self: center; transition: background .15s, color .15s; }
+.choice .txt { min-width: 0; overflow-wrap: anywhere; }
+.choice[disabled] { cursor: default; }
+.choice.picked .ov { background: var(--ink); border-color: var(--ink); color: var(--sheet); }
+.choice.right { background: var(--ok-soft); border-color: var(--ok); }
+.choice.right .ov { background: var(--ok); border-color: var(--ok); color: var(--sheet); }
+.choice.wrong { background: var(--ng-soft); border-color: var(--ng); }
+.choice.wrong .ov { background: var(--ng); border-color: var(--ng); color: var(--sheet); }
+.verdict { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; }
+.verdict.ok { color: var(--ok); } .verdict.ng { color: var(--ng); }
+.explain { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--rule); display: grid; gap: 8px; }
+.explain p { margin: 0; white-space: pre-line; }
+.actions { display: flex; gap: 10px; justify-content: space-between; flex-wrap: wrap; align-items: center; }
+.btn { border: 1px solid var(--ink); background: var(--ink); color: var(--sheet); border-radius: 6px; padding: 10px 20px; font-weight: 700; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--rule); font-weight: 500; }
+.btn.ghost:hover { border-color: var(--ink); }
+.kbd { font-size: 12px; color: var(--muted); }
+.timer { font-family: var(--f-mono); font-size: 14px; }
+.timer.low { color: var(--ng); font-weight: 600; }
+
+/* result */
+.score { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.score b { font-family: var(--f-display); font-size: 56px; line-height: 1; color: var(--omr); font-weight: 400; }
+.score span { color: var(--muted); }
+.pass { display: inline-block; font-size: 13px; font-weight: 700; padding: 2px 10px; border-radius: 3px; }
+.pass.ok { background: var(--ok-soft); color: var(--ok); } .pass.ng { background: var(--ng-soft); color: var(--ng); }
+.review { display: grid; gap: 12px; }
+.review details { border: 1px solid var(--rule); border-radius: 6px; padding: 10px 14px; background: var(--sheet); }
+.review summary { cursor: pointer; font-size: 14px; }
+.review details p { margin: 8px 0 0; font-size: 14px; white-space: pre-line; }
+.confirm { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 13px; }
+.linkbtn { background: none; border: none; color: var(--muted); text-decoration: underline; font-size: 12.5px; padding: 0; }
+
+@media (max-width: 520px) {
+  .summary { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .stat b { font-size: 21px; }
+  .modes { grid-template-columns: 1fr; }
+  .bar-row { grid-template-columns: 7em 1fr 4em; }
+  .sheet { padding: 16px; } .sheet.timing { padding-left: 28px; } .sheet.timing::before { left: 8px; width: 6px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap" id="app"></div>
+
+<script>
+const CATS = {
+  tech:  { name: "テクノロジ系", short: "テクノロジ" },
+  mgmt:  { name: "マネジメント系", short: "マネジメント" },
+  strat: { name: "ストラテジ系", short: "ストラテジ" },
+  b:     { name: "科目B（アルゴリズム）", short: "科目B" },
+};
+const KANA = ["ア", "イ", "ウ", "エ"];
+
+// a = index of the correct choice (choices are shuffled at display time)
+const Q = [
+  // ---- テクノロジ系: 基礎理論
+  { id: "t01", cat: "tech", topic: "基数変換", q: "2進数 0.101 を10進数で表したものはどれか。", ch: ["0.5", "0.625", "0.75", "0.875"], a: 1,
+    ex: "小数点以下は 2⁻¹, 2⁻², 2⁻³ の重み。\n0.101 = 0.5 + 0 + 0.125 = 0.625" },
+  { id: "t02", cat: "tech", topic: "数値表現", q: "8ビットの2の補数表現で −1 を表したものはどれか。", ch: ["11111111", "10000001", "11111110", "10000000"], a: 0,
+    ex: "+1 = 00000001 の全ビットを反転すると 11111110、これに1を足して 11111111。\n10000001 は符号と絶対値表現での −1、11111110 は1の補数。" },
+  { id: "t03", cat: "tech", topic: "数値表現", q: "8ビットの2の補数表現で表せる整数の範囲はどれか。", ch: ["−128 〜 127", "−127 〜 127", "−127 〜 128", "0 〜 255"], a: 0,
+    ex: "nビットの2の補数は −2ⁿ⁻¹ 〜 2ⁿ⁻¹−1。n=8 なら −128 〜 127。" },
+  { id: "t04", cat: "tech", topic: "基数変換", q: "16進数 A3 を10進数で表したものはどれか。", ch: ["103", "153", "163", "173"], a: 2,
+    ex: "A = 10 なので 10×16 + 3 = 163。" },
+  { id: "t05", cat: "tech", topic: "論理演算", q: "論理式 ¬(A・B) と等しいものはどれか。（¬は否定、・は論理積、+は論理和）", ch: ["¬A + ¬B", "¬A・¬B", "A + B", "¬A + B"], a: 0,
+    ex: "ド・モルガンの法則：¬(A・B) = ¬A + ¬B、¬(A + B) = ¬A・¬B。" },
+  { id: "t06", cat: "tech", topic: "データ構造", q: "最後に格納したデータを最初に取り出すデータ構造はどれか。", ch: ["スタック", "キュー", "ヒープ", "ハッシュ表"], a: 0,
+    ex: "スタックは LIFO（後入れ先出し）。キューは FIFO（先入れ先出し）。" },
+  { id: "t07", cat: "tech", topic: "アルゴリズム", q: "整列済みの1,000件のデータを二分探索するとき、最大比較回数に最も近いものはどれか。", ch: ["10", "32", "100", "500"], a: 0,
+    ex: "二分探索の最大比較回数は約 log₂N。2¹⁰ = 1024 なので約10回。\n500 は線形探索の平均比較回数。" },
+  { id: "t08", cat: "tech", topic: "アルゴリズム", q: "バブルソートの最悪時の計算量（オーダ）はどれか。", ch: ["O(n²)", "O(n log n)", "O(n)", "O(log n)"], a: 0,
+    ex: "隣同士の比較・交換を最大 n(n−1)/2 回行うので O(n²)。\nクイックソートやマージソートの平均は O(n log n)。" },
+  // ---- テクノロジ系: コンピュータシステム
+  { id: "t09", cat: "tech", topic: "キャッシュ", q: "キャッシュメモリのアクセス時間 10ns、主記憶のアクセス時間 60ns、ヒット率 90% のとき、実効アクセス時間は何nsか。", ch: ["15", "19", "35", "55"], a: 0,
+    ex: "実効アクセス時間 = ヒット率×キャッシュ + (1−ヒット率)×主記憶\n= 0.9×10 + 0.1×60 = 9 + 6 = 15ns" },
+  { id: "t10", cat: "tech", topic: "CPU性能", q: "クロック周波数 2GHz、1命令の平均CPI（クロック数）が 4 のCPUの性能は何MIPSか。", ch: ["0.5", "8", "500", "8,000"], a: 2,
+    ex: "1秒あたりの命令数 = 2×10⁹ ÷ 4 = 5×10⁸ = 500×10⁶ → 500 MIPS。" },
+  { id: "t11", cat: "tech", topic: "信頼性", q: "MTBF が 450時間、MTTR が 50時間 のシステムの稼働率はどれか。", ch: ["0.80", "0.89", "0.90", "0.95"], a: 2,
+    ex: "稼働率 = MTBF ÷ (MTBF + MTTR) = 450 ÷ 500 = 0.90" },
+  { id: "t12", cat: "tech", topic: "信頼性", q: "稼働率 0.9 の装置を2台並列に接続し、どちらか1台が動けばよいシステムの稼働率はどれか。", ch: ["0.81", "0.90", "0.95", "0.99"], a: 3,
+    ex: "並列：1 − (1−0.9)×(1−0.9) = 1 − 0.01 = 0.99\n直列なら 0.9×0.9 = 0.81。" },
+  { id: "t13", cat: "tech", topic: "RAID", q: "RAID1 の説明として適切なものはどれか。", ch: ["同じデータを2台のディスクに書き込む（ミラーリング）", "データをブロック単位で複数ディスクに分散して書き込む（ストライピング）", "データとパリティを複数ディスクに分散して書き込む", "パリティ専用ディスクを1台設ける"], a: 0,
+    ex: "RAID0 = ストライピング、RAID1 = ミラーリング、RAID5 = パリティ分散。" },
+  { id: "t14", cat: "tech", topic: "仮想記憶", q: "ページ置換アルゴリズム LRU で追い出されるページはどれか。", ch: ["最も長い間参照されていないページ", "最も早く読み込まれたページ", "参照回数が最も少ないページ", "ランダムに選ばれたページ"], a: 0,
+    ex: "LRU = Least Recently Used。最も早く読み込まれたものを追い出すのは FIFO、参照回数が少ないものは LFU。" },
+  { id: "t15", cat: "tech", topic: "マルチメディア", q: "1画素を24ビットで表す 1920×1080 画素の画像を圧縮せずに保存するときのデータ量に最も近いものはどれか。", ch: ["2.1Mバイト", "6.2Mバイト", "16.6Mバイト", "49.8Mバイト"], a: 1,
+    ex: "1920×1080×3バイト = 6,220,800バイト ≒ 6.2Mバイト。\n49.8 はビット数（M ビット）と取り違えた値。" },
+  // ---- テクノロジ系: データベース
+  { id: "t16", cat: "tech", topic: "データベース", q: "第3正規形にするために取り除くものはどれか。", ch: ["推移的関数従属", "部分関数従属", "繰返し項目", "主キー"], a: 0,
+    ex: "第1正規形：繰返し項目を排除\n第2正規形：部分関数従属を排除\n第3正規形：推移的関数従属を排除" },
+  { id: "t17", cat: "tech", topic: "SQL", q: "SQLで、GROUP BY でまとめたグループに対して集計結果で条件を指定する句はどれか。", ch: ["HAVING", "WHERE", "ORDER BY", "DISTINCT"], a: 0,
+    ex: "WHERE はグループ化前の行に、HAVING はグループ化後の集計結果に条件をかける。\n例：HAVING COUNT(*) >= 3" },
+  { id: "t18", cat: "tech", topic: "トランザクション", q: "トランザクションの ACID 特性のうち「原子性（Atomicity）」の説明はどれか。", ch: ["処理がすべて実行されるか、まったく実行されないかのどちらかになる", "処理の結果、データの整合性が保たれる", "同時に実行しても互いに影響しない", "確定した結果は障害が起きても失われない"], a: 0,
+    ex: "A=原子性、C=一貫性、I=独立性、D=耐久性。選択肢は順に A・C・I・D の説明。" },
+  // ---- テクノロジ系: ネットワーク
+  { id: "t19", cat: "tech", topic: "ネットワーク", q: "OSI基本参照モデルで、IPが該当する層はどれか。", ch: ["ネットワーク層", "データリンク層", "トランスポート層", "セッション層"], a: 0,
+    ex: "IP = 第3層（ネットワーク層）、TCP/UDP = 第4層（トランスポート層）、イーサネット = 第2層（データリンク層）。" },
+  { id: "t20", cat: "tech", topic: "ネットワーク", q: "サブネットマスクが 255.255.255.0 のネットワークで、ホストに割り当てられるIPアドレスの最大数はどれか。", ch: ["254", "255", "256", "65,534"], a: 0,
+    ex: "ホスト部は8ビットで 2⁸ = 256 通り。全ビット0（ネットワークアドレス）と全ビット1（ブロードキャスト）を除いて 254。" },
+  { id: "t21", cat: "tech", topic: "ネットワーク", q: "DNS の役割として適切なものはどれか。", ch: ["ドメイン名とIPアドレスを対応付ける", "IPアドレスを自動で割り当てる", "IPアドレスとMACアドレスを対応付ける", "電子メールを転送する"], a: 0,
+    ex: "IPアドレスの自動割当は DHCP、IP→MAC の解決は ARP、メール転送は SMTP。" },
+  { id: "t22", cat: "tech", topic: "ネットワーク", q: "HTTPS で標準的に使用されるポート番号はどれか。", ch: ["443", "80", "25", "110"], a: 0,
+    ex: "HTTP = 80、HTTPS = 443、SMTP = 25、POP3 = 110。" },
+  // ---- テクノロジ系: セキュリティ
+  { id: "t23", cat: "tech", topic: "暗号", q: "公開鍵暗号方式で、AさんがBさんに機密文書を暗号化して送るときに使う鍵はどれか。", ch: ["Bさんの公開鍵", "Bさんの秘密鍵", "Aさんの公開鍵", "Aさんの秘密鍵"], a: 0,
+    ex: "受信者の公開鍵で暗号化し、受信者だけが持つ秘密鍵で復号する。" },
+  { id: "t24", cat: "tech", topic: "デジタル署名", q: "デジタル署名で、受信者が署名を検証するのに使う鍵はどれか。", ch: ["送信者の公開鍵", "送信者の秘密鍵", "受信者の公開鍵", "受信者の秘密鍵"], a: 0,
+    ex: "送信者は自分の秘密鍵で署名し、受信者は送信者の公開鍵で検証する。暗号化の場合と鍵の持ち主が逆になる点に注意。" },
+  { id: "t25", cat: "tech", topic: "攻撃と対策", q: "SQLインジェクション対策として最も有効なものはどれか。", ch: ["プレースホルダ（バインド機構）を使ってSQL文を組み立てる", "通信をTLSで暗号化する", "パスワードを定期的に変更させる", "ファイアウォールで不要なポートを閉じる"], a: 0,
+    ex: "入力値をSQL文の構造から切り離すプレースホルダが根本的な対策。通信の暗号化やポート制限では防げない。" },
+  { id: "t26", cat: "tech", topic: "攻撃と対策", q: "ランサムウェアの説明として適切なものはどれか。", ch: ["ファイルを暗号化するなどして使えなくし、元に戻す代わりに金銭を要求する", "利用者の操作を記録し、パスワードなどを盗み出す", "正規のソフトウェアを装って侵入し、裏口を作る", "大量の通信を送りつけてサービスを停止させる"], a: 0,
+    ex: "キー入力を記録するのはキーロガー、正規ソフトを装うのはトロイの木馬、大量通信は DoS/DDoS 攻撃。" },
+  // ---- テクノロジ系: 開発技術
+  { id: "t27", cat: "tech", topic: "テスト", q: "ホワイトボックステストの説明として適切なものはどれか。", ch: ["プログラムの内部構造に基づき、命令や分岐が実行されるようにテストする", "入力と出力の仕様だけに基づいてテストする", "利用者が実際の業務で使えるかをテストする", "変更によって他の部分に影響がないかをテストする"], a: 0,
+    ex: "命令網羅・分岐網羅などがホワイトボックステストの基準。仕様だけを見るのはブラックボックステスト、最後の選択肢は回帰（リグレッション）テスト。" },
+  { id: "t28", cat: "tech", topic: "開発手法", q: "スクラムで、一定の短い期間を区切って開発を繰り返す単位を何というか。", ch: ["スプリント", "イテレーションレビュー", "マイルストーン", "フェーズゲート"], a: 0,
+    ex: "スクラムでは1〜4週間程度のスプリントを繰り返す。スプリントの最後にスプリントレビューとレトロスペクティブを行う。" },
+
+  // ---- マネジメント系
+  { id: "m01", cat: "mgmt", topic: "プロジェクト管理", q: "アローダイアグラムにおけるクリティカルパスの説明として適切なものはどれか。", ch: ["開始から終了までの最も時間のかかる経路で、遅れが全体の遅れに直結する", "開始から終了までの最も時間の短い経路", "作業に余裕日数が最も多い経路", "担当者が最も多い作業を結んだ経路"], a: 0,
+    ex: "クリティカルパス上の作業には余裕（フロート）がない。ここを短縮しないとプロジェクト全体の期間は縮まらない。" },
+  { id: "m02", cat: "mgmt", topic: "プロジェクト管理", q: "WBS（Work Breakdown Structure）の説明として適切なものはどれか。", ch: ["プロジェクトの成果物や作業を階層的に細かく分解したもの", "作業の開始日と終了日を横棒で示した図", "作業の担当者と責任を対応付けた表", "プロジェクトの予算と実績を比較した図"], a: 0,
+    ex: "横棒の図はガントチャート、担当と責任の対応表は RACI チャート（責任分担マトリックス）。" },
+  { id: "m03", cat: "mgmt", topic: "見積り", q: "ファンクションポイント法の説明として適切なものはどれか。", ch: ["入出力や内部ファイルなど機能の数と複雑さから規模を見積もる", "プログラムの行数から規模を見積もる", "過去の類似プロジェクトの実績から類推する", "専門家の意見を繰り返し集約して見積もる"], a: 0,
+    ex: "行数ベースは LOC 法（COCOMO など）、類推は類推見積法、専門家の意見集約はデルファイ法。" },
+  { id: "m04", cat: "mgmt", topic: "工数計算", q: "10人で12か月かかる開発を、6か月で終わらせるには何人必要か。ただし生産性は人数に関係なく一定とする。", ch: ["20人", "12人", "16人", "24人"], a: 0,
+    ex: "総工数 = 10人 × 12か月 = 120人月。120 ÷ 6 = 20人。" },
+  { id: "m05", cat: "mgmt", topic: "サービスマネジメント", q: "インシデント管理の主な目的はどれか。", ch: ["サービスをできるだけ早く通常の状態に回復させる", "インシデントの根本原因を突き止めて再発を防ぐ", "変更を安全に実施する", "構成品目の情報を正確に維持する"], a: 0,
+    ex: "根本原因の究明は問題管理、変更は変更管理、構成品目は構成管理の役割。" },
+  { id: "m06", cat: "mgmt", topic: "サービスマネジメント", q: "SLA の説明として適切なものはどれか。", ch: ["サービス提供者と利用者の間で合意したサービスレベルの取り決め", "社内の部門間で取り交わすサービスの取り決め", "サービスを提供するための外部業者との契約", "サービスの利用手順を説明した文書"], a: 0,
+    ex: "SLA = Service Level Agreement。社内部門間の取り決めは OLA、外部業者との契約は UC（Underpinning Contract）。" },
+  { id: "m07", cat: "mgmt", topic: "システム監査", q: "システム監査人に最も強く求められるものはどれか。", ch: ["監査対象から独立した立場であること", "監査対象システムの開発に参加していること", "監査対象部門の業務責任者であること", "監査結果に基づいてシステムを改修すること"], a: 0,
+    ex: "システム監査人は外観上も精神上も監査対象から独立していなければならない。改善の実施は監査対象部門の役割。" },
+  { id: "m08", cat: "mgmt", topic: "内部統制", q: "職務分掌の目的として適切なものはどれか。", ch: ["業務を複数の担当者に分けて相互にけん制させ、不正や誤りを防ぐ", "1人に権限を集中させて意思決定を速める", "業務を外部に委託して費用を削減する", "担当者を定期的に交代させて技能を広げる"], a: 0,
+    ex: "例えば、発注する人と検収する人を分けることで、1人で不正を完結できないようにする。" },
+
+  // ---- ストラテジ系
+  { id: "s01", cat: "strat", topic: "経営戦略", q: "SWOT分析で、外部環境のうち自社にとって好ましい要因はどれか。", ch: ["機会（Opportunity）", "強み（Strength）", "弱み（Weakness）", "脅威（Threat）"], a: 0,
+    ex: "内部環境：強み・弱み\n外部環境：機会・脅威" },
+  { id: "s02", cat: "strat", topic: "経営戦略", q: "PPM（プロダクトポートフォリオマネジメント）で、市場成長率が低く市場シェアが高い事業はどれか。", ch: ["金のなる木", "花形", "問題児", "負け犬"], a: 0,
+    ex: "花形：成長率 高・シェア 高\n金のなる木：成長率 低・シェア 高\n問題児：成長率 高・シェア 低\n負け犬：成長率 低・シェア 低" },
+  { id: "s03", cat: "strat", topic: "会計", q: "固定費が400万円、変動費率が0.6のとき、損益分岐点売上高はいくらか。", ch: ["1,000万円", "667万円", "240万円", "640万円"], a: 0,
+    ex: "損益分岐点売上高 = 固定費 ÷ (1 − 変動費率) = 400 ÷ 0.4 = 1,000万円" },
+  { id: "s04", cat: "strat", topic: "会計", q: "流動比率を求める式はどれか。", ch: ["流動資産 ÷ 流動負債", "流動負債 ÷ 流動資産", "自己資本 ÷ 総資本", "当期純利益 ÷ 自己資本"], a: 0,
+    ex: "流動比率は短期の支払能力を示し、高いほど安全。自己資本 ÷ 総資本は自己資本比率、当期純利益 ÷ 自己資本は ROE。" },
+  { id: "s05", cat: "strat", topic: "会計", q: "ROE（自己資本利益率）を求める式はどれか。", ch: ["当期純利益 ÷ 自己資本", "当期純利益 ÷ 総資本", "営業利益 ÷ 売上高", "投資による利益 ÷ 投資額"], a: 0,
+    ex: "総資本で割るのは ROA、営業利益 ÷ 売上高は売上高営業利益率、投資による利益 ÷ 投資額は ROI。" },
+  { id: "s06", cat: "strat", topic: "法務", q: "著作権法で保護の対象となるものはどれか。", ch: ["プログラム", "プログラム言語", "アルゴリズム（解法）", "規約（インタフェースの取り決め）"], a: 0,
+    ex: "プログラムそのものは著作物として保護される。プログラム言語、規約、解法（アルゴリズム）は保護の対象外。" },
+  { id: "s07", cat: "strat", topic: "法務", q: "個人情報保護法の「要配慮個人情報」に該当するものはどれか。", ch: ["病歴", "氏名", "メールアドレス", "生年月日"], a: 0,
+    ex: "要配慮個人情報は人種、信条、社会的身分、病歴、犯罪の経歴など、不当な差別や偏見が生じないよう取扱いに特に配慮が必要な情報。取得には原則として本人の同意が必要。" },
+  { id: "s08", cat: "strat", topic: "法務", q: "労働者派遣で、派遣労働者に業務の指揮命令を行うのは誰か。", ch: ["派遣先", "派遣元", "派遣労働者本人", "労働基準監督署"], a: 0,
+    ex: "雇用関係は派遣元と、指揮命令関係は派遣先とある。請負では発注者が請負側の作業者に直接指揮命令できない点と区別する。" },
+  { id: "s09", cat: "strat", topic: "業務分析", q: "ABC分析で用いる図はどれか。", ch: ["パレート図", "散布図", "特性要因図", "管理図"], a: 0,
+    ex: "値の大きい順に並べた棒グラフと累積比率の折れ線を組み合わせたパレート図を使い、上位の重要なものを A グループとして重点管理する。" },
+  { id: "s10", cat: "strat", topic: "企業活動", q: "BCP（事業継続計画）の説明として適切なものはどれか。", ch: ["災害などで事業が中断しても、重要な業務を継続・早期復旧させるための計画", "新規事業に参入するための計画", "情報システムを段階的に更新するための計画", "従業員の能力開発のための計画"], a: 0,
+    ex: "BCP = Business Continuity Plan。目標復旧時間（RTO）などを定める。" },
+  { id: "s11", cat: "strat", topic: "業務改善", q: "RPA の説明として適切なものはどれか。", ch: ["ソフトウェアロボットがPC上の定型的な事務作業を自動で行う", "工場の産業用ロボットで組立作業を自動化する", "AIが人間と自然な会話をする", "業務プロセスを根本から見直して再設計する"], a: 0,
+    ex: "RPA = Robotic Process Automation。業務プロセスの根本的な再設計は BPR。" },
+  { id: "s12", cat: "strat", topic: "マーケティング", q: "マーケティングの 4P に含まれないものはどれか。", ch: ["Partner（協力者）", "Product（製品）", "Price（価格）", "Promotion（販売促進）"], a: 0,
+    ex: "4P は Product・Price・Place（流通）・Promotion。" },
+
+  // ---- 科目B: 擬似言語
+  { id: "b01", cat: "b", topic: "繰返し", q: "次のプログラムを実行した後の x の値はどれか。",
+    code: "整数型: x ← 0\n整数型: i\nfor (i を 1 から 5 まで 1 ずつ増やす)\n  if (i mod 2 が 0 と等しい)\n    x ← x + i\n  endif\nendfor",
+    ch: ["6", "9", "15", "4"], a: 0,
+    ex: "i が偶数のときだけ x に足す。i = 2, 4 なので x = 2 + 4 = 6。\n9 は奇数の和、15 は全部の和。" },
+  { id: "b02", cat: "b", topic: "再帰", q: "次の関数 f について、f(4) の戻り値はどれか。",
+    code: "○整数型: f(整数型: n)\n  if (n ≦ 1)\n    return 1\n  endif\n  return n × f(n − 1)",
+    ch: ["24", "10", "12", "4"], a: 0,
+    ex: "f(4) = 4 × f(3) = 4 × 3 × f(2) = 4 × 3 × 2 × f(1) = 4 × 3 × 2 × 1 = 24（階乗）。" },
+  { id: "b03", cat: "b", topic: "整列", q: "配列の要素番号は1から始まる。次のプログラムを実行した後の配列 a の内容はどれか。",
+    code: "整数型の配列: a ← {5, 3, 8, 1}\n整数型: i, t\nfor (i を 1 から 要素数(a) − 1 まで 1 ずつ増やす)\n  if (a[i] > a[i + 1])\n    t ← a[i]\n    a[i] ← a[i + 1]\n    a[i + 1] ← t\n  endif\nendfor",
+    ch: ["{3, 5, 1, 8}", "{1, 3, 5, 8}", "{3, 1, 5, 8}", "{5, 3, 1, 8}"], a: 0,
+    ex: "バブルソートの1パス分だけを実行している。\ni=1: 5>3 → {3,5,8,1}\ni=2: 5>8 ではない\ni=3: 8>1 → {3,5,1,8}\n最大値8が末尾に移動するが、全体はまだ整列されていない。" },
+  { id: "b04", cat: "b", topic: "探索", q: "配列の要素番号は1から始まる。次の関数に a = {4, 9, 2, 9, 7} を渡したときの戻り値はどれか。",
+    code: "○整数型: g(整数型の配列: a)\n  整数型: i, k ← 1\n  for (i を 2 から 要素数(a) まで 1 ずつ増やす)\n    if (a[i] > a[k])\n      k ← i\n    endif\n  endfor\n  return k",
+    ch: ["2", "4", "9", "5"], a: 0,
+    ex: "最大値の要素番号を返す関数。条件が「>」なので、同じ最大値9が2回あっても最初の位置 2 のまま更新されない。\n「≧」なら 4 になる。9 は値そのもの。" },
+];
+
+// ---------- storage (per-viewer progress) ----------
+const KEY = "fe-drill-v1";
+function load() {
+  try { const s = JSON.parse(localStorage.getItem(KEY)); if (s && s.stats) return s; } catch (e) {}
+  return { stats: {}, history: [] };
+}
+function save() { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} }
+let store = load();
+
+// ---------- helpers ----------
+const $app = document.getElementById("app");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const shuffle = arr => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const pct = (c, n) => n ? Math.round(c / n * 100) : 0;
+const rnd = n => Math.floor(Math.random() * n);
+
+function catStats(cat) {
+  let n = 0, c = 0, seen = 0;
+  const qs = Q.filter(q => !cat || q.cat === cat);
+  qs.forEach(q => { const s = store.stats[q.id]; if (s) { seen++; n += s.n; c += s.c; } });
+  return { total: qs.length, seen, n, c };
+}
+const wrongIds = () => Q.filter(q => store.stats[q.id] && store.stats[q.id].wrong).map(q => q.id);
+
+// generated 基数変換 questions
+function genRadix() {
+  const v = 16 + rnd(240);
+  const bin = x => x.toString(2).padStart(8, "0");
+  const hex = x => x.toString(16).toUpperCase().padStart(2, "0");
+  const near = () => {
+    const set = new Set([v]);
+    const cands = [v ^ (1 << rnd(8)), v ^ (1 << rnd(8)), v + 1, v - 1, v ^ 0x10, v ^ 0x01, ((v & 15) << 4) | (v >> 4)];
+    for (const c of shuffle(cands)) { if (c > 0 && c < 256) set.add(c); if (set.size === 4) break; }
+    while (set.size < 4) set.add(1 + rnd(255));
+    return [...set];
+  };
+  const vals = near();
+  const kinds = [
+    { q: `10進数 ${v} を8ビットの2進数で表したものはどれか。`, f: bin, ex: `${v} を2で割った余りを下から並べる。\n16進数にすると ${hex(v)}（上位4ビット ${bin(v).slice(0,4)}、下位4ビット ${bin(v).slice(4)}）。` },
+    { q: `2進数 ${bin(v)} を10進数で表したものはどれか。`, f: x => String(x), ex: `1のビットの重みを足す：${bin(v).split("").map((b, i) => b === "1" ? 2 ** (7 - i) : null).filter(x => x !== null).join(" + ")} = ${v}` },
+    { q: `16進数 ${hex(v)} を10進数で表したものはどれか。`, f: x => String(x), ex: `${hex(v)[0]} は ${v >> 4}、${hex(v)[1]} は ${v & 15}。${v >> 4} × 16 + ${v & 15} = ${v}` },
+    { q: `2進数 ${bin(v)} を16進数で表したものはどれか。`, f: hex, ex: `4ビットずつ区切って変換する：${bin(v).slice(0,4)} → ${hex(v)[0]}、${bin(v).slice(4)} → ${hex(v)[1]}` },
+  ];
+  const k = kinds[rnd(kinds.length)];
+  return { id: "gen", cat: "tech", topic: "基数変換ドリル", q: k.q, ch: vals.map(k.f), a: 0, ex: k.ex, generated: true };
+}
+
+// ---------- session ----------
+let S = null; // { mode, title, items:[{q, order}], i, answers:[], picked, deadline, timerId }
+
+function startSession(mode, opts = {}) {
+  let list = [];
+  let title = "";
+  if (mode === "random") { list = shuffle(Q).slice(0, 10); title = "ランダム10問"; }
+  if (mode === "cat") { list = shuffle(Q.filter(q => q.cat === opts.cat)); title = CATS[opts.cat].name; }
+  if (mode === "mock") { list = shuffle(Q).slice(0, 20); title = "ミニ模試（20問・30分）"; }
+  if (mode === "wrong") { const w = new Set(wrongIds()); list = shuffle(Q.filter(q => w.has(q.id))); title = "間違えた問題の復習"; }
+  if (mode === "radix") { list = Array.from({ length: 10 }, genRadix); title = "基数変換ドリル（10問）"; }
+  if (!list.length) return;
+  S = {
+    mode, title, i: 0, answers: [], picked: null,
+    items: list.map(q => ({ q, order: shuffle([0, 1, 2, 3]) })),
+    deadline: mode === "mock" ? Date.now() + 30 * 60 * 1000 : null,
+  };
+  if (S.deadline) S.timerId = setInterval(tick, 1000);
+  renderQuiz();
+}
+
+function tick() {
+  const el = document.getElementById("timer");
+  if (!S || !S.deadline) return;
+  const left = Math.max(0, S.deadline - Date.now());
+  if (el) {
+    const m = Math.floor(left / 60000), s = Math.floor(left / 1000) % 60;
+    el.textContent = `残り ${m}:${String(s).padStart(2, "0")}`;
+    el.classList.toggle("low", left < 5 * 60000);
+  }
+  if (left === 0) finish(true);
+}
+
+function answer(choiceIdx) {
+  if (!S || S.picked !== null) return;
+  const it = S.items[S.i];
+  const orig = it.order[choiceIdx];
+  const ok = orig === it.q.a;
+  S.picked = choiceIdx;
+  S.answers.push({ q: it.q, ok, picked: it.q.ch[orig] });
+  if (!it.q.generated) {
+    const s = store.stats[it.q.id] || { n: 0, c: 0, wrong: false };
+    s.n++; if (ok) s.c++;
+    s.wrong = !ok;
+    store.stats[it.q.id] = s; save();
+  }
+  renderQuiz();
+}
+
+function next() {
+  if (!S) return;
+  if (S.i + 1 >= S.items.length) return finish(false);
+  S.i++; S.picked = null; renderQuiz();
+  window.scrollTo({ top: 0 });
+}
+
+function finish(timeUp) {
+  clearInterval(S.timerId);
+  S.finished = true;
+  const total = S.items.length, correct = S.answers.filter(a => a.ok).length;
+  if (S.mode !== "radix") {
+    store.history.unshift({ d: new Date().toISOString().slice(0, 10), t: S.title, c: correct, n: total });
+    store.history = store.history.slice(0, 20); save();
+  }
+  renderResult(timeUp, correct, total);
+}
+
+// ---------- views ----------
+function renderHome() {
+  if (S && S.timerId) clearInterval(S.timerId);
+  S = null;
+  const all = catStats();
+  const w = wrongIds().length;
+  const hasData = all.n > 0;
+  $app.innerHTML = `
+    <header class="top">
+      <div class="logo"><span class="bubble">ア</span>基本情報ドリル</div>
+      <div class="meta">基本情報技術者試験 科目A・科目B 対策</div>
+    </header>
+
+    <section class="sheet timing" aria-labelledby="h-progress">
+      <div class="label" id="h-progress">あなたの学習状況</div>
+      <div class="summary" style="margin-top:8px">
+        <div class="stat"><b>${all.seen}<span style="font-size:15px;color:var(--muted)">/${all.total}</span></b><small>解いた問題</small></div>
+        <div class="stat"><b>${pct(all.c, all.n)}<span style="font-size:15px">%</span></b><small>正答率（${all.n}回答）</small></div>
+        <div class="stat"><b style="color:${w ? "var(--ng)" : "inherit"}">${w}</b><small>復習待ち</small></div>
+      </div>
+      <div class="bars">
+        ${Object.keys(CATS).map(k => { const s = catStats(k); return `
+          <div class="bar-row"><span>${CATS[k].short}</span><div class="bar" role="img" aria-label="${CATS[k].short} 正答率 ${pct(s.c, s.n)}%"><i style="width:${pct(s.c, s.n)}%"></i></div><span class="mono">${s.n ? pct(s.c, s.n) + "%" : "—"}</span></div>`; }).join("")}
+      </div>
+      ${hasData ? "" : `<p class="meta" style="margin:14px 0 0">まだ回答がありません。まずはランダム10問で今の実力を確かめましょう。進捗はこのブラウザに保存されます。</p>`}
+    </section>
+
+    <section style="display:grid;gap:10px" aria-labelledby="h-modes">
+      <div class="label" id="h-modes">演習モード</div>
+      <div class="modes">
+        <button class="mode primary" data-mode="random"><strong>ランダム10問</strong><span>全分野からまんべんなく出題</span></button>
+        <button class="mode" data-mode="mock"><strong>ミニ模試</strong><span>20問・30分。本番と同じ1問1.5分ペース</span></button>
+        <button class="mode" data-mode="wrong" ${w ? "" : "disabled"}><strong>間違えた問題の復習</strong><span>${w ? `${w}問。正解すると復習リストから外れます` : "間違えた問題がここに溜まります"}</span></button>
+        <button class="mode" data-mode="radix"><strong>基数変換ドリル</strong><span>2進・10進・16進の変換を毎回新しく出題</span></button>
+      </div>
+    </section>
+
+    <section style="display:grid;gap:10px" aria-labelledby="h-cats">
+      <div class="label" id="h-cats">分野別に解く</div>
+      <div class="cats">
+        ${Object.keys(CATS).map(k => `<button class="chip" data-cat="${k}">${CATS[k].name}<em>${Q.filter(q => q.cat === k).length}問</em></button>`).join("")}
+      </div>
+    </section>
+
+    ${store.history.length ? `
+    <section style="display:grid;gap:10px" aria-labelledby="h-hist">
+      <div class="label" id="h-hist">最近の結果</div>
+      <div class="sheet" style="padding:8px 16px">
+        ${store.history.slice(0, 5).map(h => `<div style="display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px dashed var(--rule);font-size:13.5px"><span>${esc(h.t)}</span><span class="mono" style="color:var(--muted)">${h.d.slice(5).replace("-", "/")}　<b style="color:var(--ink)">${h.c}/${h.n}</b>（${pct(h.c, h.n)}%）</span></div>`).join("")}
+      </div>
+    </section>` : ""}
+
+    <section class="sheet" style="font-size:13.5px">
+      <div class="label">試験の基本</div>
+      <p style="margin:6px 0 0">科目A：60問・90分（四肢択一）／科目B：20問・100分（アルゴリズムと情報セキュリティ）。どちらも1000点満点のうち600点以上で合格です。IRT方式で採点されるため、正答率60%は合格ラインの目安として見てください。</p>
+      <div class="confirm" id="reset-area" style="margin-top:10px"><button class="linkbtn" id="reset">学習記録をリセット</button></div>
+    </section>
+  `;
+  $app.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => startSession(b.dataset.mode));
+  $app.querySelectorAll("[data-cat]").forEach(b => b.onclick = () => startSession("cat", { cat: b.dataset.cat }));
+  document.getElementById("reset").onclick = () => {
+    const area = document.getElementById("reset-area");
+    area.innerHTML = `<span>すべての記録を消去しますか？</span><button class="btn ghost" id="r-no" style="padding:4px 12px">やめる</button><button class="btn" id="r-yes" style="padding:4px 12px;background:var(--ng);border-color:var(--ng)">消去する</button>`;
+    document.getElementById("r-no").onclick = renderHome;
+    document.getElementById("r-yes").onclick = () => { store = { stats: {}, history: [] }; save(); renderHome(); };
+  };
+}
+
+function renderQuiz() {
+  const it = S.items[S.i], q = it.q;
+  const done = S.picked !== null;
+  const last = S.answers[S.answers.length - 1];
+  const showFeedback = done && S.mode !== "mock";
+  $app.innerHTML = `
+    <div class="qhead">
+      <button class="btn ghost" id="quit" style="padding:6px 14px">← 終了</button>
+      <div class="meta">${esc(S.title)}</div>
+      ${S.deadline ? `<span class="timer" id="timer"></span>` : `<span class="mono meta">${S.answers.filter(a => a.ok).length} 正解</span>`}
+    </div>
+    <div class="progress"><i style="width:${(S.i + (done ? 1 : 0)) / S.items.length * 100}%"></i></div>
+
+    <article class="sheet timing">
+      <div class="qhead">
+        <div class="left"><span class="qno">問${S.i + 1}</span><span class="tag">${CATS[q.cat].short}</span><span class="topic">${esc(q.topic)}</span></div>
+        <span class="mono meta">${S.i + 1} / ${S.items.length}</span>
+      </div>
+      <p class="qtext">${esc(q.q)}</p>
+      ${q.code ? `<pre class="code">${esc(q.code)}</pre>` : ""}
+      <div class="choices" role="group" aria-label="選択肢">
+        ${it.order.map((o, i) => {
+          let cls = "";
+          if (done) {
+            if (showFeedback && o === q.a) cls = "right";
+            else if (showFeedback && i === S.picked) cls = "wrong";
+            else if (i === S.picked) cls = "picked";
+          }
+          return `<button class="choice ${cls}" data-i="${i}" ${done ? "disabled" : ""}><span class="ov">${KANA[i]}</span><span class="txt">${esc(q.ch[o])}</span></button>`;
+        }).join("")}
+      </div>
+      ${showFeedback ? `
+        <div class="explain">
+          <div class="verdict ${last.ok ? "ok" : "ng"}">${last.ok ? "○ 正解" : "× 不正解"}${last.ok ? "" : `<span style="font-weight:500;font-size:14px;color:var(--muted)">正解は「${esc(q.ch[q.a])}」</span>`}</div>
+          <p>${esc(q.ex)}</p>
+        </div>` : ""}
+    </article>
+
+    <div class="actions">
+      <span class="kbd">キー操作：1〜4 で解答、Enter で次へ</span>
+      ${done ? `<button class="btn" id="next">${S.i + 1 >= S.items.length ? "結果を見る" : "次の問題 →"}</button>` : ""}
+    </div>
+  `;
+  $app.querySelectorAll(".choice").forEach(b => b.onclick = () => answer(+b.dataset.i));
+  document.getElementById("quit").onclick = () => S.answers.length ? finish(false) : renderHome();
+  const n = document.getElementById("next"); if (n) { n.onclick = next; n.focus({ preventScroll: true }); }
+  if (S.deadline) tick();
+}
+
+function renderResult(timeUp, correct, total) {
+  const answered = S.answers.length;
+  const p = pct(correct, total);
+  const byCat = {};
+  S.answers.forEach(a => { const b = byCat[a.q.cat] = byCat[a.q.cat] || { n: 0, c: 0 }; b.n++; if (a.ok) b.c++; });
+  const wrong = S.answers.filter(a => !a.ok);
+  const mode = S.mode;
+  $app.innerHTML = `
+    <header class="top">
+      <div class="logo"><span class="bubble">ア</span>結果</div>
+      <div class="meta">${esc(S.title)}${timeUp ? "　時間切れ" : ""}</div>
+    </header>
+    <section class="sheet timing">
+      <div class="score"><b>${correct}</b><span class="mono">/ ${total}問　正答率 ${p}%</span></div>
+      <div style="margin-top:10px"><span class="pass ${p >= 60 ? "ok" : "ng"}">${p >= 60 ? "合格ラインの目安 60% を超えています" : "合格ラインの目安 60% まであと " + (Math.ceil(total * 0.6) - correct) + "問"}</span></div>
+      ${answered < total ? `<p class="meta" style="margin:10px 0 0">未回答 ${total - answered}問は不正解として数えています。</p>` : ""}
+      <div class="bars">
+        ${Object.keys(byCat).map(k => `<div class="bar-row"><span>${CATS[k].short}</span><div class="bar"><i style="width:${pct(byCat[k].c, byCat[k].n)}%"></i></div><span class="mono">${byCat[k].c}/${byCat[k].n}</span></div>`).join("")}
+      </div>
+    </section>
+    ${wrong.length ? `
+    <section class="review" aria-labelledby="h-rev">
+      <div class="label" id="h-rev">間違えた問題（${wrong.length}）</div>
+      ${wrong.map(a => `<details><summary>${esc(a.q.q)}</summary>${a.q.code ? `<pre class="code">${esc(a.q.code)}</pre>` : ""}<p><b>あなたの解答：</b>${esc(a.picked)}\n<b style="color:var(--ok)">正解：</b>${esc(a.q.ch[a.q.a])}</p><p>${esc(a.q.ex)}</p></details>`).join("")}
+    </section>` : `<p style="margin:0">全問正解です。</p>`}
+    <div class="actions">
+      <button class="btn ghost" id="home">ホームへ</button>
+      <button class="btn" id="again">${mode === "wrong" ? "残りを復習する" : "もう一度解く"}</button>
+    </div>
+  `;
+  document.getElementById("home").onclick = renderHome;
+  const again = document.getElementById("again");
+  if (mode === "wrong" && !wrongIds().length) again.hidden = true;
+  again.onclick = () => startSession(mode, mode === "cat" ? { cat: S.items[0].q.cat } : {});
+}
+
+document.addEventListener("keydown", e => {
+  if (!S || S.finished || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (S.picked === null && ["1", "2", "3", "4"].includes(e.key)) { answer(+e.key - 1); e.preventDefault(); }
+  else if (S.picked !== null && e.key === "Enter" && document.activeElement?.id !== "next") { next(); e.preventDefault(); }
+});
+
+renderHome();
+</script>

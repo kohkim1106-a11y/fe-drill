@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "firebase": {
+      "type": "stdio",
+      "command": "/Users/matsuekoki/.local/bin/npx",
+      "args": [
+        "-y",
+        "firebase-tools@15.34.1",
+        "mcp",
+        "--dir",
+        "/Users/matsuekoki/Desktop/fe-drill"
+      ],
+      "env": {
+        "PATH": "/Users/matsuekoki/.local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      }
+    }
+  }
+}

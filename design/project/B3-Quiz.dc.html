@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>B3 演習</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#F5D547}a:hover{color:#FFE680}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; position: relative; overflow: hidden; display: flex; flex-direction: column; font-family: 'IBM Plex Sans JP', 'Hiragino Sans', sans-serif; color: #E8ECF3; background: #101828;">
+  <header style="display: flex; flex-direction: column; gap: 6px; padding: 12px 12px 0;">
+    <div style="display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; padding: 0 4px;" aria-label="10問中2問目">
+      <div style="height: 4px; border-radius: 999px; background: #F5D547;"></div>
+      <div style="height: 4px; border-radius: 999px; background: #F5D547;"></div>
+      <div style="height: 4px; border-radius: 999px; background: #344054;"></div>
+      <div style="height: 4px; border-radius: 999px; background: #344054;"></div>
+      <div style="height: 4px; border-radius: 999px; background: #344054;"></div>
+      <div style="height: 4px; border-radius: 999px; background: #344054;"></div>
+      <div style="height: 4px; border-radius: 999px; background: #344054;"></div>
+      <div style="height: 4px; border-radius: 999px; background: #344054;"></div>
+      <div style="height: 4px; border-radius: 999px; background: #344054;"></div>
+      <div style="height: 4px; border-radius: 999px; background: #344054;"></div>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <button aria-label="演習を終了" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: transparent; border: 0; color: #B7C0CF;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+      <div style="font-size: 14px; color: #B7C0CF;">今日の15分 ・ <span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; color: #E8ECF3; font-weight: 600;">2</span>/10</div>
+      <div style="width: 44px;"></div>
+    </div>
+  </header>
+
+  <main style="flex: 1; display: flex; flex-direction: column; gap: 14px; padding: 6px 20px 0;">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span style="font-size: 13px; padding: 3px 8px; border-radius: 6px; border: 1px solid #7CC4FA; color: #7CC4FA;">科目B</span>
+      <span style="font-size: 13px; padding: 3px 8px; border-radius: 6px; background: #1C2638; color: #B7C0CF;">再帰</span>
+      <span style="font-size: 13px; color: #B7C0CF;">復習</span>
+    </div>
+    <p style="margin: 0; font-size: 18px; line-height: 1.75;">次の関数 <span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace;">f</span> について、<span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace;">f(4)</span> の戻り値はどれか。</p>
+    <pre style="margin: 0; padding: 14px 16px; background: #0B1220; border: 1px solid #344054; border-radius: 14px; font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-size: 15px; line-height: 1.75; color: #E8ECF3; white-space: pre; overflow-x: auto;">○整数型: f(整数型: n)
+  <span style="color: #7CC4FA;">if</span> (n ≦ 1)
+    <span style="color: #7CC4FA;">return</span> 1
+  <span style="color: #7CC4FA;">endif</span>
+  <span style="color: #7CC4FA;">return</span> n × f(n − 1)</pre>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <button aria-pressed="true" style="min-height: 56px; display: flex; align-items: center; gap: 10px; padding: 0 14px; border-radius: 14px; border: 2px solid #6FD39C; background: #1C2638; color: #E8ECF3; font-family: inherit; font-size: 18px;">
+        <span style="font-size: 15px; font-weight: 700; color: #6FD39C;">ア</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600;">24</span>
+      </button>
+      <button style="min-height: 56px; display: flex; align-items: center; gap: 10px; padding: 0 14px; border-radius: 14px; border: 1px solid #344054; background: transparent; color: #B7C0CF; font-family: inherit; font-size: 18px;">
+        <span style="font-size: 15px;">イ</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace;">10</span>
+      </button>
+      <button style="min-height: 56px; display: flex; align-items: center; gap: 10px; padding: 0 14px; border-radius: 14px; border: 1px solid #344054; background: transparent; color: #B7C0CF; font-family: inherit; font-size: 18px;">
+        <span style="font-size: 15px;">ウ</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace;">12</span>
+      </button>
+      <button style="min-height: 56px; display: flex; align-items: center; gap: 10px; padding: 0 14px; border-radius: 14px; border: 1px solid #344054; background: transparent; color: #B7C0CF; font-family: inherit; font-size: 18px;">
+        <span style="font-size: 15px;">エ</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace;">4</span>
+      </button>
+    </div>
+  </main>
+
+  <section aria-label="解説" style="position: absolute; left: 0; right: 0; bottom: 0; height: 392px; box-sizing: border-box; background: #1C2638; border-top: 1px solid #344054; border-radius: 24px 24px 0 0; padding: 10px 20px 24px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 -12px 32px rgba(0,0,0,0.45);">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+      <div style="width: 40px; height: 5px; border-radius: 999px; background: #667085;" aria-hidden="true"></div>
+      <div style="display: flex; align-items: center; gap: 4px; font-size: 13px; color: #B7C0CF;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"></path></svg>
+        上にスワイプで次へ
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div style="font-size: 24px; font-weight: 700; color: #6FD39C;">○ 正解</div>
+      <div style="font-size: 14px; color: #B7C0CF;">あなたの解答 <span style="color: #E8ECF3; font-weight: 700;">ア</span></div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <div style="font-size: 14px; color: #B7C0CF;">解説</div>
+      <p style="margin: 0; font-size: 17px; line-height: 1.8;"><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; padding: 0 2px; background: linear-gradient(transparent 55%, rgba(245,213,71,0.45) 55%);">f(4) = 4 × 3 × 2 × 1 = 24</span>（階乗）。<span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace;">n ≦ 1</span> で <span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace;">1</span> を返して再帰が止まる。</p>
+      <div style="font-size: 13px; color: #B7C0CF;">出典：オリジナル問題</div>
+    </div>
+    <div style="margin-top: auto; display: flex; align-items: center; gap: 10px;">
+      <button style="min-height: 56px; padding: 0 12px; display: flex; align-items: center; gap: 6px; background: transparent; border: 0; color: #B7C0CF; font-family: inherit; font-size: 14px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4h11l-1.5 4L16 12H5"></path></svg>
+        誤りを報告
+      </button>
+      <button style="flex: 1; min-height: 60px; border: 0; border-radius: 16px; background: #F5D547; color: #101828; font-family: inherit; font-size: 19px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px;">
+        次へ
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101828" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </button>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

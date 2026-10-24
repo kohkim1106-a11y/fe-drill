@@ -1,0 +1,93 @@
+/*
+ * Design tokens. Dark = 案B「夜の単語帳」, Light = 案B2「昼の単語帳」.
+ * Theme: system by default; Settings sets data-theme="dark" | "light" on <html>.
+ * Components use only these variables, never raw colors.
+ */
+:root {
+  /* light (B2) */
+  --c-ground: #F3F5F9;
+  --c-surface: #FFFFFF;
+  --c-surface-2: #E9EDF4;
+  --c-code-bg: #EEF1F6;
+  --c-line: #D6DCE6;
+  --c-text: #111827;
+  --c-heading: #101828;
+  --c-muted: #4B5563;
+  --c-accent: #F5D547;          /* marker yellow: fills and highlights only, never text on light */
+  --c-on-accent: #101828;
+  --c-accent-text: #101828;     /* text/icon color for "active" states */
+  --c-marker: rgba(245, 213, 71, 0.55);
+  --c-info: #1F6FB2;
+  --c-ok: #1E7A47;
+  --c-ng: #B42318;
+  --c-progress: #101828;
+  --c-scrim: rgba(16, 24, 40, 0.35);
+  color-scheme: light;
+
+  --f-sans: "IBM Plex Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", "IBM Plex Sans JP", ui-monospace, Menlo, monospace;
+
+  --fs-xs: 12px;
+  --fs-sm: 13px;
+  --fs-md: 15px;
+  --fs-lg: 17px;   /* B3 question text */
+  --fs-xl: 20px;
+  --fs-2xl: 28px;
+  --fs-num: 40px;
+
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-pill: 999px;
+  --tap: 44px;     /* minimum touch target */
+  --gap-1: 4px;
+  --gap-2: 8px;
+  --gap-3: 12px;
+  --gap-4: 16px;
+  --gap-5: 24px;
+  --tabbar-h: 64px;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --c-ground: #101828;
+    --c-surface: #1C2638;
+    --c-surface-2: #161F30;
+    --c-code-bg: #0B1220;
+    --c-line: #344054;
+    --c-text: #E8ECF3;
+    --c-heading: #E8ECF3;
+    --c-muted: #B7C0CF;
+    --c-accent: #F5D547;
+    --c-on-accent: #101828;
+    --c-accent-text: #F5D547;
+    --c-marker: rgba(245, 213, 71, 0.45);
+    --c-info: #7CC4FA;
+    --c-ok: #6FD39C;
+    --c-ng: #FF8A80;
+    --c-progress: #F5D547;
+    --c-scrim: rgba(0, 0, 0, 0.5);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --c-ground: #101828;
+  --c-surface: #1C2638;
+  --c-surface-2: #161F30;
+  --c-code-bg: #0B1220;
+  --c-line: #344054;
+  --c-text: #E8ECF3;
+  --c-heading: #E8ECF3;
+  --c-muted: #B7C0CF;
+  --c-accent: #F5D547;
+  --c-on-accent: #101828;
+  --c-accent-text: #F5D547;
+  --c-marker: rgba(245, 213, 71, 0.45);
+  --c-info: #7CC4FA;
+  --c-ok: #6FD39C;
+  --c-ng: #FF8A80;
+  --c-progress: #F5D547;
+  --c-scrim: rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}

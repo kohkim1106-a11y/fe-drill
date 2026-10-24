@@ -1,0 +1,401 @@
+<title>基本情報ドリル 要件定義</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: one reading column, mark-sheet bubbles as markers, WBS as stacked cards grouped by 工程 */
+:root{
+  --bg:#F3F5F8;
+  --surface:#FFFFFF;
+  --ink:#1B2230;
+  --muted:#5A6577;
+  --line:#D8DEE7;
+  --accent:#C9295F;
+  --accent-soft:#FBE8EF;
+  --done:#2F7A55;
+  --done-soft:#E3F2EA;
+  --font-body:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+  --font-code:"M PLUS 1 Code",ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12161D;--surface:#1A2029;--ink:#E6EAF1;--muted:#9AA5B6;--line:#2E3746;
+    --accent:#F0699A;--accent-soft:#3A1E2A;--done:#6CC79A;--done-soft:#183026;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12161D;--surface:#1A2029;--ink:#E6EAF1;--muted:#9AA5B6;--line:#2E3746;
+  --accent:#F0699A;--accent-soft:#3A1E2A;--done:#6CC79A;--done-soft:#183026;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--font-body);
+  font-size:16px;line-height:1.75;
+  padding-left:max(16px, env(safe-area-inset-left,0px));
+  padding-right:max(16px, env(safe-area-inset-right,0px));
+  padding-block:20px 56px;
+}
+main{max-width:680px;margin-inline:auto;display:flex;flex-direction:column;gap:40px}
+h1,h2,h3{text-wrap:balance;line-height:1.35;margin:0}
+p{margin:0}
+ul{margin:0;padding-left:1.2em}
+li+li{margin-top:4px}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+code,.mono{font-family:var(--font-code);font-size:.88em}
+code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;overflow-wrap:anywhere}
+.num{font-variant-numeric:tabular-nums}
+
+/* header */
+.masthead{display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-family:var(--font-code);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-size:28px;font-weight:900;display:flex;align-items:center;gap:10px}
+.bubble{display:inline-block;width:.8em;height:.8em;border-radius:50%;border:2px solid var(--accent);flex:none}
+.bubble.fill{background:var(--accent)}
+.meta{font-size:13px;color:var(--muted)}
+
+/* summary */
+.summary{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:14px}
+.summary dl{margin:0;display:grid;gap:12px}
+.summary dt{font-size:12px;color:var(--muted);letter-spacing:.06em}
+.summary dd{margin:0;font-weight:500}
+.total{border-top:1px dashed var(--line);padding-top:14px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline}
+.total strong{font-size:30px;font-weight:900;color:var(--accent);font-variant-numeric:tabular-nums}
+.total span{font-size:13px;color:var(--muted)}
+
+/* toc */
+.toc{display:flex;flex-wrap:wrap;gap:8px}
+.toc a{display:inline-flex;align-items:center;min-height:36px;padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);text-decoration:none;font-size:14px}
+.toc a:hover{border-color:var(--accent);color:var(--accent)}
+
+/* sections */
+section{display:flex;flex-direction:column;gap:14px;scroll-margin-top:16px}
+h2{font-size:21px;font-weight:700;display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:2px solid var(--ink)}
+h3{font-size:16px;font-weight:700}
+.lead{color:var(--muted);font-size:14px}
+
+/* key-value list (replaces 2-col tables) */
+.kv{display:grid;gap:0;margin:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.kv > div{padding:12px 14px;display:grid;gap:2px}
+.kv > div+div{border-top:1px solid var(--line)}
+.kv dt{font-size:12px;color:var(--muted);letter-spacing:.04em}
+.kv dd{margin:0}
+
+/* feature cards */
+.features{display:grid;gap:10px}
+details.card{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+details.card summary{list-style:none;cursor:pointer;padding:14px;display:flex;align-items:center;gap:12px;min-height:52px}
+details.card summary::-webkit-details-marker{display:none}
+.fid{font-family:var(--font-code);font-weight:600;font-size:13px;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:1px 9px;flex:none}
+details.card summary .t{font-weight:700;flex:1;min-width:0}
+.chev{width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s;flex:none;margin-right:4px}
+details[open] .chev{transform:rotate(-135deg)}
+.card-body{padding:0 14px 16px;display:grid;gap:10px}
+.req{display:grid;grid-template-columns:auto 1fr;gap:4px 10px}
+.req .rid{font-family:var(--font-code);font-size:12px;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
+.req p{min-width:0}
+
+/* simple bullet list in a panel */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+
+/* WBS */
+.phase{display:grid;gap:8px}
+.phase-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.phase-head h3{display:flex;align-items:center;gap:8px}
+.phase-head .sum{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.task{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px}
+.task-top{display:flex;gap:10px;align-items:baseline}
+.task-id{font-family:var(--font-code);font-size:12px;color:var(--muted);flex:none;font-variant-numeric:tabular-nums}
+.task-name{font-weight:500;min-width:0}
+.task-name b{color:var(--accent)}
+.deliv{font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+.deliv .mono{font-size:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;gap:6px;align-items:baseline;font-size:12px;border:1px solid var(--line);border-radius:6px;padding:2px 8px;font-variant-numeric:tabular-nums}
+.chip i{font-style:normal;color:var(--muted);font-size:11px}
+.chip.ai{border-color:var(--accent);background:var(--accent-soft)}
+.chip.done{border-color:var(--done);background:var(--done-soft);color:var(--done)}
+
+/* totals table */
+.tbl-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line)}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tfoot td{font-weight:700;border-top:2px solid var(--ink);border-bottom:none}
+tfoot td.n{color:var(--accent)}
+.bar{display:block;height:6px;border-radius:3px;background:var(--accent);margin-top:4px;opacity:.75}
+.note{font-size:14px}
+.note strong{color:var(--accent)}
+
+/* risks */
+.risk{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:8px}
+.risk h3{font-size:15px}
+.risk dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:14px}
+.risk dt{color:var(--muted);font-size:12px;padding-top:2px}
+.risk dd{margin:0;min-width:0}
+footer{font-size:12px;color:var(--muted);text-align:center}
+</style>
+
+<main>
+  <header class="masthead">
+    <div class="eyebrow">FE DRILL / REQUIREMENTS v1.0</div>
+    <h1><span class="bubble fill" aria-hidden="true"></span>基本情報ドリル</h1>
+    <p class="meta">要件定義書・WBS・工数見積もり ／ 最終更新 <span class="num">2026-10-24</span>（ヒアリング結果を反映）</p>
+  </header>
+
+  <div class="summary" aria-label="概要">
+    <dl>
+      <div><dt>目的</dt><dd>基本情報技術者試験（FE）に1〜3か月後に合格するため、スマホのすきま時間で科目A・科目Bの両方を効率よく学習できるアプリを作る。</dd></div>
+      <div><dt>受験時期</dt><dd>1〜3か月後。今回の要件を一通り入れて完成させる</dd></div>
+      <div><dt>公開先</dt><dd>GitHub Pages（PWA）</dd></div>
+    </dl>
+    <div class="total">
+      <div><span>見積もり合計</span><br><strong>41.25</strong> 人日<span>（約2か月）</span></div>
+      <div><span>AI並列での実時間</span><br><strong>2.5〜3</strong> 時間<span>（目安）</span></div>
+    </div>
+  </div>
+
+  <nav class="toc" aria-label="目次">
+    <a href="#hearing">ヒアリング結果</a>
+    <a href="#functions">機能要件</a>
+    <a href="#nonfunctional">非機能要件</a>
+    <a href="#outofscope">対象外</a>
+    <a href="#constraints">前提・制約</a>
+    <a href="#wbs">WBS</a>
+    <a href="#totals">集計</a>
+    <a href="#parallel">並列化</a>
+    <a href="#risks">リスク</a>
+  </nav>
+
+  <section id="users">
+    <h2><span class="bubble" aria-hidden="true"></span>利用者と利用シーン</h2>
+    <dl class="kv">
+      <div><dt>利用者</dt><dd>本人（KOKI）。将来ほかの受験者に共有する可能性あり</dd></div>
+      <div><dt>主な端末</dt><dd>スマホ（iPhone Safari を想定）。補助で Mac のブラウザ</dd></div>
+      <div><dt>利用シーン</dt><dd>通勤・休憩中に5〜15分。机ではPCで模試</dd></div>
+    </dl>
+  </section>
+
+  <section id="hearing">
+    <h2><span class="bubble" aria-hidden="true"></span>ヒアリング結果</h2>
+    <dl class="kv">
+      <div><dt>利用環境</dt><dd>スマホ中心（PWA）</dd></div>
+      <div><dt>重点科目</dt><dd>科目A・科目Bの両方</dd></div>
+      <div><dt>問題の出所</dt><dd>AIオリジナル問題 ＋ IPA公開の過去問・サンプル問題（ダウンロード可）</dd></div>
+      <div><dt>欲しい機能</dt><dd>用語暗記カード／試験日までの学習計画／端末間の記録同期／苦手分析・間隔反復</dd></div>
+      <div><dt>同期方式</dt><dd>Firebase（無料枠）。プロジェクト作成は本人が後で行う</dd></div>
+      <div><dt>公開先</dt><dd>GitHub Pages</dd></div>
+      <div><dt>受験時期</dt><dd>1〜3か月後 → 今回の要件を一通り入れて完成させる</dd></div>
+      <div><dt>開発環境</dt><dd>Node.js・gh CLI をユーザー領域にインストールしてよい</dd></div>
+      <div><dt>保存先</dt><dd><code>~/Desktop/fe-drill</code></dd></div>
+    </dl>
+  </section>
+
+  <section id="functions">
+    <h2><span class="bubble" aria-hidden="true"></span>機能要件</h2>
+    <p class="lead">タップで開閉できます。</p>
+    <div class="features">
+      <details class="card" open>
+        <summary><span class="fid">F1</span><span class="t">演習</span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="card-body">
+          <div class="req"><span class="rid">F1-1</span><p>科目A：四肢択一（ア〜エ）。選択肢は毎回シャッフル。解答後に正誤と解説を表示</p></div>
+          <div class="req"><span class="rid">F1-2</span><p>科目B：擬似言語のトレース問題、情報セキュリティの事例問題。コードは等幅・横スクロールで表示</p></div>
+          <div class="req"><span class="rid">F1-3</span><p>演習モード：ランダム10問／分野別（シラバスの大分類・中分類）／弱点復習／基数変換ドリル（自動生成）</p></div>
+          <div class="req"><span class="rid">F1-4</span><p>模試：ミニ模試（<span class="num">20</span>問・<span class="num">30</span>分）、本番形式の科目A（<span class="num">60</span>問・<span class="num">90</span>分）、科目B（<span class="num">20</span>問・<span class="num">100</span>分）。途中で中断・再開できる</p></div>
+          <div class="req"><span class="rid">F1-5</span><p>出典表示：IPA問題は「令和○年度 科目A 問○」のように出典を表示</p></div>
+        </div>
+      </details>
+      <details class="card">
+        <summary><span class="fid">F2</span><span class="t">問題データ</span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="card-body">
+          <div class="req"><span class="rid">F2-1</span><p>問題は JSON で管理し、スキーマで検証する（必須項目・正解番号の範囲・ID重複）</p></div>
+          <div class="req"><span class="rid">F2-2</span><p>初期収録の目標：AIオリジナル 科目A <span class="num">300</span>問・科目B <span class="num">40</span>問、IPA公開問題（取得できる範囲で）</p></div>
+          <div class="req"><span class="rid">F2-3</span><p>各問題にシラバスの分類（大分類／中分類）と難易度を持たせる</p></div>
+        </div>
+      </details>
+      <details class="card">
+        <summary><span class="fid">F3</span><span class="t">用語暗記カード</span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="card-body">
+          <ul>
+            <li>用語と意味をめくって覚える。「覚えた／まだ」で自己評価。目標 <span class="num">300</span>語</li>
+            <li>分野で絞り込める</li>
+          </ul>
+        </div>
+      </details>
+      <details class="card">
+        <summary><span class="fid">F4</span><span class="t">苦手分析・間隔反復</span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="card-body">
+          <div class="req"><span class="rid">F4-1</span><p>問題・用語カードごとに次回出題日を持つ（SM-2 を簡略化した方式）</p></div>
+          <div class="req"><span class="rid">F4-2</span><p>「今日の復習」に期限が来た問題をまとめて出す</p></div>
+          <div class="req"><span class="rid">F4-3</span><p>分野別の正答率と、正答率の低い中分類トップ5を表示</p></div>
+        </div>
+      </details>
+      <details class="card">
+        <summary><span class="fid">F5</span><span class="t">学習計画</span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="card-body">
+          <ul>
+            <li>試験日を入力すると、残り日数・1日の目標問題数・達成状況を表示</li>
+            <li>直近<span class="num">14</span>日の学習量をグラフで表示</li>
+          </ul>
+        </div>
+      </details>
+      <details class="card">
+        <summary><span class="fid">F6</span><span class="t">端末間同期</span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="card-body">
+          <ul>
+            <li>Firebase Authentication（Googleログイン）＋ Cloud Firestore で学習記録を同期</li>
+            <li>Firebase の設定がない／未ログインでもすべての機能がローカルで動く</li>
+            <li>オフライン中の記録は、オンライン復帰時に同期する。競合は「新しい更新を優先」で解決</li>
+          </ul>
+        </div>
+      </details>
+      <details class="card">
+        <summary><span class="fid">F7</span><span class="t">PWA</span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="card-body">
+          <ul>
+            <li>ホーム画面に追加でき、オフラインでも演習できる</li>
+            <li>新しい版が出たら「更新があります」と表示する</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section id="nonfunctional">
+    <h2><span class="bubble" aria-hidden="true"></span>非機能要件</h2>
+    <dl class="kv">
+      <div><dt>対応環境</dt><dd>iOS Safari 17 以降、Chrome／Edge 最新版。幅 <span class="num">360</span>px〜</dd></div>
+      <div><dt>性能</dt><dd>4G 回線で初回表示 <span class="num">3</span> 秒以内、2回目以降はオフラインで即表示</dd></div>
+      <div><dt>使いやすさ</dt><dd>片手で操作できる（主要ボタンは画面下部、タップ領域 <span class="num">44</span>px 以上）。ダークモード対応</dd></div>
+      <div><dt>アクセシビリティ</dt><dd>キーボード操作、フォーカス表示、スクリーンリーダー向けのラベル</dd></div>
+      <div><dt>セキュリティ</dt><dd>Firestore ルールで本人のデータだけ読み書き可。秘密情報をリポジトリに置かない</dd></div>
+      <div><dt>保守性</dt><dd>TypeScript、自動テスト（単体・画面操作）、問題データの自動検証</dd></div>
+      <div><dt>コスト</dt><dd>すべて無料枠で運用</dd></div>
+    </dl>
+  </section>
+
+  <section id="outofscope">
+    <h2><span class="bubble" aria-hidden="true"></span>対象外（今回はやらない）</h2>
+    <div class="panel">
+      <ul>
+        <li>複数人のランキング・SNS共有、課金、ネイティブアプリ</li>
+        <li>AIによるその場の解説生成（将来検討）</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="constraints">
+    <h2><span class="bubble" aria-hidden="true"></span>前提・制約</h2>
+    <div class="panel">
+      <ul>
+        <li>IPAの過去問題は、IPAの利用条件に従い出典を明記して収録する。製造前に最新の利用条件を確認する</li>
+        <li>Firebase プロジェクトの作成と設定値の貼り付けは本人が行う（手順書を用意する）</li>
+        <li>GitHub へのログイン（<code>gh auth login</code>）は本人が行う</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="wbs">
+    <h2><span class="bubble" aria-hidden="true"></span>WBS（作業の細分化）</h2>
+    <p class="lead">見積もりは2種類。<b>人日</b>は人間のエンジニア1人が作業した場合の目安（1人日 = 8時間）。<b>AI実時間</b>は今回AIエージェントが並列で作業した場合の目安。</p>
+
+    <div class="phase">
+      <div class="phase-head"><h3><span class="bubble fill" aria-hidden="true"></span>1 要件定義</h3><span class="sum">1.0 人日</span></div>
+      <div class="task"><div class="task-top"><span class="task-id">1.1</span><span class="task-name">ヒアリング</span></div><div class="deliv">成果物：回答記録</div><div class="chips"><span class="chip"><i>担当</i>本人＋AI</span><span class="chip"><i>人日</i>0.5</span><span class="chip done"><i>AI実時間</i>済</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-id">1.2</span><span class="task-name">要件定義書の作成</span></div><div class="deliv">成果物：<span class="mono">docs/01-requirements.md</span></div><div class="chips"><span class="chip"><i>担当</i>AI</span><span class="chip"><i>人日</i>0.5</span><span class="chip done"><i>AI実時間</i>済</span></div></div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><h3><span class="bubble fill" aria-hidden="true"></span>2 作業の細分化</h3><span class="sum">0.25 人日</span></div>
+      <div class="task"><div class="task-top"><span class="task-id">2.1</span><span class="task-name">WBS 作成</span></div><div class="deliv">成果物：本書（<span class="mono">docs/02-wbs-estimate.md</span>）</div><div class="chips"><span class="chip"><i>担当</i>AI</span><span class="chip"><i>人日</i>0.25</span><span class="chip done"><i>AI実時間</i>済</span></div></div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><h3><span class="bubble fill" aria-hidden="true"></span>3 工数見積もり</h3><span class="sum">0.25 人日</span></div>
+      <div class="task"><div class="task-top"><span class="task-id">3.1</span><span class="task-name">見積もり</span></div><div class="deliv">成果物：本書</div><div class="chips"><span class="chip"><i>担当</i>AI</span><span class="chip"><i>人日</i>0.25</span><span class="chip done"><i>AI実時間</i>済</span></div></div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><h3><span class="bubble" aria-hidden="true"></span>4 環境構築</h3><span class="sum">0.75 人日</span></div>
+      <div class="task"><div class="task-top"><span class="task-id">4.1</span><span class="task-name">Node.js 22 LTS・gh をユーザー領域に導入</span></div><div class="deliv">成果物：<span class="mono">~/.local</span></div><div class="chips"><span class="chip"><i>担当</i>AI</span><span class="chip"><i>人日</i>0.25</span><span class="chip ai"><i>AI実時間</i>5分</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-id">4.2</span><span class="task-name">Vite＋Preact＋TypeScript 雛形、Lint、Vitest、git 初期化</span></div><div class="deliv">成果物：リポジトリ</div><div class="chips"><span class="chip"><i>担当</i>AI</span><span class="chip"><i>人日</i>0.5</span><span class="chip ai"><i>AI実時間</i>10分</span></div></div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><h3><span class="bubble" aria-hidden="true"></span>5 設計</h3><span class="sum">2.5 人日</span></div>
+      <div class="task"><div class="task-top"><span class="task-id">5.1</span><span class="task-name">画面設計（画面一覧・遷移・ワイヤー）</span></div><div class="deliv">成果物：<span class="mono">docs/03-design.md</span></div><div class="chips"><span class="chip"><i>担当</i>AI</span><span class="chip"><i>人日</i>1</span><span class="chip ai"><i>AI実時間</i>15分</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-id">5.2</span><span class="task-name">データ設計（問題JSONスキーマ、学習記録、Firestore構造）</span></div><div class="deliv">成果物：<span class="mono">docs/03-design.md</span>、<span class="mono">src/types</span></div><div class="chips"><span class="chip"><i>担当</i>AI</span><span class="chip"><i>人日</i>1</span><span class="chip ai"><i>AI実時間</i>5.1と同時</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-id">5.3</span><span class="task-name">モジュール分割と担当の境界（並列製造のための契約）</span></div><div class="deliv">成果物：<span class="mono">docs/03-design.md</span></div><div class="chips"><span class="chip"><i>担当</i>AI</span><span class="chip"><i>人日</i>0.5</span><span class="chip ai"><i>AI実時間</i>5.1と同時</span></div></div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><h3><span class="bubble" aria-hidden="true"></span>6 製造</h3><span class="sum">31 人日</span></div>
+      <div class="task"><div class="task-top"><span class="task-id">6.1</span><span class="task-name"><b>エージェントA</b> 画面・演習・模試・PWA（F1, F7）</span></div><div class="deliv">成果物：<span class="mono">src/ui</span>, <span class="mono">src/features/quiz</span></div><div class="chips"><span class="chip"><i>担当</i>AI並列</span><span class="chip"><i>人日</i>6</span><span class="chip ai"><i>AI実時間</i>40分</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-id">6.2</span><span class="task-name"><b>エージェントB</b> 間隔反復・苦手分析・学習計画・同期（F4〜F6）</span></div><div class="deliv">成果物：<span class="mono">src/core</span>, <span class="mono">src/sync</span></div><div class="chips"><span class="chip"><i>担当</i>AI並列</span><span class="chip"><i>人日</i>5</span><span class="chip ai"><i>AI実時間</i>40分</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-id">6.3</span><span class="task-name"><b>エージェントC</b> 科目A問題（テクノロジ系）約180問</span></div><div class="deliv">成果物：<span class="mono">data/questions/a-tech-*.json</span></div><div class="chips"><span class="chip"><i>担当</i>AI並列</span><span class="chip"><i>人日</i>6</span><span class="chip ai"><i>AI実時間</i>40分</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-id">6.4</span><span class="task-name"><b>エージェントD</b> 科目A問題（マネジメント・ストラテジ系）約120問</span></div><div class="deliv">成果物：<span class="mono">data/questions/a-mgmt/strat-*.json</span></div><div class="chips"><span class="chip"><i>担当</i>AI並列</span><span class="chip"><i>人日</i>4</span><span class="chip ai"><i>AI実時間</i>40分</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-id">6.5</span><span class="task-name"><b>エージェントE</b> 科目B問題 40問＋用語カード 300語</span></div><div class="deliv">成果物：<span class="mono">data/questions/b-*.json</span>, <span class="mono">data/terms.json</span></div><div class="chips"><span class="chip"><i>担当</i>AI並列</span><span class="chip"><i>人日</i>5</span><span class="chip ai"><i>AI実時間</i>40分</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-id">6.6</span><span class="task-name"><b>エージェントF</b> IPA公開問題の取得・利用条件確認・データ化</span></div><div class="deliv">成果物：<span class="mono">data/questions/ipa-*.json</span></div><div class="chips"><span class="chip"><i>担当</i>AI並列</span><span class="chip"><i>人日</i>4</span><span class="chip ai"><i>AI実時間</i>40分</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-id">6.7</span><span class="task-name">統合（各成果物のマージ、つなぎ込み）</span></div><div class="deliv">成果物：動くアプリ</div><div class="chips"><span class="chip"><i>担当</i>AI</span><span class="chip"><i>人日</i>1</span><span class="chip ai"><i>AI実時間</i>15分</span></div></div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><h3><span class="bubble" aria-hidden="true"></span>7 テスト</h3><span class="sum">4.5 人日</span></div>
+      <div class="task"><div class="task-top"><span class="task-id">7.1</span><span class="task-name">単体テスト（採点・間隔反復・計画・同期の競合解決）</span></div><div class="deliv">成果物：<span class="mono">tests/</span></div><div class="chips"><span class="chip"><i>担当</i>AI</span><span class="chip"><i>人日</i>1.5</span><span class="chip ai"><i>AI実時間</i>6.xと同時</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-id">7.2</span><span class="task-name">問題データ検証（スキーマ・重複・正解範囲）＋内容の抜き取りレビュー</span></div><div class="deliv">成果物：検証スクリプト、レビュー記録</div><div class="chips"><span class="chip"><i>担当</i>AI（別エージェント）</span><span class="chip"><i>人日</i>2</span><span class="chip ai"><i>AI実時間</i>15分</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-id">7.3</span><span class="task-name">画面テスト（スマホ幅・ダーク・オフライン・主要導線）</span></div><div class="deliv">成果物：<span class="mono">docs/04-test-report.md</span></div><div class="chips"><span class="chip"><i>担当</i>AI</span><span class="chip"><i>人日</i>1</span><span class="chip ai"><i>AI実時間</i>15分</span></div></div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><h3><span class="bubble" aria-hidden="true"></span>8 デプロイ</h3><span class="sum">1 人日</span></div>
+      <div class="task"><div class="task-top"><span class="task-id">8.1</span><span class="task-name">GitHub リポジトリ作成・Pages 公開（GitHub Actions）</span></div><div class="deliv">成果物：公開URL</div><div class="chips"><span class="chip"><i>担当</i>本人ログイン＋AI</span><span class="chip"><i>人日</i>0.5</span><span class="chip ai"><i>AI実時間</i>10分</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-id">8.2</span><span class="task-name">Firebase 設定手順書</span></div><div class="deliv">成果物：<span class="mono">docs/05-firebase-setup.md</span></div><div class="chips"><span class="chip"><i>担当</i>AI</span><span class="chip"><i>人日</i>0.5</span><span class="chip ai"><i>AI実時間</i>6.2と同時</span></div></div>
+    </div>
+  </section>
+
+  <section id="totals">
+    <h2><span class="bubble" aria-hidden="true"></span>集計</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>工程</th><th class="n">人日</th></tr></thead>
+        <tbody>
+          <tr><td>要件定義・細分化・見積もり<span class="bar" style="width:4.8%"></span></td><td class="n">1.5</td></tr>
+          <tr><td>環境構築<span class="bar" style="width:2.4%"></span></td><td class="n">0.75</td></tr>
+          <tr><td>設計<span class="bar" style="width:8.1%"></span></td><td class="n">2.5</td></tr>
+          <tr><td>製造<span class="bar" style="width:100%"></span></td><td class="n">31</td></tr>
+          <tr><td>テスト<span class="bar" style="width:14.5%"></span></td><td class="n">4.5</td></tr>
+          <tr><td>デプロイ<span class="bar" style="width:3.2%"></span></td><td class="n">1</td></tr>
+        </tbody>
+        <tfoot><tr><td>合計</td><td class="n">41.25 人日<br><span style="font-weight:400;font-size:12px">（約2か月）</span></td></tr></tfoot>
+      </table>
+    </div>
+    <p class="note">AI並列での実時間の目安：<strong>約2.5〜3時間</strong>（製造の6エージェントが同時に動くため）。</p>
+  </section>
+
+  <section id="parallel">
+    <h2><span class="bubble" aria-hidden="true"></span>並列化の考え方</h2>
+    <div class="panel">
+      <ul>
+        <li>設計（5.3）でファイルの持ち場と型定義（<code>src/types</code>）を先に固定し、エージェント同士が同じファイルを触らないようにする</li>
+        <li>問題データ担当（C〜F）は、共通の JSON スキーマに従って別ファイルに出力する</li>
+        <li>統合とテストは並列製造の完了後に私がまとめて行う</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="risks">
+    <h2><span class="bubble" aria-hidden="true"></span>リスクと対策</h2>
+    <div class="risk"><h3>AIが作った問題・解説に誤りがある</h3><dl><dt>影響</dt><dd>誤って覚える</dd><dt>対策</dt><dd>検証スクリプト＋別エージェントによる内容レビュー。誤り報告ボタンを付ける</dd></dl></div>
+    <div class="risk"><h3>IPAのPDFから図表付き問題を正確にデータ化できない</h3><dl><dt>影響</dt><dd>収録数が減る</dd><dt>対策</dt><dd>図表なしで成立する問題を優先。図が必要な問題は対象外にする</dd></dl></div>
+    <div class="risk"><h3>Firebase 未設定のまま使う</h3><dl><dt>影響</dt><dd>同期できない</dd><dt>対策</dt><dd>ローカルだけで全機能が動く設計にする</dd></dl></div>
+    <div class="risk"><h3>GitHub にログインできていない</h3><dl><dt>影響</dt><dd>公開が止まる</dd><dt>対策</dt><dd>デプロイ前に <code>gh auth login</code> をお願いする</dd></dl></div>
+  </section>
+
+  <footer>出典：docs/01-requirements.md ・ docs/02-wbs-estimate.md（版 1.0）</footer>
+</main>

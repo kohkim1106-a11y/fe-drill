@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>B4 分析</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#F5D547}a:hover{color:#FFE680}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; position: relative; overflow: hidden; display: flex; flex-direction: column; font-family: 'IBM Plex Sans JP', 'Hiragino Sans', sans-serif; color: #E8ECF3; background: #101828;">
+  <main style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 8px; padding: 16px 16px 10px;">
+    <h1 style="margin: 0; font-size: 19px; font-weight: 700;">分析・学習計画</h1>
+
+    <div style="background: #1C2638; border: 1px solid #344054; border-radius: 14px; display: flex; align-items: center; justify-content: space-between; min-height: 46px; padding: 0 4px 0 14px;">
+      <span style="font-size: 14px; color: #B7C0CF;">試験日</span>
+      <span style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; font-size: 15px;">2026/12/15</span>
+        <span style="font-size: 13px; color: #B7C0CF;">あと<span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; color: #E8ECF3; padding: 0 2px; background: linear-gradient(transparent 55%, rgba(245,213,71,0.45) 55%);">52</span>日</span>
+        <button style="min-height: 44px; padding: 0 10px; background: transparent; border: 0; color: #F5D547; font-family: inherit; font-size: 13px; font-weight: 700;">変更</button>
+      </span>
+    </div>
+
+    <section style="background: #1C2638; border: 1px solid #344054; border-radius: 14px; padding: 10px 12px 10px; display: flex; flex-direction: column; gap: 8px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline;">
+        <h2 style="margin: 0; font-size: 14px; font-weight: 700;">習熟マップ</h2>
+        <span style="font-size: 11px; color: #B7C0CF;">中分類別の正答率</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; font-size: 11px; color: #B7C0CF;">
+        <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; box-sizing: border-box; border-radius: 3px; background: #26324A; border: 1px solid #344054;"></span>〜44</span>
+        <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #3D4A5F;"></span>45–59</span>
+        <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #A08E3C;"></span>60–74</span>
+        <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #F5D547;"></span>75〜 %</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;">
+        <button style="min-height: 52px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 2px; padding: 6px 8px; border-radius: 10px; border: 1px solid transparent; background: #A08E3C; color: #101828; font-family: inherit; font-size: 11.5px; line-height: 1.25; text-align: left;"><span>基礎理論</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; font-size: 13px;">62%</span></button>
+        <button style="min-height: 52px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 2px; padding: 6px 8px; border-radius: 10px; border: 1px solid #344054; background: #3D4A5F; color: #E8ECF3; font-family: inherit; font-size: 11.5px; line-height: 1.25; text-align: left;"><span>アルゴリズム</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; font-size: 13px;">55%</span></button>
+        <button style="min-height: 52px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 2px; padding: 6px 8px; border-radius: 10px; border: 1px solid transparent; background: #A08E3C; color: #101828; font-family: inherit; font-size: 11.5px; line-height: 1.25; text-align: left;"><span>コンピュータ構成</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; font-size: 13px;">70%</span></button>
+        <button style="min-height: 52px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 2px; padding: 6px 8px; border-radius: 10px; border: 1px solid transparent; background: #A08E3C; color: #101828; font-family: inherit; font-size: 11.5px; line-height: 1.25; text-align: left;"><span>システム構成</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; font-size: 13px;">66%</span></button>
+        <button style="min-height: 52px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 2px; padding: 6px 8px; border-radius: 10px; border: 1px solid transparent; background: #A08E3C; color: #101828; font-family: inherit; font-size: 11.5px; line-height: 1.25; text-align: left;"><span>ソフトウェア</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; font-size: 13px;">72%</span></button>
+        <button style="min-height: 52px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 2px; padding: 6px 8px; border-radius: 10px; border: 1px solid #344054; background: #3D4A5F; color: #E8ECF3; font-family: inherit; font-size: 11.5px; line-height: 1.25; text-align: left;"><span>データベース</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; font-size: 13px;">52%</span></button>
+        <button style="min-height: 52px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 2px; padding: 6px 8px; border-radius: 10px; border: 1px solid #344054; background: #26324A; color: #E8ECF3; font-family: inherit; font-size: 11.5px; line-height: 1.25; text-align: left;"><span>ネットワーク</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; font-size: 13px;">41%</span></button>
+        <button style="min-height: 52px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 2px; padding: 6px 8px; border-radius: 10px; border: 1px solid #344054; background: #3D4A5F; color: #E8ECF3; font-family: inherit; font-size: 11.5px; line-height: 1.25; text-align: left;"><span>セキュリティ</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; font-size: 13px;">48%</span></button>
+        <button style="min-height: 52px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 2px; padding: 6px 8px; border-radius: 10px; border: 1px solid transparent; background: #A08E3C; color: #101828; font-family: inherit; font-size: 11.5px; line-height: 1.25; text-align: left;"><span>開発技術</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; font-size: 13px;">65%</span></button>
+        <button style="min-height: 52px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 2px; padding: 6px 8px; border-radius: 10px; border: 1px solid transparent; background: #F5D547; color: #101828; font-family: inherit; font-size: 11.5px; line-height: 1.25; text-align: left;"><span>PM</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; font-size: 13px;">76%</span></button>
+        <button style="min-height: 52px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 2px; padding: 6px 8px; border-radius: 10px; border: 1px solid transparent; background: #A08E3C; color: #101828; font-family: inherit; font-size: 11.5px; line-height: 1.25; text-align: left;"><span>サービスマネジメント</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; font-size: 13px;">70%</span></button>
+        <button style="min-height: 52px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 2px; padding: 6px 8px; border-radius: 10px; border: 1px solid transparent; background: #A08E3C; color: #101828; font-family: inherit; font-size: 11.5px; line-height: 1.25; text-align: left;"><span>システム監査</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; font-size: 13px;">72%</span></button>
+        <button style="min-height: 52px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 2px; padding: 6px 8px; border-radius: 10px; border: 1px solid transparent; background: #F5D547; color: #101828; font-family: inherit; font-size: 11.5px; line-height: 1.25; text-align: left;"><span>システム戦略</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; font-size: 13px;">78%</span></button>
+        <button style="min-height: 52px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 2px; padding: 6px 8px; border-radius: 10px; border: 1px solid transparent; background: #A08E3C; color: #101828; font-family: inherit; font-size: 11.5px; line-height: 1.25; text-align: left;"><span>経営戦略</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; font-size: 13px;">73%</span></button>
+        <button style="min-height: 52px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 2px; padding: 6px 8px; border-radius: 10px; border: 1px solid #344054; background: #3D4A5F; color: #E8ECF3; font-family: inherit; font-size: 11.5px; line-height: 1.25; text-align: left;"><span>企業と法務</span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-weight: 600; font-size: 13px;">57%</span></button>
+      </div>
+      <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: #B7C0CF;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5a2 2 0 0 1 4 0v6"></path><path d="M13 10a2 2 0 0 1 4 0v4a6 6 0 0 1-12 0v-2a2 2 0 0 1 4 0"></path></svg>
+        タイルをタップすると、その分野の問題だけを解けます。合格目安は<span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; color: #E8ECF3;">60%</span>。
+      </div>
+    </section>
+
+    <section style="background: #1C2638; border: 1px solid #344054; border-radius: 14px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline;">
+        <h2 style="margin: 0; font-size: 14px; font-weight: 700;">直近30日</h2>
+        <span style="font-size: 12px; color: #B7C0CF;">学習した日 <span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; color: #E8ECF3; font-weight: 600;">27</span>/30</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(15, 1fr); gap: 4px;">
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #A08E3C;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #F5D547;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #3D4A5F;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #A08E3C;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #3D4A5F;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: transparent; border: 1px solid #344054;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #A08E3C;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #F5D547;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #A08E3C;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #3D4A5F;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #F5D547;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #A08E3C;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #A08E3C;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #F5D547;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #3D4A5F;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #A08E3C;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #A08E3C;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #F5D547;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: transparent; border: 1px solid #344054;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #A08E3C;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #F5D547;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #F5D547;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: transparent; border: 1px solid #344054;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #F5D547;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #F5D547;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #3D4A5F;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #F5D547;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #F5D547;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #A08E3C;"></div>
+        <div style="height: 18px; box-sizing: border-box; border-radius: 4px; background: #A08E3C; box-shadow: 0 0 0 2px #1C2638, 0 0 0 3px #E8ECF3;"></div>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 11px; color: #B7C0CF;">
+        <span><span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace;">9/25</span>〜</span>
+        <span>枠なし＝学習なし ／ 明るいほど多い</span>
+        <span>今日 <span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace;">10/24</span></span>
+      </div>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 6px; padding: 2px 2px 0;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline;">
+        <h2 style="margin: 0; font-size: 13px; font-weight: 700; color: #B7C0CF;">記録</h2>
+        <span style="font-size: 11px; color: #B7C0CF;">次：<span style="color: #E8ECF3;">14日連続</span>まであと<span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace;">7</span>日</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+        <span style="font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid #F5D547; color: #F5D547;">7日連続</span>
+        <span style="font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid #344054; color: #E8ECF3;">科目B 初完走</span>
+        <span style="font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid #344054; color: #E8ECF3;">累計 <span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace;">486</span>問</span>
+        <span style="font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid #344054; color: #E8ECF3;">最長 <span style="font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace;">12</span>日</span>
+      </div>
+    </section>
+  </main>
+
+  <nav style="display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #344054; background: #1C2638; padding: 6px 4px 14px;">
+    <button style="min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: transparent; border: 0; color: #B7C0CF; font-family: inherit; font-size: 11px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path></svg>
+      ホーム
+    </button>
+    <button style="min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: transparent; border: 0; color: #B7C0CF; font-family: inherit; font-size: 11px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>
+      演習
+    </button>
+    <button style="min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: transparent; border: 0; color: #B7C0CF; font-family: inherit; font-size: 11px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="14" height="14" rx="2"></rect><path d="M7 3h12a2 2 0 0 1 2 2v12"></path></svg>
+      カード
+    </button>
+    <button style="min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: transparent; border: 0; color: #F5D547; font-family: inherit; font-size: 11px; font-weight: 700;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg>
+      分析
+    </button>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

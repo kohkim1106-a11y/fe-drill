@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>デザイン案の比較</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&amp;family=IBM+Plex+Sans+JP:wght@400;700&amp;family=M+PLUS+1+Code:wght@500&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#C9295F}a:hover{color:#8E1A42}
+</style>
+</helmet>
+<div style="width: 640px; height: 844px; box-sizing: border-box; padding: 48px 44px; display: flex; flex-direction: column; gap: 28px; background: #F4F5F7; color: #1D2228; font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', sans-serif;">
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <div style="font-size: 12px; letter-spacing: 0.14em; font-weight: 700; color: #5B626C;">基本情報ドリル ／ 画面デザイン案</div>
+    <h1 style="margin: 0; font-size: 30px; line-height: 1.35; font-weight: 700;">スマホで毎日続けられる<br>FE対策アプリの見た目を2案</h1>
+    <p style="margin: 0; font-size: 14px; line-height: 1.8; color: #4A515B;">どちらも同じ4画面（ホーム／演習／用語カード／分析・学習計画）を、390×844（iPhone）で描いています。主要ボタンは親指の届く画面下部に置きました。</p>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 14px; background: #FFFFFF; border: 1px solid #E3D3DA; border-radius: 10px; padding: 22px;">
+    <div style="display: flex; align-items: baseline; gap: 12px;">
+      <span style="font-size: 22px; font-weight: 700; color: #C9295F;">案A</span>
+      <span style="font-size: 18px; font-weight: 700;">マークシート</span>
+    </div>
+    <p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #4A515B;">試験の解答用紙をモチーフにした明るい画面。選択肢はア〜エの楕円を塗りつぶす形。昼間や電車内で読みやすく、本番の感覚に近づけます。</p>
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <span style="width: 32px; height: 32px; border-radius: 6px; background: #F6F7F9; border: 1px solid #D5D9DF;"></span>
+      <span style="width: 32px; height: 32px; border-radius: 6px; background: #1D2228;"></span>
+      <span style="width: 32px; height: 32px; border-radius: 6px; background: #C9295F;"></span>
+      <span style="width: 32px; height: 32px; border-radius: 6px; background: #23794D;"></span>
+      <span style="font-size: 12px; color: #5B626C; margin-left: 8px;">Zen Kaku Gothic New ＋ M PLUS 1 Code</span>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 14px; background: #101828; border-radius: 10px; padding: 22px; color: #E8ECF3; font-family: 'IBM Plex Sans JP', 'Hiragino Sans', sans-serif;">
+    <div style="display: flex; align-items: baseline; gap: 12px;">
+      <span style="font-size: 22px; font-weight: 700; color: #F5D547;">案B</span>
+      <span style="font-size: 18px; font-weight: 700;">夜の単語帳</span>
+    </div>
+    <p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #B7C0CF;">紺色の地に蛍光ペンの黄色を引くダーク基調。寝る前や暗い場所でも目が疲れにくく、英数字が引き締まるIBM Plexで、ITらしさと読みやすさを両立します。</p>
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <span style="width: 32px; height: 32px; border-radius: 6px; background: #101828; border: 1px solid #344054;"></span>
+      <span style="width: 32px; height: 32px; border-radius: 6px; background: #1C2638;"></span>
+      <span style="width: 32px; height: 32px; border-radius: 6px; background: #F5D547;"></span>
+      <span style="width: 32px; height: 32px; border-radius: 6px; background: #7CC4FA;"></span>
+      <span style="font-size: 12px; color: #B7C0CF; margin-left: 8px;">IBM Plex Sans JP ＋ IBM Plex Mono</span>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; line-height: 1.7; color: #4A515B;">
+    <div style="font-weight: 700; color: #1D2228;">どちらの案でも共通</div>
+    <div>・ダークモード／ライトモードの両方を用意（案Aは暗く、案Bは明るく切り替え可能）</div>
+    <div>・下部タブ：ホーム／演習／カード／分析</div>
+    <div>・タップ領域は44px以上、文字のコントラスト比は4.5:1以上</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":640,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>フォント比較</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Noto+Sans+JP:wght@400;700&amp;family=IBM+Plex+Sans+JP:wght@400;700&amp;family=IBM+Plex+Mono:wght@500&amp;family=M+PLUS+2:wght@400;700&amp;family=Zen+Kaku+Gothic+New:wght@400;700&amp;family=Zen+Maru+Gothic:wght@400;700&amp;family=M+PLUS+1+Code:wght@500&amp;family=JetBrains+Mono:wght@500&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#F5D547}a:hover{color:#FFE680}
+</style>
+</helmet>
+<div style="width: 1360px; height: 900px; box-sizing: border-box; padding: 36px 40px; display: flex; flex-direction: column; gap: 22px; background: #0B1220; color: #E8ECF3; font-family: 'Noto Sans JP', sans-serif;">
+  <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px;">
+    <h1 style="margin: 0; font-size: 26px; font-weight: 700;">フォント比較（案Bの配色で同じ文面）</h1>
+    <div style="font-size: 13px; color: #B7C0CF;">本文 ＋ 数字・コード用の組み合わせ。気に入った番号を教えてください</div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; flex-grow: 1;">
+
+    <div style="display: flex; flex-direction: column; gap: 12px; background: #101828; border: 1px solid #344054; border-radius: 14px; padding: 20px; font-family: 'BIZ UDPGothic', sans-serif;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 15px; font-weight: 700; color: #F5D547;">1　BIZ UDPゴシック</span><span style="font-size: 12px; color: #B7C0CF;">現在の案B</span></div>
+      <div style="font-size: 12.5px; color: #B7C0CF;">読み間違えにくいUD書体。やや事務的で硬い印象</div>
+      <div style="font-size: 15px;">試験まで <span style="font-family: 'M PLUS 1 Code', monospace; font-size: 34px; font-weight: 500; background: linear-gradient(transparent 60%, rgba(245,213,71,0.45) 60%);">52</span> 日</div>
+      <p style="margin: 0; font-size: 15px; line-height: 1.75;">キャッシュメモリのアクセス時間 10ns、主記憶 60ns、ヒット率 90% のとき、実効アクセス時間は何nsか。</p>
+      <div style="display: flex; gap: 14px; font-size: 15px;"><span><b>ア</b> 15</span><span><b>イ</b> 19</span><span><b>ウ</b> 35</span><span><b>エ</b> 55</span></div>
+      <pre style="margin: 0; font-family: 'M PLUS 1 Code', monospace; font-size: 13px; background: #0B1220; border-radius: 8px; padding: 8px 10px; white-space: pre;">return n × f(n − 1)  // Il1 O0</pre>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; background: #101828; border: 1px solid #344054; border-radius: 14px; padding: 20px; font-family: 'Noto Sans JP', sans-serif;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 15px; font-weight: 700; color: #F5D547;">2　Noto Sans JP</span><span style="font-size: 12px; color: #B7C0CF;">定番・癖がない</span></div>
+      <div style="font-size: 12.5px; color: #B7C0CF;">スマホの標準に近い見た目。どの画面でも整って見える</div>
+      <div style="font-size: 15px;">試験まで <span style="font-family: 'JetBrains Mono', monospace; font-size: 34px; font-weight: 500; background: linear-gradient(transparent 60%, rgba(245,213,71,0.45) 60%);">52</span> 日</div>
+      <p style="margin: 0; font-size: 15px; line-height: 1.75;">キャッシュメモリのアクセス時間 10ns、主記憶 60ns、ヒット率 90% のとき、実効アクセス時間は何nsか。</p>
+      <div style="display: flex; gap: 14px; font-size: 15px;"><span><b>ア</b> 15</span><span><b>イ</b> 19</span><span><b>ウ</b> 35</span><span><b>エ</b> 55</span></div>
+      <pre style="margin: 0; font-family: 'JetBrains Mono', 'Noto Sans JP', monospace; font-size: 13px; background: #0B1220; border-radius: 8px; padding: 8px 10px; white-space: pre;">return n × f(n − 1)  // Il1 O0</pre>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; background: #101828; border: 1px solid #344054; border-radius: 14px; padding: 20px; font-family: 'IBM Plex Sans JP', sans-serif;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 15px; font-weight: 700; color: #F5D547;">3　IBM Plex Sans JP</span><span style="font-size: 12px; color: #B7C0CF;">IT・技術書らしさ</span></div>
+      <div style="font-size: 12.5px; color: #B7C0CF;">IT企業の書体。英数字が引き締まり、試験の題材と相性がよい</div>
+      <div style="font-size: 15px;">試験まで <span style="font-family: 'IBM Plex Mono', monospace; font-size: 34px; font-weight: 500; background: linear-gradient(transparent 60%, rgba(245,213,71,0.45) 60%);">52</span> 日</div>
+      <p style="margin: 0; font-size: 15px; line-height: 1.75;">キャッシュメモリのアクセス時間 10ns、主記憶 60ns、ヒット率 90% のとき、実効アクセス時間は何nsか。</p>
+      <div style="display: flex; gap: 14px; font-size: 15px;"><span><b>ア</b> 15</span><span><b>イ</b> 19</span><span><b>ウ</b> 35</span><span><b>エ</b> 55</span></div>
+      <pre style="margin: 0; font-family: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace; font-size: 13px; background: #0B1220; border-radius: 8px; padding: 8px 10px; white-space: pre;">return n × f(n − 1)  // Il1 O0</pre>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; background: #101828; border: 1px solid #344054; border-radius: 14px; padding: 20px; font-family: 'M PLUS 2', sans-serif;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 15px; font-weight: 700; color: #F5D547;">4　M PLUS 2</span><span style="font-size: 12px; color: #B7C0CF;">モダン・軽やか</span></div>
+      <div style="font-size: 12.5px; color: #B7C0CF;">すっきりした幾何学的な形。アプリらしい軽さが出る</div>
+      <div style="font-size: 15px;">試験まで <span style="font-family: 'M PLUS 1 Code', monospace; font-size: 34px; font-weight: 500; background: linear-gradient(transparent 60%, rgba(245,213,71,0.45) 60%);">52</span> 日</div>
+      <p style="margin: 0; font-size: 15px; line-height: 1.75;">キャッシュメモリのアクセス時間 10ns、主記憶 60ns、ヒット率 90% のとき、実効アクセス時間は何nsか。</p>
+      <div style="display: flex; gap: 14px; font-size: 15px;"><span><b>ア</b> 15</span><span><b>イ</b> 19</span><span><b>ウ</b> 35</span><span><b>エ</b> 55</span></div>
+      <pre style="margin: 0; font-family: 'M PLUS 1 Code', monospace; font-size: 13px; background: #0B1220; border-radius: 8px; padding: 8px 10px; white-space: pre;">return n × f(n − 1)  // Il1 O0</pre>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; background: #101828; border: 1px solid #344054; border-radius: 14px; padding: 20px; font-family: 'Zen Kaku Gothic New', sans-serif;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 15px; font-weight: 700; color: #F5D547;">5　Zen角ゴシック New</span><span style="font-size: 12px; color: #B7C0CF;">上品・すっきり</span></div>
+      <div style="font-size: 12.5px; color: #B7C0CF;">線が細めで落ち着いた印象。案Aで使った書体</div>
+      <div style="font-size: 15px;">試験まで <span style="font-family: 'JetBrains Mono', monospace; font-size: 34px; font-weight: 500; background: linear-gradient(transparent 60%, rgba(245,213,71,0.45) 60%);">52</span> 日</div>
+      <p style="margin: 0; font-size: 15px; line-height: 1.75;">キャッシュメモリのアクセス時間 10ns、主記憶 60ns、ヒット率 90% のとき、実効アクセス時間は何nsか。</p>
+      <div style="display: flex; gap: 14px; font-size: 15px;"><span><b>ア</b> 15</span><span><b>イ</b> 19</span><span><b>ウ</b> 35</span><span><b>エ</b> 55</span></div>
+      <pre style="margin: 0; font-family: 'JetBrains Mono', 'Zen Kaku Gothic New', monospace; font-size: 13px; background: #0B1220; border-radius: 8px; padding: 8px 10px; white-space: pre;">return n × f(n − 1)  // Il1 O0</pre>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; background: #101828; border: 1px solid #344054; border-radius: 14px; padding: 20px; font-family: 'Zen Maru Gothic', sans-serif;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 15px; font-weight: 700; color: #F5D547;">6　Zen丸ゴシック</span><span style="font-size: 12px; color: #B7C0CF;">やわらかい</span></div>
+      <div style="font-size: 12.5px; color: #B7C0CF;">角の丸い書体。夜の学習でも圧迫感が少なく、親しみやすい</div>
+      <div style="font-size: 15px;">試験まで <span style="font-family: 'M PLUS 1 Code', monospace; font-size: 34px; font-weight: 500; background: linear-gradient(transparent 60%, rgba(245,213,71,0.45) 60%);">52</span> 日</div>
+      <p style="margin: 0; font-size: 15px; line-height: 1.75;">キャッシュメモリのアクセス時間 10ns、主記憶 60ns、ヒット率 90% のとき、実効アクセス時間は何nsか。</p>
+      <div style="display: flex; gap: 14px; font-size: 15px;"><span><b>ア</b> 15</span><span><b>イ</b> 19</span><span><b>ウ</b> 35</span><span><b>エ</b> 55</span></div>
+      <pre style="margin: 0; font-family: 'M PLUS 1 Code', monospace; font-size: 13px; background: #0B1220; border-radius: 8px; padding: 8px 10px; white-space: pre;">return n × f(n − 1)  // Il1 O0</pre>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
