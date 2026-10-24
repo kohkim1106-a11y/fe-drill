@@ -61,7 +61,7 @@
     "minor": "アルゴリズムとプログラミング",
     "difficulty": 2,
     "stem": "次のプログラム中の ［ a ］ と ［ b ］ に入れる正しい答えの組合せを，解答群の中から選べ。ここで，配列の要素番号は 1 から始まる。\n\n関数 push は，引数で与えられた整数をスタックに格納する。格納できた場合は true を返し，格納できなかった場合は false を返す。\n\n関数 pop は，スタックから値を取り出して返す。スタックが空のときは未定義の値を返す。\n\nスタックを，要素数が 4 である大域の整数型の配列 stack，及び次に値を格納する位置を示す大域の変数 stackPos で表現する。スタックの初期状態は，stack の要素番号 1 が 4，要素番号 2 が 3，要素番号 3 と 4 は未定義で，stackPos は要素番号 3 を指している。\n\nプログラムでは，配列の領域外を参照してはならないものとする。",
-    "code": "〔プログラム〕\n大域: 整数型: stackPos ← 3\n大域: 整数型の配列: stack ← {4, 3, 未定義の値, 未定義の値}\n\n○論理型: push(整数型: inputData)\n  if (stackPos ≦ stackの要素数)\n    stack[［ a ］] ← inputData\n    stackPos ← stackPos ＋ 1\n    return true\n  else\n  endif\n  return false\n\n○整数型: pop()\n  整数型: popData ← 未定義の値\n  if (stackPos ＞ 1)\n    stackPos ← ［ b ］\n    popData ← stack[stackPos]\n    stack[stackPos] ← 未定義の値\n  endif\n  return popData",
+    "code": "〔プログラム〕\n大域: 整数型: stackPos ← 3\n大域: 整数型の配列: stack ← {4, 3, 未定義の値, 未定義の値}\n\n○論理型: push(整数型: inputData)\n  if (stackPos ≦ stackの要素数)\n    stack[［ a ］] ← inputData\n    stackPos ← stackPos ＋ 1\n    return true\n  else\n    return false\n  endif\n\n○整数型: pop()\n  整数型: popData ← 未定義の値\n  if (stackPos ＞ 1)\n    stackPos ← ［ b ］\n    popData ← stack[stackPos]\n    stack[stackPos] ← 未定義の値\n  endif\n  return popData",
     "choices": [
       "a：stackPos　b：stackPos ＋ 1",
       "a：stackPos　b：stackPos － 1",

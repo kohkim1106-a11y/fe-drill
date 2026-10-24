@@ -374,12 +374,12 @@
     "stem": "SQL文のうち、データ定義言語（DDL）に分類されるものはどれか。",
     "choices": [
       "SELECT",
-      "GRANT",
+      "DELETE",
       "CREATE TABLE",
       "UPDATE"
     ],
     "answer": 2,
-    "explanation": "DDLは表やビューなどの構造を定義する言語で、CREATE、ALTER、DROP がある。\nSELECT と UPDATE はデータを操作するデータ操作言語（DML）、GRANT は権限を与えるデータ制御言語（DCL）である。",
+    "explanation": "DDLは表やビューなどの構造を定義する言語で、CREATE、ALTER、DROP がある。\nSELECT、UPDATE、DELETE はいずれも表のデータを検索・変更するデータ操作言語（DML）である。",
     "source": {
       "type": "original"
     }
