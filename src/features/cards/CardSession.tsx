@@ -4,7 +4,7 @@ import { navigate } from "@/router";
 import { Icon } from "@/ui/Icon";
 import { terms } from "@/features/content";
 import type { Term } from "@/types";
-import { cardFilter, cardSession, judge, startCards, type CardSession } from "./deck";
+import { cardFilter, cardSession, judge, sessionSize, startCards, type CardSession } from "./deck";
 import "./cards.css";
 
 export const SWIPE_X_PX = 100;
@@ -188,10 +188,10 @@ function Finished({ s, onExit }: { s: CardSession; onExit: () => void }) {
         </div>
       </div>
       <p class="muted small">「まだ」のカードは今日のうちにもう一度出ます。</p>
-      {none && <p class="muted small" role="status">今日のカードはすべて終わりました。</p>}
+      {none && <p class="muted small" role="status">出せるカードがありません。</p>}
       <div class="flash__done-actions">
         <button type="button" class="btn-primary" onClick={() => setNone(!startCards(pool))}>
-          続けて10枚
+          続けて{sessionSize.value}枚
         </button>
         <button type="button" class="btn-secondary btn-block" onClick={onExit}>
           カードメニューへ

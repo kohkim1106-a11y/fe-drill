@@ -5,7 +5,7 @@ import { progress } from "@/store";
 import { Icon } from "@/ui/Icon";
 import { EmptyState } from "@/ui/EmptyState";
 import { terms } from "@/features/content";
-import { CARDS_PER_SESSION, cardFilter, isRemembered, pickCards, startCards, type CardFilter } from "./deck";
+import { SESSION_SIZES, cardFilter, isRemembered, pickCards, pickExtra, sessionSize, setSessionSize, startCards, type CardFilter } from "./deck";
 import "./cards.css";
 
 const FILTERS: Array<{ id: CardFilter; label: string }> = [
@@ -24,6 +24,8 @@ export function CardMenu() {
   const today = todayLocal();
   const due = list.filter((t) => prog[t.id] && prog[t.id]!.due <= today).length;
   const next = pickCards(list, prog, today).length;
+  const extra = next === 0 ? pickExtra(list, prog).length : 0;
+  const size = sessionSize.value;
   const [notice, setNotice] = useState("");
 
   return (
@@ -55,24 +57,39 @@ export function CardMenu() {
               <div class="bar__fill" style={{ width: `${list.length ? (remembered / list.length) * 100 : 0}%` }} />
             </div>
             <p class="muted small">
-              復習の期限 <span class="num">{due}</span>枚 ／ 1回 <span class="num">{CARDS_PER_SESSION}</span>枚
+              復習の期限が来たカード <span class="num">{due}</span>枚
             </p>
+          </div>
+
+          <div class="cards__size">
+            <span class="small">1回の枚数</span>
+            <div class="seg" role="radiogroup" aria-label="1回の枚数">
+              {SESSION_SIZES.map((n) => (
+                <button key={n} type="button" role="radio" class="seg__btn" aria-checked={size === n} onClick={() => setSessionSize(n)}>
+                  <span class="num">{n}</span>枚
+                </button>
+              ))}
+            </div>
           </div>
 
           <div class="cards__start">
             {notice && <p class="notice" role="status">{notice}</p>}
-            {next === 0 && <p class="muted small">今日のカードはすべて終わりました。</p>}
             <button
               type="button"
               class="btn-primary"
-              disabled={next === 0}
+              disabled={next === 0 && extra === 0}
               onClick={() => {
                 if (!startCards(list)) setNotice("出せるカードがありません。");
               }}
             >
-              今日のカード（{next}枚）
+              {next > 0 ? `カードを始める（${next}枚）` : `覚えたカードを見直す（${extra}枚）`}
               <Icon name="arrowRight" size={18} stroke={2.2} />
             </button>
+            <p class="muted small">
+              {next > 0
+                ? "期限が来たカードと新しいカードから出します。終わったら何回でも続けられます。"
+                : "今日の分は終わりました。覚えたカードを、前に見た順から見直せます。"}
+            </p>
           </div>
         </>
       )}

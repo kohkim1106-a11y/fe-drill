@@ -2,7 +2,8 @@
 .cards__stats { gap: 10px; }
 .cards__count { display: flex; align-items: baseline; gap: 4px; }
 .cards__n { font-size: var(--fs-2xl); font-weight: 600; line-height: 1; padding: 0 3px; color: var(--c-heading); }
-.cards__start { margin-top: auto; display: flex; flex-direction: column; gap: 8px; }
+.cards__size { display: flex; flex-direction: column; gap: 6px; }
+.cards__start { display: flex; flex-direction: column; gap: 8px; }
 
 /* S06 カード学習 (B3-Cards) */
 .flash__bar { height: 4px; margin: 0 4px; }
