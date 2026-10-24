@@ -221,10 +221,13 @@ loadTerms(): Promise<Term[]>
 buildSession(mode: SessionMode, ctx: SelectContext): SessionItem[]
 
 // core/srs.ts
-review(prev: ItemProgress | undefined, result: ReviewResult, today: string): ItemProgress
+review(prev: ItemProgress | undefined, result: ReviewResult, today: string, item: { id: string; kind: ItemKind }): ItemProgress
 
 // core/stats.ts
 summarize(ctx: StatsContext): StatsSummary
+
+// core/dates.ts
+todayLocal(now?: Date): string; addDays(date: string, days: number): string; diffDays(from: string, to: string): number
 
 // core/radix.ts
 generateRadixQuestions(count: number, seed?: number): Question[]
