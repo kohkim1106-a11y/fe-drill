@@ -79,7 +79,7 @@
 }
 .choice__label { font-size: 15px; font-weight: 700; color: var(--c-muted); flex: none; min-width: 1.2em; }
 .choice__text { min-width: 0; overflow-wrap: anywhere; }
-.choices--grid .choice__text { font-family: var(--f-mono); font-size: var(--fs-lg); font-weight: 600; }
+.choices--grid .choice__text { font-family: var(--f-num); font-variant-numeric: tabular-nums; font-size: var(--fs-lg); font-weight: 600; }
 .choice:not(:disabled):active { background: var(--c-surface); }
 .choice.is-picked { border: 2px solid var(--c-progress); }
 .choice.is-correct { border: 2px solid var(--c-ok); background: var(--c-surface); }

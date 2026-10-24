@@ -25,7 +25,8 @@
   color-scheme: light;
 
   --f-sans: "IBM Plex Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
-  --f-mono: "IBM Plex Mono", "IBM Plex Sans JP", ui-monospace, Menlo, monospace;
+  --f-mono: "IBM Plex Mono", "IBM Plex Sans JP", ui-monospace, Menlo, monospace; /* code only: its dotted zero suits code, not counters */
+  --f-num: var(--f-sans); /* figures in counters and choices, used with tabular-nums */
 
   --fs-xs: 12px;
   --fs-sm: 13px;

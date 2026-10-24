@@ -8,7 +8,7 @@
         "firebase-tools@15.34.1",
         "mcp",
         "--dir",
-        "/Users/matsuekoki/Desktop/fe-drill"
+        "/Users/matsuekoki/Developer/fe-drill"
       ],
       "env": {
         "PATH": "/Users/matsuekoki/.local/bin:/usr/bin:/bin:/usr/sbin:/sbin"

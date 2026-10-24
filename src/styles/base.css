@@ -28,7 +28,7 @@ button:disabled { cursor: default; }
 :focus-visible { outline: 2px solid var(--c-info); outline-offset: 2px; }
 
 /* utilities shared by every screen */
-.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.num { font-family: var(--f-num); font-variant-numeric: tabular-nums; }
 .marker { background: linear-gradient(transparent 55%, var(--c-marker) 55%); padding: 0 2px; }
 .visually-hidden {
   position: absolute; width: 1px; height: 1px; overflow: hidden;
