@@ -33,7 +33,12 @@ export function Home() {
       <header class="home__head">
         <div class="home__titles">
           <h1 class="home__app">基本情報ドリル</h1>
-          <p class="home__greet">{greeting(new Date().getHours())}</p>
+          <p class="home__greet">
+            {/* One sentence per line, so narrow screens never break inside a word like 今日 */}
+            {greeting(new Date().getHours()).split(/(?<=。)/).map((line) => (
+              <span key={line} class="home__greet-line">{line}</span>
+            ))}
+          </p>
         </div>
         <div class="home__actions">
           <div class="pill" aria-label={`連続${s.streak}日`}>

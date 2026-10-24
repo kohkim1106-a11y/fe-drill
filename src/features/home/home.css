@@ -4,7 +4,8 @@
 .home__settings { color: var(--c-muted); margin-right: -10px; }
 .home__titles { display: flex; flex-direction: column; gap: 4px; }
 .home__app { font-size: var(--fs-sm); font-weight: 500; color: var(--c-muted); }
-.home__greet { font-size: var(--fs-lg); font-weight: 700; line-height: 1.4; color: var(--c-heading); text-wrap: balance; }
+.home__greet { font-size: var(--fs-lg); font-weight: 700; line-height: 1.4; color: var(--c-heading); }
+.home__greet-line { display: block; white-space: nowrap; }
 
 .pill {
   display: flex;
