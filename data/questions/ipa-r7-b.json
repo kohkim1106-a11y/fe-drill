@@ -1,0 +1,109 @@
+[
+  {
+    "id": "ipa-r7-b-001",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 3,
+    "stem": "次のプログラム中の ［ a ］ と ［ b ］ に入れる正しい答えの組合せを，解答群の中から選べ。\n\n関数 function1 が受け取る引数と，関数 function2 が受け取る引数とが同じとき，二つの関数は同じ値を返す。ここで，引数 n と引数 m は正の整数であり，引数 m は引数 n よりも 10 以上大きい数とする。",
+    "code": "〔プログラム〕\n○整数型: function1(整数型: n, 整数型: m)\n  整数型: count ← 0\n  整数型: i\n  for (iをnからmまで1ずつ増やす)\n    if ((i mod 4)が0と等しい)\n      count ← count ＋ 1\n    endif\n  endfor\n  return count\n\n○整数型: function2(整数型: n, 整数型: m)\n  整数型: count ← 0\n  整数型: tempN ← n\n  整数型: i, j\n  for (［ a ］)\n    if ((tempN mod 4)が0と等しい)\n      繰返し処理を終了する\n    endif\n    tempN ← tempN ＋ 1\n  endfor\n  for (［ b ］)\n    count ← count ＋ 1\n  endfor\n  return count",
+    "choices": [
+      "a：iを1から2まで1ずつ増やす　b：jをnから始めてmを超えない範囲でtempNずつ増やす",
+      "a：iを1から2まで1ずつ増やす　b：jをtempNからmまで1ずつ増やす",
+      "a：iを1から2まで1ずつ増やす　b：jをtempNから始めてmを超えない範囲で4ずつ増やす",
+      "a：iを1から3まで1ずつ増やす　b：jをnから始めてmを超えない範囲でtempNずつ増やす",
+      "a：iを1から3まで1ずつ増やす　b：jをtempNからmまで1ずつ増やす",
+      "a：iを1から3まで1ずつ増やす　b：jをtempNから始めてmを超えない範囲で4ずつ増やす"
+    ],
+    "answer": 5,
+    "explanation": "function1 は n〜m の中の 4 の倍数を数えます。function2 は最初のループで tempN を n 以上で最小の 4 の倍数に進めます。n, n＋1, n＋2 を調べて当てはまらなければ 3 回目の加算で n＋3 になり、これは必ず 4 の倍数なので繰返しは 3 回必要です（例：n ＝ 5 なら 5, 6, 7 を調べて tempN ＝ 8）。その後は tempN から m まで 4 ずつ数えれば 4 の倍数の個数になるので、b は「4 ずつ増やす」です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "令和7年度 基本情報技術者試験 科目B 公開問題",
+      "number": "問1",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/sg_fe/koukai/tbl5kb0000005r9r-att/2025r07_fe_kamoku_b_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-r7-b-002",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次のプログラム中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。\n\n関数 change は，10 より大きい整数を引数 n で受け取り，1 円玉，5 円玉，10 円玉を使ってちょうど n 円にする組合せの総数を返す。\n\n例えば，12 円にする組合せは，次のように数えられる。10 円玉を使わない場合には，1 円玉と 5 円玉だけでちょうど 12 円にすることになる。その組合せは，使える 5 円玉の枚数が 0 以上 (12 ÷ 5 の商) 以下なので，(12 ÷ 5 の商) ＋ 1 ＝ 3 通りある。同様に，10 円玉を 1 枚使う場合には，1 円玉と 5 円玉だけでちょうど 2 円にすることになり，その組合せは (2 ÷ 5 の商) ＋ 1 ＝ 1 通りある。10 円玉を 2 枚以上使う組合せはない。よって，1 円玉，5 円玉，10 円玉を使ってちょうど 12 円にする組合せは，3 ＋ 1 ＝ 4 通りである。",
+    "code": "〔プログラム〕\n○整数型: change(整数型: n)\n  整数型: count ← 0\n  整数型: rest ← n\n  while (［　　　］)\n    count ← count ＋ (rest ÷ 5 の商) ＋ 1\n    rest ← rest － 10\n  endwhile\n  return count",
+    "choices": [
+      "rest ≧ 0",
+      "rest ≧ 5",
+      "rest ≧ 10",
+      "rest ＞ 0",
+      "rest ＞ 5",
+      "rest ＞ 10"
+    ],
+    "answer": 0,
+    "explanation": "rest は 10 円玉を使った残りの金額で、0 以上であれば 1 円玉と 5 円玉で必ず払えるので数える必要があります。12 円の例では rest ＝ 12（3 通り）、2（1 通り）を数え、－8 で終了します。rest ≧ 5 や rest ＞ 0 などでは、rest ＝ 2 や n ＝ 20 のときの rest ＝ 0（10 円玉 2 枚）のような場合を数え漏らします。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "令和7年度 基本情報技術者試験 科目B 公開問題",
+      "number": "問2",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/sg_fe/koukai/tbl5kb0000005r9r-att/2025r07_fe_kamoku_b_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-r7-b-003",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次のプログラム中の ［ a ］ と ［ b ］ に入れる正しい答えの組合せを，解答群の中から選べ。ここで，配列の要素番号は 1 から始まる。\n\n関数 push は，引数で与えられた整数をスタックに格納する。格納できた場合は true を返し，格納できなかった場合は false を返す。\n\n関数 pop は，スタックから値を取り出して返す。スタックが空のときは未定義の値を返す。\n\nスタックを，要素数が 4 である大域の整数型の配列 stack，及び次に値を格納する位置を示す大域の変数 stackPos で表現する。スタックの初期状態は，stack の要素番号 1 が 4，要素番号 2 が 3，要素番号 3 と 4 は未定義で，stackPos は要素番号 3 を指している。\n\nプログラムでは，配列の領域外を参照してはならないものとする。",
+    "code": "〔プログラム〕\n大域: 整数型: stackPos ← 3\n大域: 整数型の配列: stack ← {4, 3, 未定義の値, 未定義の値}\n\n○論理型: push(整数型: inputData)\n  if (stackPos ≦ stackの要素数)\n    stack[［ a ］] ← inputData\n    stackPos ← stackPos ＋ 1\n    return true\n  else\n  endif\n  return false\n\n○整数型: pop()\n  整数型: popData ← 未定義の値\n  if (stackPos ＞ 1)\n    stackPos ← ［ b ］\n    popData ← stack[stackPos]\n    stack[stackPos] ← 未定義の値\n  endif\n  return popData",
+    "choices": [
+      "a：stackPos　b：stackPos ＋ 1",
+      "a：stackPos　b：stackPos － 1",
+      "a：stackPos － 1　b：stackPos ＋ 1",
+      "a：stackPos － 1　b：stackPos － 1"
+    ],
+    "answer": 1,
+    "explanation": "stackPos は「次に値を格納する位置」なので、push ではその位置 stack[stackPos] に格納してから 1 増やします。pop では最後に格納した値が stackPos － 1 の位置にあるので、先に stackPos を 1 減らしてから取り出します。初期状態で pop すると stackPos が 2 になり、3 が取り出されます。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "令和7年度 基本情報技術者試験 科目B 公開問題",
+      "number": "問3（図を文字で表記）",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/sg_fe/koukai/tbl5kb0000005r9r-att/2025r07_fe_kamoku_b_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-r7-b-005",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次の記述中の ［ a ］ と ［ b ］ に入れる正しい答えの組合せを，解答群の中から選べ。ここで，配列の要素番号は 1 から始まる。\n\n予防接種の病気 X に対する予防効果を調査するために集めたデータの集計結果を基に，病気 X にかかるかどうかが，予防接種の有無に影響されないと仮定した場合の人数を計算する。この人数を理論度数という。表 1 に集計結果の例を示し，表 2 に表 1 を基に計算した理論度数を示す。\n\n関数 f は，引数 data で受け取った集計結果を基に計算した理論度数を返す。引数と戻り値は二次元配列で，その行が表の行，その列が表の列に対応する。\n\n表 1 集計結果の例（単位 人）\n（列：病気 X にかからなかった，病気 X にかかった）\n予防接種を受けた：82，6\n予防接種を受けていない：58，8\n\n表 2 表 1 を基に計算した理論度数（単位 人）\n予防接種を受けた，病気 X にかからなかった：［ a ］\n予防接種を受けていない，病気 X にかかった：［ b ］\n（他の欄は表示していない）",
+    "code": "〔プログラム〕\n○実数型の二次元配列: f(実数型の二次元配列: data)\n  実数型: t ← dataの要素の和\n  整数型: row ← dataの行数\n  整数型: col ← dataの列数\n  実数型の二次元配列: result ← {row行col列の 未定義の値}\n  整数型: r, c\n  for (r を 1 から row まで 1 ずつ増やす)\n    for (c を 1 から col まで 1 ずつ増やす)\n      result[r, c] ← (dataの行番号rの要素の和) ×\n                     (dataの列番号cの要素の和) ÷ t\n    endfor\n  endfor\n  return result",
+    "choices": [
+      "a：44　b：33",
+      "a：58　b：8",
+      "a：70　b：7",
+      "a：75　b：2",
+      "a：80　b：6",
+      "a：80　b：8",
+      "a：82　b：6"
+    ],
+    "answer": 4,
+    "explanation": "総数 t ＝ 82 ＋ 6 ＋ 58 ＋ 8 ＝ 154、行の和は 88 と 66、列の和は 140 と 14 です。a は 1 行 1 列なので 88 × 140 ÷ 154 ＝ 80、b は 2 行 2 列なので 66 × 14 ÷ 154 ＝ 6 になります。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "令和7年度 基本情報技術者試験 科目B 公開問題",
+      "number": "問5（表を文字で表記）",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/sg_fe/koukai/tbl5kb0000005r9r-att/2025r07_fe_kamoku_b_qs.pdf"
+    }
+  }
+]

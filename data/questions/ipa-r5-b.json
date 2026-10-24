@@ -1,0 +1,131 @@
+[
+  {
+    "id": "ipa-r5-b-001",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次のプログラム中の ［ a ］ と ［ b ］ に入れる正しい答えの組合せを，解答群の中から選べ。ここで，配列の要素番号は 1 から始まる。\n\n関数 findPrimeNumbers は，引数で与えられた整数以下の，全ての素数だけを格納した配列を返す関数である。ここで，引数に与える整数は 2 以上である。",
+    "code": "〔プログラム〕\n○整数型の配列: findPrimeNumbers(整数型: maxNum)\n  整数型の配列: pnList ← {}  // 要素数0の配列\n  整数型: i, j\n  論理型: divideFlag\n\n  for (i を 2 から ［ a ］ まで 1 ずつ増やす)\n    divideFlag ← true\n    /* iの正の平方根の整数部分が2未満のときは，繰返し処理を実行しない */\n    for (j を 2 から iの正の平方根の整数部分 まで 1 ずつ増やす)  // α\n      if (［ b ］)\n        divideFlag ← false\n        αの行から始まる繰返し処理を終了する\n      endif\n    endfor\n    if (divideFlag が true と等しい)\n      pnListの末尾 に iの値 を追加する\n    endif\n  endfor\n  return pnList",
+    "choices": [
+      "a：maxNum　b：i ÷ j の余り が 0 と等しい",
+      "a：maxNum　b：i ÷ j の商 が 1 と等しくない",
+      "a：maxNum ＋ 1　b：i ÷ j の余り が 0 と等しい",
+      "a：maxNum ＋ 1　b：i ÷ j の商 が 1 と等しくない"
+    ],
+    "answer": 0,
+    "explanation": "maxNum 以下の整数を調べるので、i は 2 から maxNum まで動かせば足ります（maxNum ＋ 1 まで回すと maxNum ＋ 1 が素数のとき誤って追加されます）。i が 2〜√i のどれかで割り切れれば素数ではないので、b は「i ÷ j の余りが 0 と等しい」です。例えば maxNum ＝ 10 なら 2, 3, 5, 7 が返ります。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "令和5年度 基本情報技術者試験 科目B 公開問題",
+      "number": "問1",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/sg_fe/koukai/t6hhco0000003zx0-att/2023r05_fe_kamoku_b_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-r5-b-002",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 1,
+    "stem": "次の記述中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。\n\n次のプログラムにおいて，手続 proc2 を呼び出すと，［　　　］ の順に出力される。",
+    "code": "〔プログラム〕\n○proc1()\n  \"A\" を出力する\n  proc3()\n\n○proc2()\n  proc3()\n  \"B\" を出力する\n  proc1()\n\n○proc3()\n  \"C\" を出力する",
+    "choices": [
+      "“A”，“B”，“B”，“C”",
+      "“A”，“C”",
+      "“A”，“C”，“B”，“C”",
+      "“B”，“A”，“B”，“C”",
+      "“B”，“C”，“B”，“A”",
+      "“C”，“B”",
+      "“C”，“B”，“A”",
+      "“C”，“B”，“A”，“C”"
+    ],
+    "answer": 7,
+    "explanation": "proc2 はまず proc3 を呼んで “C” を出力し、次に “B” を出力します。続いて proc1 を呼ぶと “A” を出力し、その中で proc3 を呼んで “C” を出力します。したがって “C”，“B”，“A”，“C” の順です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "令和5年度 基本情報技術者試験 科目B 公開問題",
+      "number": "問2",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/sg_fe/koukai/t6hhco0000003zx0-att/2023r05_fe_kamoku_b_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-r5-b-003",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次の記述中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。ここで，配列の要素番号は 1 から始まる。\n\n次の手続 sort は，大域の整数型の配列 data の，引数 first で与えられた要素番号から引数 last で与えられた要素番号までの要素を昇順に整列する。ここで，first ＜ last とする。手続 sort を sort(1, 5) として呼び出すと，/*** α ***/ の行を最初に実行したときの出力は“［　　　］”となる。",
+    "code": "〔プログラム〕\n大域: 整数型の配列: data ← {2, 1, 3, 5, 4}\n\n○sort(整数型: first, 整数型: last)\n  整数型: pivot, i, j\n  pivot ← data[(first ＋ last) ÷ 2 の商]\n  i ← first\n  j ← last\n\n  while (true)\n    while (data[i] ＜ pivot)\n      i ← i ＋ 1\n    endwhile\n    while (pivot ＜ data[j])\n      j ← j － 1\n    endwhile\n    if (i ≧ j)\n      繰返し処理を終了する\n    endif\n    data[i]とdata[j]の値を入れ替える\n    i ← i ＋ 1\n    j ← j － 1\n  endwhile\n  dataの全要素の値を要素番号の順に空白区切りで出力する  /*** α ***/\n  if (first ＜ i － 1)\n    sort(first, i － 1)\n  endif\n  if (j ＋ 1 ＜ last)\n    sort(j ＋ 1, last)\n  endif",
+    "choices": [
+      "1 2 3 4 5",
+      "1 2 3 5 4",
+      "2 1 3 4 5",
+      "2 1 3 5 4"
+    ],
+    "answer": 3,
+    "explanation": "sort(1, 5) では pivot ＝ data[3] ＝ 3 です。i は data[1]＝2、data[2]＝1 が 3 未満なので進んで i ＝ 3 で止まり、j は data[5]＝4、data[4]＝5 が 3 より大きいので戻って j ＝ 3 で止まります。i ≧ j なので入替えをせずにループを抜け、最初の α では元のまま “2 1 3 5 4” が出力されます。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "令和5年度 基本情報技術者試験 科目B 公開問題",
+      "number": "問3",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/sg_fe/koukai/t6hhco0000003zx0-att/2023r05_fe_kamoku_b_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-r5-b-004",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次の記述中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。ここで，配列の要素番号は 1 から始まる。\n\n関数 add は，引数で指定された正の整数 value を大域の整数型の配列 hashArray に格納する。格納できた場合は true を返し，格納できなかった場合は false を返す。ここで，整数 value を hashArray のどの要素に格納すべきかを，関数 calcHash1 及び calcHash2 を利用して決める。\n\n手続 test は，関数 add を呼び出して，hashArray に正の整数を格納する。手続 test の処理が終了した直後の hashArray の内容は，［　　　］ である。",
+    "code": "〔プログラム〕\n大域: 整数型の配列: hashArray\n\n○論理型: add(整数型: value)\n  整数型: i ← calcHash1(value)\n  if (hashArray[i] ＝ －1)\n    hashArray[i] ← value\n    return true\n  else\n    i ← calcHash2(value)\n    if (hashArray[i] ＝ －1)\n      hashArray[i] ← value\n      return true\n    endif\n  endif\n  return false\n\n○整数型: calcHash1(整数型: value)\n  return (value mod hashArrayの要素数) ＋ 1\n\n○整数型: calcHash2(整数型: value)\n  return ((value ＋ 3) mod hashArrayの要素数) ＋ 1\n\n○test()\n  hashArray ← {5個の －1}\n  add(3)\n  add(18)\n  add(11)",
+    "choices": [
+      "{－1, 3, －1, 18, 11}",
+      "{－1, 11, －1, 3, －1}",
+      "{－1, 11, －1, 18, －1}",
+      "{－1, 18, －1, 3, 11}",
+      "{－1, 18, 11, 3, －1}"
+    ],
+    "answer": 3,
+    "explanation": "要素数は 5 です。add(3)：3 mod 5 ＋ 1 ＝ 4 なので hashArray[4] ＝ 3。add(18)：18 mod 5 ＋ 1 ＝ 4 は使用済みなので、(18＋3) mod 5 ＋ 1 ＝ 2 に格納。add(11)：11 mod 5 ＋ 1 ＝ 2 は使用済みなので、(11＋3) mod 5 ＋ 1 ＝ 5 に格納します。結果は {－1, 18, －1, 3, 11} です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "令和5年度 基本情報技術者試験 科目B 公開問題",
+      "number": "問4",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/sg_fe/koukai/t6hhco0000003zx0-att/2023r05_fe_kamoku_b_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-r5-b-006",
+    "exam": "B",
+    "field": "sec",
+    "major": "科目B",
+    "minor": "情報セキュリティ",
+    "difficulty": 2,
+    "stem": "A 社は，放送会社や運輸会社向けに広告制作ビジネスを展開している。A 社は，人事業務の効率化を図るべく，人事業務の委託を検討することにした。A 社が委託する業務（以下，B 業務という）を図 1 に示す。\n\n図 1 B 業務\n・採用予定者から郵送されてくる入社時の誓約書，前職の源泉徴収票などの書類を PDF ファイルに変換し，ファイルサーバに格納する。\n（省略）\n\n委託先候補の C 社は，B 業務について，次のように A 社に提案した。\n・B 業務だけに従事する専任の従業員を割り当てる。\n・B 業務では，図 2 の複合機のスキャン機能を使用する。\n\n図 2 複合機のスキャン機能（抜粋）\n・スキャン機能を使用する際は，従業員ごとに付与した利用者 ID とパスワードをパネルに入力する。\n・スキャンしたデータを PDF ファイルに変換する。\n・PDF ファイルを従業員ごとに異なる鍵で暗号化して，電子メールに添付する。\n・スキャンを実行した本人宛てに電子メールを送信する。\n・PDF ファイルが大きい場合は，PDF ファイルを添付する代わりに，自社の社内ネットワーク上に設置したサーバ（以下，B サーバという）注1)に自動的に保存し，保存先の URL を電子メールの本文に記載して送信する。\n注1) B サーバにアクセスする際は，従業員ごとの利用者 ID とパスワードが必要になる。\n\nA 社は，C 社と業務委託契約を締結する前に，秘密保持契約を締結した。その後，C 社に質問表を送付し，回答を受けて，業務委託での情報セキュリティリスクの評価を実施した。その結果，図 3 の発見があった。\n\n図 3 発見事項\n・複合機のスキャン機能では，電子メールの差出人アドレス，件名，本文及び添付ファイル名を初期設定注1)の状態で使用しており，誰がスキャンを実行しても同じである。\n・複合機のスキャン機能の初期設定情報はベンダーの Web サイトで公開されており，誰でも閲覧できる。\n注1) 複合機の初期設定は C 社の情報システム部だけが変更可能である。\n\nそこで，A 社では，初期設定の状態のままでは A 社にとって情報セキュリティリスクがあり，初期設定から変更するという対策が必要であると評価した。\n\n設問 対策が必要であると A 社が評価した情報セキュリティリスクはどれか。解答群のうち，最も適切なものを選べ。",
+    "choices": [
+      "B 業務に従事する従業員が，攻撃者からの電子メールを複合機からのものと信じて本文中にある URL をクリックし，フィッシングサイトに誘導される。その結果，A 社の採用予定者の個人情報が漏えいする。",
+      "B 業務に従事する従業員が，複合機から送信される電子メールをスパムメールと誤認し，電子メールを削除する。その結果，再スキャンが必要となり，B 業務が遅延する。",
+      "攻撃者が，複合機から送信される電子メールを盗聴し，添付ファイルを暗号化して身代金を要求する。その結果，A 社が復号鍵を受け取るために多額の身代金を支払うことになる。",
+      "攻撃者が，複合機から送信される電子メールを盗聴し，本文に記載されている URL を使って B サーバにアクセスする。その結果，A 社の採用予定者の個人情報が漏えいする。"
+    ],
+    "answer": 0,
+    "explanation": "差出人・件名・本文が公開済みの初期設定のままなので、攻撃者は複合機からのメールとそっくりの偽メールを作れます。従業員がそれを信じて URL を開くとフィッシングサイトへ誘導され、個人情報が漏れるおそれがあるため、設定変更が必要です。エは URL が漏れても B サーバには利用者 ID とパスワードが必要なので、初期設定の変更で防ぐリスクではありません。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "令和5年度 基本情報技術者試験 科目B 公開問題",
+      "number": "問6",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/sg_fe/koukai/t6hhco0000003zx0-att/2023r05_fe_kamoku_b_qs.pdf"
+    }
+  }
+]

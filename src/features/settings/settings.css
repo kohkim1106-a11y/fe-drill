@@ -1,0 +1,19 @@
+/* S08 設定 */
+.settings__top { display: flex; align-items: center; gap: 4px; margin-left: -12px; }
+.settings__group { display: flex; flex-direction: column; gap: 8px; }
+.settings__field { cursor: pointer; }
+.input {
+  min-height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-sm);
+  background: var(--c-surface-2);
+  color: var(--c-text);
+  font: inherit;
+  font-size: var(--fs-md);
+}
+.input--num { width: 6em; text-align: right; }
+.settings__license { font-size: var(--fs-sm); color: var(--c-muted); gap: 6px; }
+.settings__confirm { border-color: var(--c-ng); gap: 12px; }
+.settings__confirm-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.settings__reset { display: flex; flex-direction: column; gap: 8px; }

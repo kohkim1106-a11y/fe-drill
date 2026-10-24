@@ -1,0 +1,35 @@
+/* S01 ホーム (B / B2) */
+.home__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.home__titles { display: flex; flex-direction: column; gap: 4px; }
+.home__app { font-size: var(--fs-sm); font-weight: 400; color: var(--c-muted); }
+.home__greet { font-size: var(--fs-xl); font-weight: 700; line-height: 1.4; color: var(--c-heading); }
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid var(--c-line);
+  background: var(--c-surface);
+  border-radius: var(--r-pill);
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+}
+.pill__icon { display: flex; color: var(--c-accent-text); }
+.pill__num { font-weight: 600; }
+
+.home__grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 10px; }
+.home__big { display: flex; align-items: baseline; gap: 4px; color: var(--c-heading); }
+.home__days { font-size: var(--fs-num); font-weight: 600; line-height: 1; padding: 0 4px; }
+.home__unit { font-size: 16px; font-weight: 700; }
+.home__set { padding: 0; align-self: flex-start; font-size: 15px; }
+
+.home__goal { display: flex; align-items: baseline; gap: 2px; }
+.home__goal-n { font-size: var(--fs-2xl); font-weight: 600; line-height: 1; color: var(--c-heading); }
+
+.home__section { display: flex; flex-direction: column; gap: 6px; }
+
+.home__review { margin-top: auto; gap: 12px; }
+.home__review-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.home__review-title { font-size: var(--fs-md); }
+.home__due { font-size: 18px; font-weight: 600; color: var(--c-heading); padding: 0 3px; }

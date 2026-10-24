@@ -1,0 +1,396 @@
+[
+  {
+    "id": "ipa-sample-b-001",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 1,
+    "stem": "次の記述中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。\n\nプログラムを実行すると，“［　　　］”と出力される。",
+    "code": "〔プログラム〕\n整数型: x ← 1\n整数型: y ← 2\n整数型: z ← 3\nx ← y\ny ← z\nz ← x\nyの値 と zの値 をこの順にコンマ区切りで出力する",
+    "choices": [
+      "1,2",
+      "1,3",
+      "2,1",
+      "2,3",
+      "3,1",
+      "3,2"
+    ],
+    "answer": 5,
+    "explanation": "x ← y で x ＝ 2、y ← z で y ＝ 3、z ← x で z ＝ 2 になります。y と z を出力するので “3,2” です。値の入替えではなく、上書き後の x（＝ 2）が z に入る点に注意します。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目B試験 サンプル問題（20問）セット",
+      "number": "問1",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_b_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-b-002",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 1,
+    "stem": "次のプログラム中の ［ a ］ ～ ［ c ］ に入れる正しい答えの組合せを，解答群の中から選べ。\n\n関数 fizzBuzz は，引数で与えられた値が，3 で割り切れて 5 で割り切れない場合は“3 で割り切れる”を，5 で割り切れて 3 で割り切れない場合は“5 で割り切れる”を，3 と 5 で割り切れる場合は“3 と 5 で割り切れる”を返す。それ以外の場合は“3 でも 5 でも割り切れない”を返す。",
+    "code": "〔プログラム〕\n○文字列型: fizzBuzz(整数型: num)\n  文字列型: result\n  if (num が ［ a ］ で割り切れる)\n    result ← \"［ a ］ で割り切れる\"\n  elseif (num が ［ b ］ で割り切れる)\n    result ← \"［ b ］ で割り切れる\"\n  elseif (num が ［ c ］ で割り切れる)\n    result ← \"［ c ］ で割り切れる\"\n  else\n    result ← \"3 でも 5 でも割り切れない\"\n  endif\n  return result",
+    "choices": [
+      "a：3　b：3 と 5　c：5",
+      "a：3　b：5　c：3 と 5",
+      "a：3 と 5　b：3　c：5",
+      "a：5　b：3　c：3 と 5",
+      "a：5　b：3 と 5　c：3"
+    ],
+    "answer": 2,
+    "explanation": "条件は上から順に評価され、最初に真になったものだけが実行されます。15 のような 3 と 5 の両方で割り切れる数を正しく扱うには、「3 と 5 で割り切れる」を最初に調べる必要があります。その後の 3 と 5 の順序はどちらでもよく、解答群ではウ（3 と 5 → 3 → 5）が該当します。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目B試験 サンプル問題（20問）セット",
+      "number": "問2",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_b_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-b-003",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 1,
+    "stem": "次の記述中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。ここで，配列の要素番号は 1 から始まる。\n\n関数 makeNewArray は，要素数 2 以上の整数型の配列を引数にとり，整数型の配列を返す関数である。関数 makeNewArray を makeNewArray({3, 2, 1, 6, 5, 4}) として呼び出したとき，戻り値の配列の要素番号 5 の値は ［　　　］ となる。",
+    "code": "〔プログラム〕\n○整数型の配列: makeNewArray(整数型の配列: in)\n  整数型の配列: out ← {}  // 要素数0の配列\n  整数型: i, tail\n  outの末尾 に in[1]の値 を追加する\n  for (i を 2 から inの要素数 まで 1 ずつ増やす)\n    tail ← out[outの要素数]\n    outの末尾 に (tail ＋ in[i]) の結果を追加する\n  endfor\n  return out",
+    "choices": [
+      "5",
+      "6",
+      "9",
+      "11",
+      "12",
+      "17",
+      "21"
+    ],
+    "answer": 5,
+    "explanation": "out の各要素は、直前の要素に in[i] を足した値、つまり先頭からの累積和です。3, 3＋2＝5, 5＋1＝6, 6＋6＝12, 12＋5＝17, 17＋4＝21 となるので、要素番号 5 は 17 です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目B試験 サンプル問題（20問）セット",
+      "number": "問3",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_b_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-b-004",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次のプログラム中の ［ a ］ ～ ［ c ］ に入れる正しい答えの組合せを，解答群の中から選べ。\n\n関数 gcd は，引数で与えられた二つの正の整数 num1 と num2 の最大公約数を，次の (1)～(3) の性質を利用して求める。\n(1) num1 と num2 が等しいとき，num1 と num2 の最大公約数は num1 である。\n(2) num1 が num2 より大きいとき，num1 と num2 の最大公約数は，(num1 － num2) と num2 の最大公約数と等しい。\n(3) num2 が num1 より大きいとき，num1 と num2 の最大公約数は，(num2 － num1) と num1 の最大公約数と等しい。",
+    "code": "〔プログラム〕\n○整数型: gcd(整数型: num1, 整数型: num2)\n  整数型: x ← num1\n  整数型: y ← num2\n  ［ a ］\n    if (［ b ］)\n      x ← x － y\n    else\n      y ← y － x\n    endif\n  ［ c ］\n  return x",
+    "choices": [
+      "a：if (x ≠ y)　b：x ＜ y　c：endif",
+      "a：if (x ≠ y)　b：x ＞ y　c：endif",
+      "a：while (x ≠ y)　b：x ＜ y　c：endwhile",
+      "a：while (x ≠ y)　b：x ＞ y　c：endwhile"
+    ],
+    "answer": 3,
+    "explanation": "x と y が等しくなるまで、大きい方から小さい方を引く操作を繰り返す必要があるので、a と c は while 〜 endwhile です。x ← x － y を行うのは x の方が大きいときなので、b は x ＞ y です。例えば gcd(12, 8) は (4, 8) → (4, 4) となり 4 を返します。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目B試験 サンプル問題（20問）セット",
+      "number": "問4",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_b_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-b-005",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 1,
+    "stem": "次のプログラム中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。\n\n関数 calc は，正の実数 x と y を受け取り，√(x^2 ＋ y^2) の計算結果を返す。関数 calc が使う関数 pow は，第 1 引数として正の実数 a を，第 2 引数として実数 b を受け取り，a の b 乗の値を実数型で返す。",
+    "code": "〔プログラム〕\n○実数型: calc(実数型: x, 実数型: y)\n  return ［　　　］",
+    "choices": [
+      "(pow(x, 2) ＋ pow(y, 2)) ÷ pow(2, 0.5)",
+      "(pow(x, 2) ＋ pow(y, 2)) ÷ pow(x, y)",
+      "pow(2, pow(x, 0.5)) ＋ pow(2, pow(y, 0.5))",
+      "pow(pow(pow(2, x), y), 0.5)",
+      "pow(pow(x, 2) ＋ pow(y, 2), 0.5)",
+      "pow(x, 2) × pow(y, 2) ÷ pow(x, y)",
+      "pow(x, y) ÷ pow(2, 0.5)"
+    ],
+    "answer": 4,
+    "explanation": "x^2 は pow(x, 2)、y^2 は pow(y, 2) で、平方根は 0.5 乗なので、√(x^2 ＋ y^2) ＝ pow(pow(x, 2) ＋ pow(y, 2), 0.5) です。例えば x ＝ 3, y ＝ 4 なら 25 の 0.5 乗で 5 になります。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目B試験 サンプル問題（20問）セット",
+      "number": "問5",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_b_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-b-006",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次のプログラム中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。\n\n関数 rev は 8 ビット型の引数 byte を受け取り，ビットの並びを逆にした値を返す。例えば，関数 rev を rev(01001011) として呼び出すと，戻り値は 11010010 となる。\n\nなお，演算子 ∧ はビット単位の論理積，演算子 ∨ はビット単位の論理和，演算子 >> は論理右シフト，演算子 << は論理左シフトを表す。例えば，value >> n は value の値を n ビットだけ右に論理シフトし，value << n は value の値を n ビットだけ左に論理シフトする。",
+    "code": "〔プログラム〕\n○8ビット型: rev(8ビット型: byte)\n  8ビット型: rbyte ← byte\n  8ビット型: r ← 00000000\n  整数型: i\n  for (i を 1 から 8 まで 1 ずつ増やす)\n    ［　　　］\n  endfor\n  return r",
+    "choices": [
+      "r ← (r << 1) ∨ (rbyte ∧ 00000001)；rbyte ← rbyte >> 1",
+      "r ← (r << 7) ∨ (rbyte ∧ 00000001)；rbyte ← rbyte >> 7",
+      "r ← (rbyte << 1) ∨ (rbyte >> 7)；rbyte ← r",
+      "r ← (rbyte >> 1) ∨ (rbyte << 7)；rbyte ← r"
+    ],
+    "answer": 0,
+    "explanation": "rbyte ∧ 00000001 で最下位ビットを取り出し、r を 1 ビット左にずらしてからその位置に入れます。続けて rbyte を 1 ビット右にずらすと、次の繰返しで次のビットを取り出せます。8 回繰り返すと、最初に取り出した最下位ビットが r の最上位に来て、並びが逆になります。ウとエはビットの回転（ローテート）で、逆順にはなりません。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目B試験 サンプル問題（20問）セット",
+      "number": "問6",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_b_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-b-007",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 1,
+    "stem": "次のプログラム中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。\n\n関数 factorial は非負の整数 n を引数にとり，その階乗を返す関数である。非負の整数 n の階乗は n が 0 のときに 1 になり，それ以外の場合は 1 から n までの整数を全て掛け合わせた数となる。",
+    "code": "〔プログラム〕\n○整数型: factorial(整数型: n)\n  if (n ＝ 0)\n    return 1\n  endif\n  return ［　　　］",
+    "choices": [
+      "(n － 1) × factorial(n)",
+      "factorial(n － 1)",
+      "n",
+      "n × (n － 1)",
+      "n × factorial(1)",
+      "n × factorial(n － 1)"
+    ],
+    "answer": 5,
+    "explanation": "n! ＝ n × (n － 1)! なので、再帰呼出しで n × factorial(n － 1) を返します。n ＝ 0 で 1 を返して再帰が止まります。アは factorial(n) を呼び続けて終わらず、エは n × (n － 1) を計算するだけで階乗になりません。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目B試験 サンプル問題（20問）セット",
+      "number": "問7",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_b_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-b-008",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次の記述中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。\n\n優先度付きキューを操作するプログラムである。優先度付きキューとは扱う要素に優先度を付けたキューであり，要素を取り出す際には優先度の高いものから順番に取り出される。クラス PrioQueue は優先度付きキューを表すクラスである。クラス PrioQueue の説明を図に示す。ここで，優先度は整数型の値 1，2，3 のいずれかであり，小さい値ほど優先度が高いものとする。\n\n手続 prioSched を呼び出したとき，出力は ［　　　］ の順となる。\n\n図 クラス PrioQueue の説明\n・コンストラクタ PrioQueue()：空の優先度付きキューを生成する。\n・メソッド enqueue(文字列型: s, 整数型: prio)（戻り値なし）：優先度付きキューに，文字列 s を要素として，優先度 prio で追加する。\n・メソッド dequeue()（戻り値 文字列型）：優先度付きキューからキュー内で最も優先度の高い要素を取り出して返す。最も優先度の高い要素が複数あるときは，そのうちの最初に追加された要素を一つ取り出して返す。\n・メソッド size()（戻り値 整数型）：優先度付きキューに格納されている要素の個数を返す。",
+    "code": "〔プログラム〕\n○prioSched()\n  PrioQueue: prioQueue ← PrioQueue()\n  prioQueue.enqueue(\"A\", 1)\n  prioQueue.enqueue(\"B\", 2)\n  prioQueue.enqueue(\"C\", 2)\n  prioQueue.enqueue(\"D\", 3)\n  prioQueue.dequeue()  /* 戻り値は使用しない */\n  prioQueue.dequeue()  /* 戻り値は使用しない */\n  prioQueue.enqueue(\"D\", 3)\n  prioQueue.enqueue(\"B\", 2)\n  prioQueue.dequeue()  /* 戻り値は使用しない */\n  prioQueue.dequeue()  /* 戻り値は使用しない */\n  prioQueue.enqueue(\"C\", 2)\n  prioQueue.enqueue(\"A\", 1)\n  while (prioQueue.size() が 0 と等しくない)\n    prioQueue.dequeue() の戻り値を出力\n  endwhile",
+    "choices": [
+      "“A”，“B”，“C”，“D”",
+      "“A”，“B”，“D”，“D”",
+      "“A”，“C”，“C”，“D”",
+      "“A”，“C”，“D”，“D”"
+    ],
+    "answer": 3,
+    "explanation": "最初の 2 回の dequeue で A(1)、B(2) が取り出され、C(2)、D(3) が残ります。D(3)、B(2) を追加した後の 2 回の dequeue では、優先度 2 のうち先に入った C、次に B が取り出され、D(3) が 2 つ残ります。C(2)、A(1) を追加して全部取り出すと、A → C → D → D の順です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目B試験 サンプル問題（20問）セット",
+      "number": "問8（表を文字で表記）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_b_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-b-009",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次の記述中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。ここで，配列の要素番号は 1 から始まる。\n\n手続 order は，2 分木の，引数で指定した節を根とする部分木をたどりながら，全ての節番号を出力する。大域の配列 tree が 2 分木を表している。配列 tree の要素は，対応する節の子の節番号を，左の子，右の子の順に格納した配列である。例えば，配列 tree の要素番号 1 の要素は，節番号 1 の子の節番号から成る配列であり，左の子の節番号 2，右の子の節番号 3 を配列 {2，3} として格納する。子の節が一つの場合は，左の子の節とする（節 7 の子は節 14 だけである）。\n\n手続 order を order(1) として呼び出すと，［　　　］ の順に出力される。",
+    "code": "〔プログラム〕\n大域: 整数型配列の配列: tree ← {{2, 3}, {4, 5}, {6, 7}, {8, 9},\n                                 {10, 11}, {12, 13}, {14}, {}, {}, {},\n                                 {}, {}, {}, {}}  // {}は要素数0の配列\n\n○order(整数型: n)\n  if (tree[n]の要素数 が 2 と等しい)\n    order(tree[n][1])\n    nを出力\n    order(tree[n][2])\n  elseif (tree[n]の要素数 が 1 と等しい)\n    order(tree[n][1])\n    nを出力\n  else\n    nを出力\n  endif",
+    "choices": [
+      "1，2，3，4，5，6，7，8，9，10，11，12，13，14",
+      "1，2，4，8，9，5，10，11，3，6，12，13，7，14",
+      "8，4，9，2，10，5，11，1，12，6，13，3，14，7",
+      "8，9，4，10，11，5，2，12，13，6，14，7，3，1"
+    ],
+    "answer": 2,
+    "explanation": "order は「左の部分木 → 自分 → 右の部分木」の順に出力する中間順の走査です。節 1 の左の部分木は 8, 4, 9, 2, 10, 5, 11、次に 1、右の部分木は 12, 6, 13, 3, 14, 7 の順になります。イは先行順、エは後行順の結果です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目B試験 サンプル問題（20問）セット",
+      "number": "問9（図を文章に改変）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_b_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-b-010",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次のプログラム中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。\n\n手続 delNode は，単方向リストから，引数 pos で指定された位置の要素を削除する手続である。引数 pos は，リストの要素数以下の正の整数とする。リストの先頭の位置を 1 とする。\n\nクラス ListElement は，単方向リストの要素を表す。クラス ListElement のメンバ変数の説明を表に示す。ListElement 型の変数はクラス ListElement のインスタンスの参照を格納するものとする。大域変数 listHead には，リストの先頭要素の参照があらかじめ格納されている。\n\n表 クラス ListElement のメンバ変数の説明\n・val（文字型）：要素の値\n・next（ListElement）：次の要素の参照。次の要素がないときの状態は未定義",
+    "code": "〔プログラム〕\n大域: ListElement: listHead  // リストの先頭要素が格納されている\n\n○delNode(整数型: pos)  /* posは，リストの要素数以下の正の整数 */\n  ListElement: prev\n  整数型: i\n  if (pos が 1 と等しい)\n    listHead ← listHead.next\n  else\n    prev ← listHead\n    /* posが2と等しいときは繰返し処理を実行しない */\n    for (i を 2 から pos － 1 まで 1 ずつ増やす)\n      prev ← prev.next\n    endfor\n    prev.next ← ［　　　］\n  endif",
+    "choices": [
+      "listHead",
+      "listHead.next",
+      "listHead.next.next",
+      "prev",
+      "prev.next",
+      "prev.next.next"
+    ],
+    "answer": 5,
+    "explanation": "繰返しの後、prev は削除する要素の 1 つ前（pos － 1 番目）を指しています。削除する要素は prev.next なので、prev の次をその次の要素 prev.next.next につなぎ替えれば、削除対象がリストから外れます。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目B試験 サンプル問題（20問）セット",
+      "number": "問10（表を文字で表記）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_b_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-b-011",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次の記述中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。ここで，配列の要素番号は 1 から始まる。\n\n関数 binSort を binSort(［　　　］) として呼び出すと，戻り値の配列には未定義の要素は含まれておらず，値は昇順に並んでいる。",
+    "code": "〔プログラム〕\n○整数型の配列: binSort(整数型の配列: data)\n  整数型: n ← dataの要素数\n  整数型の配列: bins ← {n個の未定義の値}\n  整数型: i\n  for (i を 1 から n まで 1 ずつ増やす)\n    bins[data[i]] ← data[i]\n  endfor\n  return bins",
+    "choices": [
+      "{2, 6, 3, 1, 4, 5}",
+      "{3, 1, 4, 4, 5, 2}",
+      "{4, 2, 1, 5, 6, 2}",
+      "{5, 3, 4, 3, 2, 6}"
+    ],
+    "answer": 0,
+    "explanation": "値 v を bins[v] に入れるので、未定義の要素が残らないためには、1〜6 の値がちょうど 1 回ずつ現れる必要があります。アは 1〜6 がそろっていて {1, 2, 3, 4, 5, 6} が返ります。イは 4 が重複して 6 がなく、ウは 2 が重複して 3 がなく、エは 3 が重複して 1 がないため、未定義の要素が残ります。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目B試験 サンプル問題（20問）セット",
+      "number": "問11",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_b_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-b-012",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 1,
+    "stem": "次のプログラム中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。ここで，配列の要素番号は 1 から始まる。\n\n関数 simRatio は，引数として与えられた要素数 1 以上の二つの文字型の配列 s1 と s2 を比較し，要素数が等しい場合は，配列の並びがどの程度似ているかの指標として，（要素番号が同じ要素の文字同士が一致する要素の組みの個数 ÷ s1 の要素数）を実数型で返す。例えば，配列の全ての要素が一致する場合の戻り値は 1，いずれの要素も一致しない場合の戻り値は 0 である。\n\nなお，二つの配列の要素数が等しくない場合は，－1 を返す。\n\n関数 simRatio に与える s1，s2 及び戻り値の例を示す。プログラムでは，配列の領域外を参照してはならないものとする。\n\n（s1／s2／戻り値）\n{\"a\", \"p\", \"p\", \"l\", \"e\"}／{\"a\", \"p\", \"p\", \"l\", \"e\"}／1\n{\"a\", \"p\", \"p\", \"l\", \"e\"}／{\"a\", \"p\", \"r\", \"i\", \"l\"}／0.4\n{\"a\", \"p\", \"p\", \"l\", \"e\"}／{\"m\", \"e\", \"l\", \"o\", \"n\"}／0\n{\"a\", \"p\", \"p\", \"l\", \"e\"}／{\"p\", \"e\", \"n\"}／－1",
+    "code": "〔プログラム〕\n○実数型: simRatio(文字型の配列: s1, 文字型の配列: s2)\n  整数型: i, cnt ← 0\n  if (s1の要素数 ≠ s2の要素数)\n    return －1\n  endif\n  for (i を 1 から s1の要素数 まで 1 ずつ増やす)\n    if (［　　　］)\n      cnt ← cnt ＋ 1\n    endif\n  endfor\n  return cnt ÷ s1の要素数  /* 実数として計算する */",
+    "choices": [
+      "s1[i] ≠ s2[cnt]",
+      "s1[i] ≠ s2[i]",
+      "s1[i] ＝ s2[cnt]",
+      "s1[i] ＝ s2[i]"
+    ],
+    "answer": 3,
+    "explanation": "数えるのは「要素番号が同じ要素の文字同士が一致する」組なので、条件は s1[i] ＝ s2[i] です。apple と april では 1〜2 番目だけが一致し、2 ÷ 5 ＝ 0.4 になります。s2[cnt] を使うと cnt ＝ 0 のとき領域外を参照してしまいます。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目B試験 サンプル問題（20問）セット",
+      "number": "問12（表を文字で表記）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_b_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-b-013",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次の記述中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。ここで，配列の要素番号は 1 から始まる。\n\n関数 search は，引数 data で指定された配列に，引数 target で指定された値が含まれていればその要素番号を返し，含まれていなければ －1 を返す。data は昇順に整列されており，値に重複はない。\n\n関数 search には不具合がある。例えば，data の ［　　　］ 場合は，無限ループになる。",
+    "code": "〔プログラム〕\n○整数型: search(整数型の配列: data, 整数型: target)\n  整数型: low, high, middle\n  low ← 1\n  high ← dataの要素数\n  while (low ≦ high)\n    middle ← (low ＋ high) ÷ 2 の商\n    if (data[middle] ＜ target)\n      low ← middle\n    elseif (data[middle] ＞ target)\n      high ← middle\n    else\n      return middle\n    endif\n  endwhile\n  return －1",
+    "choices": [
+      "要素数が 1 で，targetがその要素の値と等しい",
+      "要素数が 2 で，targetが data の先頭要素の値と等しい",
+      "要素数が 2 で，targetが data の末尾要素の値と等しい",
+      "要素に－1 が含まれている"
+    ],
+    "answer": 2,
+    "explanation": "要素数 2 で target が末尾の値のとき、low ＝ 1, high ＝ 2 から middle ＝ 1 となり、data[1] ＜ target なので low ← 1 となります。low と high が変わらないため、同じ計算を永遠に繰り返します。正しくは low ← middle ＋ 1、high ← middle － 1 とすべきです。ア・イは最初の middle で見つかるので終了します。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目B試験 サンプル問題（20問）セット",
+      "number": "問13",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_b_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-b-014",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次の記述中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。ここで，配列の要素番号は 1 から始まる。\n\n要素数が 1 以上で，昇順に整列済みの配列を基に，配列を特徴づける五つの値を返すプログラムである。\n\n関数 summarize を summarize({0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1}) として呼び出すと，戻り値は ［　　　］ である。",
+    "code": "〔プログラム〕\n○実数型: findRank(実数型の配列: sortedData, 実数型: p)\n  整数型: i\n  i ← (p × (sortedDataの要素数 － 1)) の小数点以下を切り上げた値\n  return sortedData[i ＋ 1]\n\n○実数型の配列: summarize(実数型の配列: sortedData)\n  実数型の配列: rankData ← {}  /* 要素数0の配列 */\n  実数型の配列: p ← {0, 0.25, 0.5, 0.75, 1}\n  整数型: i\n  for (i を 1 から pの要素数 まで 1 ずつ増やす)\n    rankDataの末尾 に findRank(sortedData, p[i])の戻り値 を追加する\n  endfor\n  return rankData",
+    "choices": [
+      "{0.1, 0.3, 0.5, 0.7, 1}",
+      "{0.1, 0.3, 0.5, 0.8, 1}",
+      "{0.1, 0.3, 0.6, 0.7, 1}",
+      "{0.1, 0.3, 0.6, 0.8, 1}",
+      "{0.1, 0.4, 0.5, 0.7, 1}",
+      "{0.1, 0.4, 0.5, 0.8, 1}",
+      "{0.1, 0.4, 0.6, 0.7, 1}",
+      "{0.1, 0.4, 0.6, 0.8, 1}"
+    ],
+    "answer": 7,
+    "explanation": "要素数は 10 なので p × 9 を切り上げます。p ＝ 0 → 0 → 1 番目 0.1、0.25 → 2.25 → 3 → 4 番目 0.4、0.5 → 4.5 → 5 → 6 番目 0.6、0.75 → 6.75 → 7 → 8 番目 0.8、1 → 9 → 10 番目 1 です。よって {0.1, 0.4, 0.6, 0.8, 1} になります。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目B試験 サンプル問題（20問）セット",
+      "number": "問14",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_b_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-b-020",
+    "exam": "B",
+    "field": "sec",
+    "major": "科目B",
+    "minor": "情報セキュリティ",
+    "difficulty": 2,
+    "stem": "A 社は栄養補助食品を扱う従業員 500 名の企業である。A 社のサーバ及びファイアウォール（以下，FW という）を含む情報システムの運用は情報システム部が担当している。\n\nある日，内部監査部の監査があり，FW の運用状況について情報システム部の B 部長が図 1 のとおり説明したところ，表 1 に示す指摘を受けた。\n\n図 1 FW の運用状況\n・FW を含め，情報システムの運用は，情報システム部の運用チームに所属する 6 名の運用担当者が担当している。\n・FW の運用には，FW ルールの編集，操作ログの確認，並びに編集後の FW ルールの確認及び操作の承認（以下，編集後の FW ルールの確認及び操作の承認を操作承認という）の三つがある。\n・FW ルールの編集は事前に作成された操作指示書に従って行う。\n・FW の機能には，FW ルールの編集，操作ログの確認，及び操作承認の三つがある。\n・FW ルールの変更には，FW ルールの編集と操作承認の両方が必要である。操作承認の前に操作ログの確認を行う。\n・FW の利用者 ID は各運用担当者に個別に発行されており，利用者 ID の共用はしていない。\n・FW では，機能を利用する権限を運用担当者の利用者 ID ごとに付与できる。\n・現在は，6 名の運用担当者とも全権限を付与されており，運用担当者は FW のルールの編集後，編集を行った運用担当者が操作に誤りがないことを確認し，操作承認をしている。\n・FW へのログインにはパスワードを利用している。パスワードは 8 文字の英数字である。\n・FW の運用では，運用担当者の利用者 ID ごとに，ネットワークを経由せずコンソールでログインできるかどうか，ネットワークを経由してリモートからログインできるかどうかを設定できる。\n・FW は，ネットワークを経由せずコンソールでログインした場合でも，ネットワークを経由してリモートからログインした場合でも，同一の機能を利用できる。\n・FW はサーバルームに設置されており，サーバルームにはほかに数種類のサーバも設置されている。\n・運用担当者だけがサーバルームへの入退室を許可されている。\n\n表 1 内部監査部からの指摘\n指摘 1：FW の運用の作業の中で，職務が適切に分離されていない。\n指摘 2〜4：（省略）\n\nB 部長は表 1 の指摘に対する改善策を検討することにした。\n\n設問 表 1 中の指摘 1 について，FW ルールの誤った変更を防ぐための改善策はどれか。解答群のうち，最も適切なものを選べ。",
+    "choices": [
+      "Endpoint Detection and Response（EDR）をコンソールに導入し，監視を強化する。",
+      "FW での運用担当者のログインにはパスワード認証の代わりに多要素認証を導入する。",
+      "FW のアクセス制御機能を使って，運用担当者をコンソールからログインできる者，リモートからログインできる者に分ける。",
+      "FW の運用担当者を 1 人に限定する。",
+      "運用担当者の一部を操作ログの確認だけをする者とし，それらの者には操作ログの確認権限だけを付与する。",
+      "運用担当者を，FW ルールの編集を行う者，操作ログを確認し，操作承認をする者に分け，それぞれに必要最小限の権限を付与する。",
+      "作業を行う運用担当者を，曜日ごとに割り当てる。"
+    ],
+    "answer": 5,
+    "explanation": "現状は編集した本人が自分の操作を確認・承認しているため、誤りがあっても気付けません。編集者と、操作ログの確認・承認を行う者を分けて必要最小限の権限を与えれば、別の人のチェックが入り、誤った変更を防げます。オはログ確認者を分けるだけで、編集者が自分で承認できる状態が残ります。ア・イ・ウは監視や認証の強化、エ・キは担当の割当ての変更で、職務の分離にはなりません。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目B試験 サンプル問題（20問）セット",
+      "number": "問20",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_b_set_sample_qs.pdf"
+    }
+  }
+]

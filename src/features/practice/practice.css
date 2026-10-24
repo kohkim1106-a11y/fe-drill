@@ -1,0 +1,6 @@
+/* S02 演習メニュー */
+.practice__section { display: flex; flex-direction: column; gap: 8px; }
+.practice__resume { gap: 10px; }
+.practice__minors { gap: 12px; }
+.practice__minors .chip { font-size: var(--fs-sm); }
+.practice__minors .chip .num { color: inherit; opacity: 0.75; margin-left: 2px; }

@@ -1,0 +1,133 @@
+[
+  {
+    "id": "ipa-r8-b-001",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 1,
+    "stem": "次のプログラム中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。ここで，配列の要素番号は 1 から始まる。\n\n次のプログラムは，整数型の配列 data の末尾の要素の値を先頭の要素に移動する。この際，末尾以外の各要素の値は，一つずつ後ろの要素に移動する。",
+    "code": "〔プログラム〕\n整数型の配列: data ← {1, 2, 3, 4, 5, 6, 7, 8, 9}\n整数型: top, i\n整数型: len ← dataの要素数\ntop ← data[len]\nfor (i を ［　　　］)\n  data[i] ← data[i － 1]\nendfor\ndata[1] ← top",
+    "choices": [
+      "2 から len － 1 まで 1 ずつ増やす",
+      "2 から len まで 1 ずつ増やす",
+      "len － 1 から 2 まで 1 ずつ減らす",
+      "len から 2 まで 1 ずつ減らす"
+    ],
+    "answer": 3,
+    "explanation": "data[i] ← data[i － 1] で後ろへずらすとき、前から処理すると data[2] に 1 が入った後、data[3] にもその 1 がコピーされてしまいます。後ろの len から 2 へ向かって処理すれば、上書き前の値を順に移せます。len － 1 から始めると、末尾の data[len] に data[len － 1] の値が移りません。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "令和8年度 基本情報技術者試験 科目B 公開問題",
+      "number": "問1",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/sg_fe/koukai/rcu1hd0000012qj6-att/2026r08_fe_kamoku_b_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-r8-b-002",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次のプログラム中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。\n\n関数 complement は，引数として渡された 8 ビット型の値 x について，x に加算すると 00000000 になる値を返す。8 ビット型の加算は，値を符号なし 2 進数とみなしたときの加算とし，桁あふれが発生したときのあふれた桁は無視する。演算子∧，∨，▽は，それぞれビット単位の論理積，論理和，排他的論理和を表す。",
+    "code": "〔プログラム〕\n○8ビット型: complement(8ビット型: x)\n  8ビット型: y\n  y ← ［　　　］\n  y ← y ＋ 00000001\n  return y",
+    "choices": [
+      "x ∧ 01111111",
+      "x ∧ 11111111",
+      "x ∨ 01111111",
+      "x ∨ 11111111",
+      "x ▽ 01111111",
+      "x ▽ 11111111"
+    ],
+    "answer": 5,
+    "explanation": "x に足して 00000000（桁あふれを無視）になる値は 2 の補数で、全ビットを反転して 1 を足せば求められます。全ビットの反転は 11111111 との排他的論理和で得られます。例えば x ＝ 00000011 なら反転して 11111100、1 を足して 11111101 となり、x と足すと 100000000 で下位 8 ビットは 0 です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "令和8年度 基本情報技術者試験 科目B 公開問題",
+      "number": "問2",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/sg_fe/koukai/rcu1hd0000012qj6-att/2026r08_fe_kamoku_b_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-r8-b-003",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次のプログラム中の ［　　　］ に入れる正しい答えを，解答群の中から選べ。ここで，配列の要素番号は 1 から始まる。\n\n関数 func1 に与える引数と，関数 func2 に与える引数とが同じとき，二つの関数は同じ値を返す。プログラムでは，配列の領域外を参照してはならないものとする。",
+    "code": "〔プログラム〕\n○整数型: func1(整数型: n)\n  if (nが2以下)\n    return 1\n  endif\n  return 2 × func1(n － 2) ＋ func1(n － 1)\n\n○整数型: func2(整数型: n)\n  整数型の配列: data ← {1, 1, 1}\n  整数型: i\n  /* nが3より小さいときは繰返し処理を実行しない */\n  for (iを3からnまで1ずつ増やす)\n    data[1] ← data[2]\n    data[2] ← data[3]\n    data[3] ← ［　　　］\n  endfor\n  return data[3]",
+    "choices": [
+      "2 × data[1] ＋ data[2]",
+      "2 × data[2] ＋ data[1]",
+      "2 × data[i － 1] ＋ data[i － 2]",
+      "2 × data[i － 2] ＋ data[i － 1]",
+      "data[3] ＋ 2 × data[1] ＋ data[2]",
+      "data[3] ＋ 2 × data[2] ＋ data[1]",
+      "data[3] ＋ 2 × data[i － 1] ＋ data[i － 2]",
+      "data[3] ＋ 2 × data[i － 2] ＋ data[i － 1]"
+    ],
+    "answer": 0,
+    "explanation": "func1 は f(n) ＝ 2 × f(n － 2) ＋ f(n － 1) です。func2 では、ずらした後に data[1] ＝ f(i － 2)、data[2] ＝ f(i － 1) となるので、data[3] には 2 × data[1] ＋ data[2] を入れます。n ＝ 3 なら 2 × 1 ＋ 1 ＝ 3、n ＝ 4 なら 2 × 1 ＋ 3 ＝ 5 で func1 と一致します。data[i － 1] のような書き方は、i が 5 以上で配列の範囲外になります。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "令和8年度 基本情報技術者試験 科目B 公開問題",
+      "number": "問3",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/sg_fe/koukai/rcu1hd0000012qj6-att/2026r08_fe_kamoku_b_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-r8-b-004",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次のプログラム中の ［ a ］ と ［ b ］ に入れる正しい答えの組合せを，解答群の中から選べ。ここで，配列の要素番号は 1 から始まる。\n\n単方向リストを，配列 dataList と配列 pointerList の二つの配列で表現する。dataList にリストの要素の値を格納し，pointerList にリストの次の要素に対応する dataList の要素番号を格納する。単方向リストの先頭は，dataList[1] 及び pointerList[1] の組みである。単方向リストの末尾に対応する pointerList の要素は未定義である。dataList のうち単方向リストの要素の値を格納していない要素と，対応する pointerList の要素は未定義である。\n\nプログラムが扱う dataList 及び pointerList の内容を図 1 に示す。先頭の次の要素の要素番号は，pointerList[1] に格納された 3 であり，値は dataList[3] に格納された 20 である。その次の要素の要素番号は pointerList[3] に格納された 2 であり，値は dataList[2] に格納された 30 である。\n\n図 1 dataList 及び pointerList の内容（要素番号 1〜5）\ndataList：10，30，20，40，未定義\npointerList：3，4，2，未定義，未定義\n\n関数 orderList は，図 1 の dataList 及び pointerList で表現した単方向リストの値を，単方向リストの先頭からたどって順番に格納した配列を返す。関数 orderList が返す配列は {10, 20, 30, 40} である（図 2）。",
+    "code": "〔プログラム〕\n大域: 整数型の配列: dataList ← {10, 30, 20, 40, 未定義の値}\n大域: 整数型の配列: pointerList ← {3, 4, 2, 未定義の値, 未定義の値}\n\n○整数型の配列: orderList()\n  整数型: i, p ← 1\n  整数型の配列: linearList ← {}  // 要素数0の配列\n  for (i を 1 から dataListの要素数 まで 1 ずつ増やす)\n    linearListの末尾 に dataList[p]の値 を追加する\n    if (［ a ］ が 未定義)\n      繰返し処理を終了する\n    endif\n    p ← ［ b ］\n  endfor\n  return linearList",
+    "choices": [
+      "a：dataList[p]　b：i",
+      "a：dataList[p]　b：pointerList[p]",
+      "a：pointerList[p]　b：i",
+      "a：pointerList[p]　b：pointerList[p]"
+    ],
+    "answer": 3,
+    "explanation": "現在の要素 p の次がないこと（末尾）は、pointerList[p] が未定義であることで判定します。次の要素へ進むには、p に pointerList[p] を代入します。p は 1 → 3 → 2 → 4 と進み、10, 20, 30, 40 が格納され、pointerList[4] が未定義なので終了します。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "令和8年度 基本情報技術者試験 科目B 公開問題",
+      "number": "問4（図を文字で表記）",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/sg_fe/koukai/rcu1hd0000012qj6-att/2026r08_fe_kamoku_b_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-r8-b-005",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次のプログラム中の ［ a ］ と ［ b ］ に入れる正しい答えの組合せを，解答群の中から選べ。ここで，配列の要素番号は 1 から始まる。\n\n一つの要素だけが 1 で他の要素が 0 であるような整数型の配列による表現を，本問では One-Hot 表現という。関数 oneHotEncoding は，次の例のように，色の名前が格納されている要素数 1 以上の文字列型の配列を引数として受け取り，配列に含まれる色の名前（例では 3 種類）に基づいて，各要素を One-Hot 表現に変換し，整数型配列の配列に格納して返す。\n\n〔変換の例〕\n引数の例：{\"Red\", \"Green\", \"Blue\", \"Red\"}\n\"Red\" の One-Hot 表現：{1, 0, 0}\n\"Green\" の One-Hot 表現：{0, 1, 0}\n\"Blue\" の One-Hot 表現：{0, 0, 1}\n引数の例に対応する戻り値：{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}, {1, 0, 0}}",
+    "code": "〔プログラム〕\n○整数型配列の配列: oneHotEncoding(文字列型の配列: colors)\n  整数型: i, j, k\n  文字列型の配列: colorVector ← {}  // 要素数0の配列\n  整数型の配列: tempVector\n  整数型配列の配列: oneHotVector ← {}  // 要素数0の配列\n\n  /* 名前一覧の作成 */\n  for (i を 1 から colorsの要素数 まで 1 ずつ増やす)\n    if (colorVector の要素のいずれにも colors[i]の値 が格納されていない)\n      colorVectorの末尾 に ［ a ］ を追加する\n    endif\n  endfor\n\n  /* One-Hot表現への変換 */\n  for (j を 1 から colorsの要素数 まで 1 ずつ増やす)\n    tempVector ← {}  // 要素数0の配列\n    for (k を 1 から colorVectorの要素数 まで 1 ずつ増やす)\n      if (［ b ］)\n        tempVectorの末尾 に 1 を追加する\n      else\n        tempVectorの末尾 に 0 を追加する\n      endif\n    endfor\n    oneHotVectorの末尾 に tempVector を追加する\n  endfor\n  return oneHotVector",
+    "choices": [
+      "a：colors[i]の値　b：colors の要素のいずれかに colorVector[k]の値 が格納されている",
+      "a：colors[i]の値　b：colors[j] が colorVector[k] と等しい",
+      "a：未定義の値　b：colors の要素のいずれかに colorVector[k]の値 が格納されている",
+      "a：未定義の値　b：colors[j] が colorVector[k] と等しい"
+    ],
+    "answer": 1,
+    "explanation": "名前一覧 colorVector には、まだ含まれていない色 colors[i] を追加するので a は colors[i]の値 です（例では {\"Red\", \"Green\", \"Blue\"}）。変換では j 番目の色 colors[j] が一覧の k 番目と一致する位置だけを 1 にするので、b は「colors[j] が colorVector[k] と等しい」です。ア・ウの条件では一覧のどの色も colors に含まれるため、すべて 1 になってしまいます。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "令和8年度 基本情報技術者試験 科目B 公開問題",
+      "number": "問5（図を文字で表記）",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/sg_fe/koukai/rcu1hd0000012qj6-att/2026r08_fe_kamoku_b_qs.pdf"
+    }
+  }
+]

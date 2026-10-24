@@ -134,7 +134,7 @@ export interface StatsSummary {
   total: Rate;
   byField: Record<Field, Rate>;
   weakMinors: Array<{ minor: string; field: Field } & Rate>; // up to 5, worst first
-  recentRate: number | null; // last 200 answers
+  recentRate: number | null; // rate over the last 14 days of DayLogs (progress keeps only per-item totals)
   dueToday: number;
   unseen: number;
   daysLeft: number | null;

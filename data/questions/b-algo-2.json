@@ -1,0 +1,343 @@
+[
+  {
+    "id": "b-algo-017",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "クラス ListElement は単方向連結リストの要素を表し、メンバ変数 val（文字型）と next（次の要素への参照。最後の要素では未定義の値）をもつ。大域変数 listHead は先頭の要素を参照する。手続 delNode は、リストの pos 番目の要素を削除する。pos は 2 以上、要素数以下とする。\nプログラム中の〔 a 〕に入れる正しい答えを選べ。",
+    "code": "大域: ListElement: listHead\n\n○delNode(整数型: pos)\n  ListElement: prev\n  整数型: i\n  prev ← listHead\n  for (i を 2 から pos − 1 まで 1 ずつ増やす)\n    prev ← prev.next\n  endfor\n  〔 a 〕",
+    "choices": [
+      "prev.next ← prev.next.next",
+      "prev ← prev.next.next",
+      "prev.next ← prev.next",
+      "prev.next.next ← prev"
+    ],
+    "answer": 0,
+    "explanation": "for を抜けた時点で prev は pos − 1 番目の要素を指す（pos = 2 なら繰返しは0回で先頭のまま）。削除するには、pos − 1 番目の next を pos + 1 番目に付け替えればよいので prev.next ← prev.next.next。prev ← prev.next.next は局所変数を変えるだけでリストは変わらない。prev.next ← prev.next は何も変えない。prev.next.next ← prev はリストを循環させてしまう。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-018",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "配列 val, left, right で二分探索木を表す。節 n の値は val[n]、左の子は left[n]、右の子は right[n] で、0 は子がないことを表す。根は節 1 である。order(1) を呼び出したときの出力を選べ。手続 print は引数の値を出力する。",
+    "code": "大域: 整数型の配列: val ←\n  {50, 30, 70, 20, 40, 60, 80}\n大域: 整数型の配列: left ←\n  {2, 4, 6, 0, 0, 0, 0}\n大域: 整数型の配列: right ←\n  {3, 5, 7, 0, 0, 0, 0}\n\n○order(整数型: n)\n  if (n ≠ 0)\n    print(val[n])\n    order(left[n])\n    order(right[n])\n  endif",
+    "choices": [
+      "20 30 40 50 60 70 80",
+      "50 30 20 40 70 60 80",
+      "20 40 30 60 80 70 50",
+      "50 30 70 20 40 60 80"
+    ],
+    "answer": 1,
+    "explanation": "自分を出力してから左の部分木、右の部分木の順に処理する先行順（行きがけ順）の走査。50 → 左の 30 → その左 20 → 30 の右 40 → 根の右 70 → 60 → 80。20 30 40 50… は中間順（通りがけ順）、20 40 30… は後行順（帰りがけ順）、50 30 70… は幅優先の順。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-019",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "配列 val, left, right で二分探索木を表す（節 n の左の子が left[n]、右の子が right[n]、0 は子なし、根は節 1）。各節について、左の部分木の値は節の値より小さく、右の部分木の値は節の値より大きい。関数 find は値 x をもつ節の番号を返し、無ければ 0 を返す。\nプログラム中の〔 a 〕と〔 b 〕に入れる正しい答えの組合せを選べ。",
+    "code": "大域: 整数型の配列: val ←\n  {50, 30, 70, 20, 40, 60, 80}\n大域: 整数型の配列: left ←\n  {2, 4, 6, 0, 0, 0, 0}\n大域: 整数型の配列: right ←\n  {3, 5, 7, 0, 0, 0, 0}\n\n○整数型: find(整数型: x)\n  整数型: n ← 1\n  while (n ≠ 0)\n    if (val[n] = x)\n      return n\n    elseif (x < val[n])\n      n ← 〔 a 〕\n    else\n      n ← 〔 b 〕\n    endif\n  endwhile\n  return 0",
+    "choices": [
+      "a: right[n], b: left[n]",
+      "a: left[n], b: right[n]",
+      "a: n × 2, b: n × 2 + 1",
+      "a: left[val[n]], b: right[val[n]]"
+    ],
+    "answer": 1,
+    "explanation": "x が節の値より小さければ左の子、大きければ右の子へ進む。例えば x = 60 なら 節1(50) → right[1]=3 の節(70) → left[3]=6 の節(60) で 6 を返す。n × 2, n × 2 + 1 は配列で完全二分木（ヒープ）を表すときの添字で、この表し方では使えない。left[val[n]] は値を添字として使っており誤り。",
+    "shuffle": false,
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-020",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "関数 isPalin は、文字型の配列 s が回文（前から読んでも後ろから読んでも同じ）なら true を返す。正しく判定でき、かつ比較の回数が最も少なくなるものを選べ。要素数(s) は1以上とする。\nプログラム中の〔 a 〕と〔 b 〕に入れる正しい答えの組合せを選べ。",
+    "code": "○論理型: isPalin(文字型の配列: s)\n  整数型: i, n\n  n ← 要素数(s)\n  for (i を 1 から 〔 a 〕 まで 1 ずつ増やす)\n    if (s[i] ≠ s[〔 b 〕])\n      return false\n    endif\n  endfor\n  return true",
+    "choices": [
+      "a: n, b: n − i",
+      "a: n, b: n − i + 1",
+      "a: n ÷ 2 の商, b: n − i",
+      "a: n ÷ 2 の商, b: n − i + 1"
+    ],
+    "answer": 3,
+    "explanation": "i 番目と対応するのは後ろから i 番目、つまり n − i + 1 番目。前半だけ調べれば十分なので終値は n ÷ 2 の商（奇数長の中央は比べなくてよい）。終値 n でも結果は正しいが比較が2倍になる。n − i は1つずれており、i = 1 で s[n−1] と比べてしまう。",
+    "shuffle": false,
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-021",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 3,
+    "stem": "関数 countPat は、文字型の配列 s の中に文字型の配列 p と一致する部分が何か所あるかを返す（重なりも数える）。例えば s が {\"a\",\"b\",\"a\",\"b\",\"a\"}、p が {\"a\",\"b\",\"a\"} なら 2 を返す。要素数(p) ≦ 要素数(s) とする。\nプログラム中の〔 a 〕に入れる正しい答えを選べ。",
+    "code": "○整数型: countPat(文字型の配列: s,\n                  文字型の配列: p)\n  整数型: i, j, cnt\n  論理型: ok\n  cnt ← 0\n  for (i を 1 から 〔 a 〕 まで 1 ずつ増やす)\n    ok ← true\n    for (j を 1 から 要素数(p) まで 1 ずつ増やす)\n      if (s[i + j − 1] ≠ p[j])\n        ok ← false\n      endif\n    endfor\n    if (ok)\n      cnt ← cnt + 1\n    endif\n  endfor\n  return cnt",
+    "choices": [
+      "要素数(s) − 要素数(p) + 1",
+      "要素数(s) − 要素数(p)",
+      "要素数(s)",
+      "要素数(s) − 1"
+    ],
+    "answer": 0,
+    "explanation": "照合の開始位置 i で参照する最後の文字は s[i + 要素数(p) − 1]。これが 要素数(s) 以下になる最大の i は 要素数(s) − 要素数(p) + 1。例では 5 − 3 + 1 = 3 で、i = 1 と 3 が一致し 2 を返す。+1 を忘れると最後の位置（例では i = 3）を調べ損ねて 1 になる。要素数(s) や 要素数(s) − 1 では範囲外を参照する。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-022",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "二次元配列 m は3行3列で、1行目が 1, 2, 3、2行目が 4, 5, 6、3行目が 7, 8, 9 である。b は3行3列の二次元配列である。次のプログラムを実行した後の b の1行目（b[1, 1], b[1, 2], b[1, 3]）を選べ。",
+    "code": "整数型: i, j\nfor (i を 1 から 3 まで 1 ずつ増やす)\n  for (j を 1 から 3 まで 1 ずつ増やす)\n    b[j, 4 − i] ← m[i, j]\n  endfor\nendfor",
+    "choices": [
+      "1, 4, 7",
+      "7, 4, 1",
+      "3, 2, 1",
+      "3, 6, 9"
+    ],
+    "answer": 1,
+    "explanation": "b[1, k] に入るのは j = 1、4 − i = k、つまり i = 4 − k のときの m[4 − k, 1]。b[1,1]=m[3,1]=7、b[1,2]=m[2,1]=4、b[1,3]=m[1,1]=1。これは行列を時計回りに90度回転する処理。1, 4, 7 は単なる転置（b[j, i] ← m[i, j]）の場合。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-023",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "手続 matMul は、n 行 n 列の行列 x と y の積を z に求める（z = x × y）。\nプログラム中の〔 a 〕に入れる正しい答えを選べ。",
+    "code": "大域: 整数型: n\n大域: 整数型の二次元配列: x, y, z\n\n○matMul()\n  整数型: i, j, k\n  for (i を 1 から n まで 1 ずつ増やす)\n    for (j を 1 から n まで 1 ずつ増やす)\n      z[i, j] ← 0\n      for (k を 1 から n まで 1 ずつ増やす)\n        z[i, j] ← z[i, j] + 〔 a 〕\n      endfor\n    endfor\n  endfor",
+    "choices": [
+      "x[k, i] × y[j, k]",
+      "x[i, k] × y[j, k]",
+      "x[i, k] × y[k, j]",
+      "x[i, j] × y[i, j]"
+    ],
+    "answer": 2,
+    "explanation": "行列の積の i 行 j 列は、x の i 行目と y の j 列目の対応する要素の積の和：z[i, j] = Σ x[i, k] × y[k, j]。x[i, k] × y[j, k] は y の j 行目を使っており誤り。x[i, j] × y[i, j] は要素ごとの積で、しかも k に依存しないため n 倍されてしまう。三重ループなので計算量は O(n³)。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-024",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 3,
+    "stem": "関数 bitCount を bitCount(108) として呼び出したときの戻り値を選べ。ここで、∧ はビットごとの論理積を表し、x は0以上の整数とする。",
+    "code": "○整数型: bitCount(整数型: x)\n  整数型: c ← 0\n  while (x ≠ 0)\n    x ← x ∧ (x − 1)\n    c ← c + 1\n  endwhile\n  return c",
+    "choices": [
+      "3",
+      "5",
+      "7",
+      "4"
+    ],
+    "answer": 3,
+    "explanation": "x ∧ (x − 1) は x の最も右にある 1 のビットを 0 にする。よって繰返し回数は x を2進数で表したときの 1 の個数。108 = 1101100（2進）で 1 は4個。経過：1101100 → 1101000 → 1100000 → 1000000 → 0 で c = 4。7 は2進数の桁数。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-025",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 3,
+    "stem": "8ビット型の値に対する演算として、x << k は x を左に k ビット、x >> k は右に k ビット論理シフトし（はみ出したビットは捨て、空いたビットには 0 が入る）、∨ はビットごとの論理和を表す。関数 rot に 2進数 10110001 を与えたときの戻り値を選べ。",
+    "code": "○8ビット型: rot(8ビット型: x)\n  return (x << 3) ∨ (x >> 5)",
+    "choices": [
+      "10001101",
+      "10001000",
+      "00110110",
+      "01001110"
+    ],
+    "answer": 0,
+    "explanation": "x << 3 = 10001000（左の 101 がはみ出す）、x >> 5 = 00000101（はみ出した 101 が右端に来る）。論理和は 10001101 で、左に3ビット循環シフトした結果になる。10001000 は左シフトだけの値、00110110 は右に3ビット循環シフトした値、01001110 はビット反転した値。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-026",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "要素数7の配列 table をハッシュ表として使う。ハッシュ値は (key mod 7) + 1 とし、衝突したら次の添字を調べる（7 の次は 1）。空の表に 10, 24, 17, 3, 13 の順に add を呼び出したとき、13 が格納される添字を選べ。",
+    "code": "大域: 整数型の配列: table ←\n  {−1, −1, −1, −1, −1, −1, −1}\n\n○add(整数型: key)\n  整数型: h\n  h ← (key mod 7) + 1\n  while (table[h] ≠ −1)\n    h ← (h mod 7) + 1\n  endwhile\n  table[h] ← key",
+    "choices": [
+      "6",
+      "1",
+      "7",
+      "8"
+    ],
+    "answer": 1,
+    "explanation": "10 mod 7 = 3 → 添字4。24 mod 7 = 3 → 4 が使用中なので 5。17 mod 7 = 3 → 4, 5 が使用中なので 6。3 mod 7 = 3 → 4, 5, 6 が使用中なので 7。13 mod 7 = 6 → 7 が使用中、(7 mod 7) + 1 = 1 に戻って空いているので 1。衝突を考えないと 7、先頭に戻ることを忘れると範囲外の 8 になる。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-027",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "関数 isPrime は、整数 n が素数なら true を返す。正しく判定でき、かつ繰返しの回数が最も少なくなるように、プログラム中の〔 a 〕に入れる正しい答えを選べ。",
+    "code": "○論理型: isPrime(整数型: n)\n  整数型: d\n  if (n < 2)\n    return false\n  endif\n  d ← 2\n  while (〔 a 〕)\n    if (n mod d = 0)\n      return false\n    endif\n    d ← d + 1\n  endwhile\n  return true",
+    "choices": [
+      "d × d < n",
+      "d ≦ n",
+      "d × d ≦ n",
+      "d < n"
+    ],
+    "answer": 2,
+    "explanation": "n が合成数なら √n 以下の約数を必ずもつので、d × d ≦ n の範囲だけ調べればよい。d × d < n では n = 4, 9, 25 のような平方数で約数 √n を調べず、素数と誤判定する。d ≦ n では d = n のとき n mod n = 0 となり、素数も false になる。d < n は正しいが繰返しが多い。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-028",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "関数 gcd をユークリッドの互除法で実装した。gcd(252, 105) を呼び出したときの戻り値と、do…while の本体が実行される回数の組合せを選べ。y は1以上とする。",
+    "code": "○整数型: gcd(整数型: x, 整数型: y)\n  整数型: r\n  do\n    r ← x mod y\n    x ← y\n    y ← r\n  while (y ≠ 0)\n  return x",
+    "choices": [
+      "戻り値 7、3回",
+      "戻り値 21、2回",
+      "戻り値 21、3回",
+      "戻り値 42、2回"
+    ],
+    "answer": 2,
+    "explanation": "1回目: 252 mod 105 = 42 → x=105, y=42。2回目: 105 mod 42 = 21 → x=42, y=21。3回目: 42 mod 21 = 0 → x=21, y=0 で終了。戻り値 21、本体は3回実行される。do…while は条件を後で判定するので、本体は必ず1回以上実行される。",
+    "shuffle": false,
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-029",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "関数 calc を calc(10) として呼び出したときの戻り値と、n を大きくしたときの計算量（オーダ）の組合せを選べ。",
+    "code": "○整数型: calc(整数型: n)\n  整数型: i, j, c\n  c ← 0\n  for (i を 1 から n まで 1 ずつ増やす)\n    for (j を i から n まで 1 ずつ増やす)\n      c ← c + 1\n    endfor\n  endfor\n  return c",
+    "choices": [
+      "45、O(n²)",
+      "55、O(n²)",
+      "100、O(n²)",
+      "55、O(n log n)"
+    ],
+    "answer": 1,
+    "explanation": "内側は i = 1 のとき10回、i = 2 のとき9回 … i = 10 のとき1回で、合計 10 + 9 + … + 1 = 55 = n(n + 1) ÷ 2。n² の項が支配的なので O(n²)。100 は内側も1から回した場合、45 は j を i + 1 から始めた場合。",
+    "shuffle": false,
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-030",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "関数 steps を steps(100) として呼び出したときの戻り値と、n を大きくしたときの計算量（オーダ）の組合せを選べ。",
+    "code": "○整数型: steps(整数型: n)\n  整数型: i, c\n  i ← 1\n  c ← 0\n  while (i < n)\n    i ← i × 2\n    c ← c + 1\n  endwhile\n  return c",
+    "choices": [
+      "6、O(log n)",
+      "7、O(log n)",
+      "7、O(n)",
+      "50、O(n)"
+    ],
+    "answer": 1,
+    "explanation": "i は 1→2→4→8→16→32→64→128 と変わり、128 になった時点で i < 100 が偽になる。繰返しは7回。i が毎回2倍になるので繰返し回数は約 log₂n で O(log n)。64 < 100 なのでもう1回繰り返すことに注意（6回ではない）。",
+    "shuffle": false,
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-031",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "クラス Box はメンバ変数 total（整数型、初期値 0）と、total に引数の値を加えるメソッド add をもつ。Box() は新しいインスタンスを生成して、その参照を返す。Box 型の変数にはインスタンスへの参照が入る。次のプログラムを実行したときの出力を選べ。手続 print は引数の値を出力する。",
+    "code": "Box: b1, b2\nb1 ← Box()\nb2 ← b1\nb1.add(5)\nb2.add(3)\nb2 ← Box()\nb2.add(4)\nprint(b1.total + b2.total)",
+    "choices": [
+      "9",
+      "16",
+      "12",
+      "7"
+    ],
+    "answer": 2,
+    "explanation": "b2 ← b1 では参照がコピーされ、b1 と b2 は同じインスタンスを指す。したがって add(5) と add(3) は同じ total に加算され、b1.total = 8。その後 b2 には新しいインスタンスが入り、b2.total = 4。出力は 8 + 4 = 12。インスタンス自体がコピーされると考えると 5 + 4 = 9 になる。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-032",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 1,
+    "stem": "関数 unique は、昇順に整列済みの整数型の配列 data から重複を除いた配列を返す。例えば {1, 1, 3, 5, 5, 5, 8} なら {1, 3, 5, 8} を返す。data の要素数は1以上とする。\nプログラム中の〔 a 〕に入れる正しい答えを選べ。",
+    "code": "○整数型の配列: unique(整数型の配列: data)\n  整数型の配列: res ← {}\n  整数型: i\n  res の末尾に data[1] の値を追加する\n  for (i を 2 から 要素数(data) まで 1 ずつ増やす)\n    if (〔 a 〕)\n      res の末尾に data[i] の値を追加する\n    endif\n  endfor\n  return res",
+    "choices": [
+      "data[i] ≠ data[i + 1]",
+      "data[i] = data[i − 1]",
+      "data[i] > data[1]",
+      "data[i] ≠ data[i − 1]"
+    ],
+    "answer": 3,
+    "explanation": "整列済みなので、同じ値は隣り合う。直前の要素と異なるときだけ追加すれば重複が除かれる。data[i] ≠ data[i + 1] は最後の i で範囲外を参照する。= にすると重複している要素だけを集めてしまう。data[i] > data[1] では {1, 3, 3} から {1, 3, 3} を返してしまう。",
+    "source": {
+      "type": "original"
+    }
+  }
+]

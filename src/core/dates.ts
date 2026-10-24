@@ -1,18 +1,33 @@
-// STUB — agent B replaces the body. Local-date helpers (YYYY-MM-DD).
+// Local-date helpers. Dates are plain "YYYY-MM-DD" strings in the device's local
+// calendar; arithmetic is done in UTC so DST transitions can never shift a day.
+
+const pad = (n: number) => String(n).padStart(2, "0");
+
+/** Today's date in the device's local time zone. */
 export function todayLocal(now: Date = new Date()): string {
-  const p = (n: number) => String(n).padStart(2, "0");
-  return `${now.getFullYear()}-${p(now.getMonth() + 1)}-${p(now.getDate())}`;
+  return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+}
+
+function toUtcMs(date: string): number {
+  const [y, m, d] = date.split("-").map(Number) as [number, number, number];
+  return Date.UTC(y, m - 1, d);
+}
+
+function fromUtcMs(ms: number): string {
+  const t = new Date(ms);
+  return `${t.getUTCFullYear()}-${pad(t.getUTCMonth() + 1)}-${pad(t.getUTCDate())}`;
 }
 
 export function addDays(date: string, days: number): string {
-  const [y, m, d] = date.split("-").map(Number) as [number, number, number];
-  return todayLocal(new Date(y, m - 1, d + days));
+  return fromUtcMs(toUtcMs(date) + days * 86_400_000);
 }
 
+/** Whole days from `from` to `to` (positive when `to` is later). */
 export function diffDays(from: string, to: string): number {
-  const toTime = (s: string) => {
-    const [y, m, d] = s.split("-").map(Number) as [number, number, number];
-    return new Date(y, m - 1, d).getTime();
-  };
-  return Math.round((toTime(to) - toTime(from)) / 86_400_000);
+  return Math.round((toUtcMs(to) - toUtcMs(from)) / 86_400_000);
+}
+
+export function isDateString(value: unknown): value is string {
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  return fromUtcMs(toUtcMs(value)) === value;
 }

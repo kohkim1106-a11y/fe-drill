@@ -1,0 +1,1346 @@
+[
+  {
+    "id": "ipa-sample-a-001",
+    "exam": "A",
+    "field": "tech",
+    "major": "基礎理論",
+    "minor": "基礎理論",
+    "difficulty": 2,
+    "stem": "負数を 2 の補数で表すとき，8 ビットの 2 進正数 n に対し－n を求める式はどれか。ここで，＋は加算を表し，OR はビットごとの論理和，XOR はビットごとの排他的論理和を表す。",
+    "choices": [
+      "(n OR 10000000) ＋ 00000001",
+      "(n OR 11111110) ＋ 11111111",
+      "(n XOR 10000000) ＋ 11111111",
+      "(n XOR 11111111) ＋ 00000001"
+    ],
+    "answer": 3,
+    "explanation": "2 の補数は「全ビットを反転して 1 を足す」ことで求めます。全ビットの反転は 11111111 との XOR で行えるので、(n XOR 11111111) ＋ 00000001 です。例えば n ＝ 00000001 なら 11111110 ＋ 1 ＝ 11111111（－1）になります。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問1",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-002",
+    "exam": "A",
+    "field": "tech",
+    "major": "基礎理論",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 1,
+    "stem": "次の流れ図は，10 進整数 j（0 ＜ j ＜ 100）を 8 桁の 2 進数に変換する処理を表している。2 進数は下位桁から順に，配列の要素 NISHIN (1) から NISHIN (8) に格納される。流れ図の a 及び b に入れる処理はどれか。ここで，j div 2 は j を 2 で割った商の整数部分を，j mod 2 は j を 2 で割った余りを表す。\n\n〔流れ図〕\n開始 → j を入力 → ループ「変換」（k：1，1，8）の中で a，b の順に実行 → 終了\n（注）ループ端の繰返し指定は，変数名：初期値，増分，終値 を示す。",
+    "choices": [
+      "a：j ← j div 2　b：NISHIN (k) ← j mod 2",
+      "a：j ← j mod 2　b：NISHIN (k) ← j div 2",
+      "a：NISHIN (k) ← j div 2　b：j ← j mod 2",
+      "a：NISHIN (k) ← j mod 2　b：j ← j div 2"
+    ],
+    "answer": 3,
+    "explanation": "2 進数への変換では、2 で割った余りが下位桁から順に各桁の値になります。そこで先に余り j mod 2 を NISHIN (k) に格納し、次に j を商 j div 2 に更新します。例えば j ＝ 6 なら余りは 0, 1, 1, 0, … となり、下位から 0110 と格納されます。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問2（流れ図を文章に改変）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-003",
+    "exam": "A",
+    "field": "tech",
+    "major": "基礎理論",
+    "minor": "基礎理論",
+    "difficulty": 1,
+    "stem": "P，Q，R はいずれも命題である。命題 P の真理値は真であり，命題 (not P) or Q 及び命題 (not Q) or R のいずれの真理値も真であることが分かっている。Q，R の真理値はどれか。ここで，X or Y は X と Y の論理和，not X は X の否定を表す。",
+    "choices": [
+      "Q：偽，R：偽",
+      "Q：偽，R：真",
+      "Q：真，R：偽",
+      "Q：真，R：真"
+    ],
+    "answer": 3,
+    "explanation": "P が真なので not P は偽です。(not P) or Q が真になるには Q が真でなければなりません。すると not Q は偽なので、(not Q) or R が真になるには R も真でなければなりません。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問3",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-007",
+    "exam": "A",
+    "field": "tech",
+    "major": "基礎理論",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 1,
+    "stem": "10 進法で 5 桁の数 a1 a2 a3 a4 a5 を，ハッシュ法を用いて配列に格納したい。ハッシュ関数を mod(a1＋a2＋a3＋a4＋a5，13) とし，求めたハッシュ値に対応する位置の配列要素に格納する場合，54321 は配列のどの位置に入るか。ここで，mod(x，13) は，x を 13 で割った余りとする。配列の位置は 0〜12 である。",
+    "choices": [
+      "1",
+      "2",
+      "7",
+      "11"
+    ],
+    "answer": 1,
+    "explanation": "各桁の和は 5 ＋ 4 ＋ 3 ＋ 2 ＋ 1 ＝ 15 です。15 を 13 で割った余りは 2 なので、位置 2 に格納されます。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問7（図を省略）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-008",
+    "exam": "A",
+    "field": "tech",
+    "major": "基礎理論",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 1,
+    "stem": "自然数 n に対して，次のとおり再帰的に定義される関数 f(n) を考える。f(5) の値はどれか。\n\nf(n)： if n≦1 then return 1 else return n ＋ f(n－1)",
+    "choices": [
+      "6",
+      "9",
+      "15",
+      "25"
+    ],
+    "answer": 2,
+    "explanation": "f(5) ＝ 5 ＋ f(4) ＝ 5 ＋ 4 ＋ f(3) ＝ … ＝ 5 ＋ 4 ＋ 3 ＋ 2 ＋ f(1) です。f(1) ＝ 1 なので、合計は 15 になります。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問8",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-009",
+    "exam": "A",
+    "field": "tech",
+    "major": "開発技術",
+    "minor": "システム開発技術",
+    "difficulty": 1,
+    "stem": "プログラムのコーディング規約に規定する事項のうち，適切なものはどれか。",
+    "choices": [
+      "局所変数は，用途が異なる場合でもデータ型が同じならば，できるだけ同一の変数を使うようにする。",
+      "処理性能を向上させるために，ループの制御変数には浮動小数点型変数を使用する。",
+      "同様の計算を何度も繰り返すときは，関数の再帰呼出しを用いる。",
+      "領域割付け関数を使用するときは，割付けができなかったときの処理を記述する。"
+    ],
+    "answer": 3,
+    "explanation": "メモリ確保は失敗することがあるので、失敗時の処理を必ず書くよう規約で定めるのが適切です。アは変数の意味が分かりにくくなり、イは浮動小数点の誤差で繰返し回数が狂うおそれがあります。ウの再帰呼出しは、単純な繰返しで書ける処理ではスタックを消費するだけで、一律に推奨すべきものではありません。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問9",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-010",
+    "exam": "A",
+    "field": "tech",
+    "major": "コンピュータシステム",
+    "minor": "コンピュータ構成要素",
+    "difficulty": 1,
+    "stem": "外部割込みの原因となるものはどれか。",
+    "choices": [
+      "ゼロによる除算命令の実行",
+      "存在しない命令コードの実行",
+      "タイマーによる時間経過の通知",
+      "ページフォールトの発生"
+    ],
+    "answer": 2,
+    "explanation": "外部割込みは、タイマーや入出力装置など、実行中のプログラムの外から発生する割込みです。ゼロ除算、存在しない命令コード、ページフォールトは、実行中の命令が原因で起こる内部割込み（例外）です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問10",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-011",
+    "exam": "A",
+    "field": "tech",
+    "major": "コンピュータシステム",
+    "minor": "コンピュータ構成要素",
+    "difficulty": 1,
+    "stem": "メモリのエラー検出及び訂正に ECC を利用している。データバス幅 2^n ビットに対して冗長ビットが n ＋ 2 ビット必要なとき，128 ビットのデータバス幅に必要な冗長ビットは何ビットか。",
+    "choices": [
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "answer": 2,
+    "explanation": "128 ＝ 2^7 なので n ＝ 7 です。冗長ビットは n ＋ 2 ＝ 9 ビットになります。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問11",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-012",
+    "exam": "A",
+    "field": "tech",
+    "major": "コンピュータシステム",
+    "minor": "コンピュータ構成要素",
+    "difficulty": 2,
+    "stem": "A ～ D を，主記憶の実効アクセス時間が短い順に並べたものはどれか。\n\nA：キャッシュメモリなし，主記憶アクセス時間 15 ナノ秒\nB：キャッシュメモリなし，主記憶アクセス時間 30 ナノ秒\nC：キャッシュメモリあり（アクセス時間 20 ナノ秒，ヒット率 60％），主記憶アクセス時間 70 ナノ秒\nD：キャッシュメモリあり（アクセス時間 10 ナノ秒，ヒット率 90％），主記憶アクセス時間 80 ナノ秒",
+    "choices": [
+      "A，B，C，D",
+      "A，D，B，C",
+      "C，D，A，B",
+      "D，C，A，B"
+    ],
+    "answer": 1,
+    "explanation": "実効アクセス時間は、C が 20 × 0.6 ＋ 70 × 0.4 ＝ 40 ナノ秒、D が 10 × 0.9 ＋ 80 × 0.1 ＝ 17 ナノ秒です。A は 15、B は 30 なので、短い順に A(15)、D(17)、B(30)、C(40) です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問12（表を文字で表記）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-013",
+    "exam": "A",
+    "field": "tech",
+    "major": "コンピュータシステム",
+    "minor": "システム構成要素",
+    "difficulty": 2,
+    "stem": "仮想化マシン環境を物理マシン 20 台で運用しているシステムがある。次の運用条件のとき，物理マシンが最低何台停止すると縮退運転になるか。\n\n〔運用条件〕\n(1) 物理マシンが停止すると，そこで稼働していた仮想マシンは他の全ての物理マシンで均等に稼働させ，使用していた資源も同様に配分する。\n(2) 物理マシンが 20 台のときに使用する資源は，全ての物理マシンにおいて 70％である。\n(3) 1 台の物理マシンで使用している資源が 90％を超えた場合，システム全体が縮退運転となる。\n(4) (1) ～ (3) 以外の条件は考慮しなくてよい。",
+    "choices": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": 3,
+    "explanation": "全体の資源量は 20 台 × 70％ ＝ 1,400（％・台）です。稼働台数を k とすると 1 台当たり 1,400 ÷ k で、これが 90 を超えるのは k ＜ 15.6、つまり k ≦ 15 のときです。15 台では 1 台当たり約 93％になるので、5 台停止すると縮退運転になります（16 台なら 87.5％で問題ありません）。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問13",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-014",
+    "exam": "A",
+    "field": "tech",
+    "major": "コンピュータシステム",
+    "minor": "システム構成要素",
+    "difficulty": 2,
+    "stem": "1 台のサーバ，3 台のクライアント及び 2 台のプリンタが LAN で接続されている。このシステムはクライアントからの指示に基づいて，サーバにあるデータをプリンタに出力する。各装置の稼働率が次のとおりであるとき，このシステムの稼働率を表す計算式はどれか。ここで，クライアントは 3 台のうちどれか 1 台が稼働していればよく，プリンタは 2 台のうちどちらかが稼働していればよい。\n\n稼働率：サーバ a，クライアント b，プリンタ c，LAN 1",
+    "choices": [
+      "ab^3c^2",
+      "a(1 － b^3)(1 － c^2)",
+      "a(1 － b)^3(1 － c)^2",
+      "a(1 － (1 － b)^3)(1 － (1 － c)^2)"
+    ],
+    "answer": 3,
+    "explanation": "「どれか 1 台が動けばよい」並列構成の稼働率は、1 －（全台が停止する確率）です。クライアントは 1 － (1 － b)^3、プリンタは 1 － (1 － c)^2 となります。これらとサーバ a、LAN 1 が直列につながるので、掛け合わせてエの式になります。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問14（図表を文字で表記）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-015",
+    "exam": "A",
+    "field": "tech",
+    "major": "コンピュータシステム",
+    "minor": "ソフトウェア",
+    "difficulty": 2,
+    "stem": "送信タスクからバッファ（サイズ：L）を経由して受信タスクに T 秒間連続してデータを送信する。1 秒当たりの送信量を S，1 秒当たりの受信量を R としたとき，バッファがオーバフローしないバッファサイズ L を表す関係式として適切なものはどれか。ここで，受信タスクよりも送信タスクの方が転送速度は速く，次の転送開始までの時間間隔は十分にあるものとする。",
+    "choices": [
+      "L ＜（R － S）× T",
+      "L ＜（S － R）× T",
+      "L ≧（R － S）× T",
+      "L ≧（S － R）× T"
+    ],
+    "answer": 3,
+    "explanation": "送信の方が速いので、バッファには 1 秒当たり S － R ずつデータがたまり、T 秒後には (S － R) × T たまります。これを収められればオーバフローしないので、L ≧ (S － R) × T です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問15（図を文章に改変）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-016",
+    "exam": "A",
+    "field": "tech",
+    "major": "コンピュータシステム",
+    "minor": "ソフトウェア",
+    "difficulty": 1,
+    "stem": "インタプリタの説明として，適切なものはどれか。",
+    "choices": [
+      "原始プログラムを，解釈しながら実行するプログラムである。",
+      "原始プログラムを，推論しながら翻訳するプログラムである。",
+      "原始プログラムを，目的プログラムに翻訳するプログラムである。",
+      "実行可能なプログラムを，主記憶装置にロードするプログラムである。"
+    ],
+    "answer": 0,
+    "explanation": "インタプリタは、原始プログラム（ソースコード）を 1 命令ずつ解釈しながら実行します。ウはコンパイラ、エはローダの説明です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問16",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-017",
+    "exam": "A",
+    "field": "tech",
+    "major": "コンピュータシステム",
+    "minor": "ソフトウェア",
+    "difficulty": 2,
+    "stem": "三つの媒体 A ～ C に次の条件でファイル領域を割り当てた場合，割り当てた領域の総量が大きい順に媒体を並べたものはどれか。\n\n〔条件〕\n(1) ファイル領域を割り当てる際の媒体選択アルゴリズムとして，空き領域が最大の媒体を選択する方式を採用する。\n(2) 割当て要求されるファイル領域の大きさは，順に 90，30，40，40，70，30（M バイト）であり，割り当てられたファイル領域は，途中で解放されない。\n(3) 各媒体は容量が同一であり，割当て要求に対して十分な大きさをもち，初めは全て空きの状態である。\n(4) 空き領域の大きさが等しい場合には，A，B，C の順に選択する。",
+    "choices": [
+      "A，B，C",
+      "A，C，B",
+      "B，A，C",
+      "C，B，A"
+    ],
+    "answer": 3,
+    "explanation": "容量は同じなので、割当て済みが最も少ない媒体を選びます。90 → A、30 → B、40 → C、40 → B（計 70）、70 → C（計 110）、30 → B（計 100）となります。合計は A ＝ 90、B ＝ 100、C ＝ 110 なので、大きい順に C，B，A です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問17",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-018",
+    "exam": "A",
+    "field": "tech",
+    "major": "コンピュータシステム",
+    "minor": "ソフトウェア",
+    "difficulty": 1,
+    "stem": "ファイルシステムの絶対パス名を説明したものはどれか。",
+    "choices": [
+      "あるディレクトリから対象ファイルに至る幾つかのパス名のうち，最短のパス名",
+      "カレントディレクトリから対象ファイルに至るパス名",
+      "ホームディレクトリから対象ファイルに至るパス名",
+      "ルートディレクトリから対象ファイルに至るパス名"
+    ],
+    "answer": 3,
+    "explanation": "絶対パスは、最上位のルートディレクトリを起点として対象ファイルまでの経路を表したものです。カレントディレクトリを起点とするイは相対パスです。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問18",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-019",
+    "exam": "A",
+    "field": "tech",
+    "major": "コンピュータシステム",
+    "minor": "コンピュータ構成要素",
+    "difficulty": 1,
+    "stem": "DRAM の特徴はどれか。",
+    "choices": [
+      "書込み及び消去を一括又はブロック単位で行う。",
+      "データを保持するためのリフレッシュ操作又はアクセス操作が不要である。",
+      "電源が遮断された状態でも，記憶した情報を保持することができる。",
+      "メモリセル構造が単純なので高集積化することができ，ビット単価を安くできる。"
+    ],
+    "answer": 3,
+    "explanation": "DRAM はコンデンサとトランジスタ 1 個ずつの単純なセルで構成されるため、高集積で安価になり、主記憶に使われます。アはフラッシュメモリの特徴です。DRAM は定期的なリフレッシュが必要（イは SRAM の特徴）で、電源を切ると内容が消える揮発性メモリです（ウは誤り）。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問19",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-020",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "ユーザーインタフェース",
+    "difficulty": 1,
+    "stem": "次のような注文データが入力されたとき，注文日が入力日以前の営業日かどうかを検査するチェックはどれか。\n\n注文データの項目：伝票番号（文字），注文日（文字），商品コード（文字），数量（数値），顧客コード（文字）",
+    "choices": [
+      "シーケンスチェック",
+      "重複チェック",
+      "フォーマットチェック",
+      "論理チェック"
+    ],
+    "answer": 3,
+    "explanation": "「注文日は入力日以前の営業日である」のように、データの内容が論理的に正しいか、他の値と矛盾しないかを確かめるのは論理チェックです。シーケンスチェックは並び順、重複チェックは同じデータの二重登録、フォーマットチェックは桁数や文字種などの形式を検査します。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問20（表を文字で表記）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-021",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "データベース",
+    "difficulty": 1,
+    "stem": "RDBMS におけるビューに関する記述のうち，適切なものはどれか。",
+    "choices": [
+      "ビューとは，名前を付けた導出表のことである。",
+      "ビューに対して，ビューを定義することはできない。",
+      "ビューの定義を行ってから，必要があれば，その基底表を定義する。",
+      "ビューは一つの基底表に対して一つだけ定義できる。"
+    ],
+    "answer": 0,
+    "explanation": "ビューは、基底表から SELECT 文で導いた表に名前を付けたもの（仮想表）です。ビューを元に別のビューを定義することもでき、1 つの基底表に複数のビューを定義できます。基底表が先に存在しなければビューは定義できません。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問21",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-022",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "データベース",
+    "difficulty": 2,
+    "stem": "UML を用いて表した次の概念データモデルの解釈として，適切なものはどれか。\n\n〔概念データモデル〕\nクラス“部署”とクラス“従業員”が関連“所属する”で結ばれている。多重度は，部署側が 1..＊，従業員側が 0..＊ である。",
+    "choices": [
+      "従業員の総数と部署の総数は一致する。",
+      "従業員は，同時に複数の部署に所属してもよい。",
+      "所属する従業員がいない部署の存在は許されない。",
+      "どの部署にも所属しない従業員が存在してもよい。"
+    ],
+    "answer": 1,
+    "explanation": "部署側の多重度 1..＊ は、従業員 1 人が 1 つ以上の部署に所属することを表すので、複数の部署に所属してもかまいません。逆に、どの部署にも属さない従業員は許されません（エは誤り）。従業員側の 0..＊ は、部署に所属する従業員が 0 人でもよいことを表すので、ウも誤りです。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問22（図を文章に改変）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-023",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "データベース",
+    "difficulty": 1,
+    "stem": "ビッグデータのデータ貯蔵場所であるデータレイクの特徴として，適切なものはどれか。",
+    "choices": [
+      "あらゆるデータをそのままの形式や構造で格納しておく。",
+      "データ量を抑えるために，データの記述情報であるメタデータは格納しない。",
+      "データを格納する前にデータ利用方法を設計し，それに沿ってスキーマをあらかじめ定義しておく。",
+      "テキストファイルやバイナリデータなど，格納するデータの形式に応じてリポジトリを使い分ける。"
+    ],
+    "answer": 0,
+    "explanation": "データレイクは、構造化・非構造化を問わずあらゆるデータを元の形式のまま一か所に貯めておく仕組みです。利用時にスキーマを当てはめるので、ウのように事前にスキーマを定義するデータウェアハウスとは異なります。データを探すためにメタデータは重要で、形式ごとに保管場所を分けることもしません。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問23",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-024",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "データベース",
+    "difficulty": 1,
+    "stem": "関係モデルにおいて表 X から表 Y を得る関係演算はどれか。\n\n表 X（商品番号／商品名／価格／数量）\nA01／カメラ／13,000／20\nA02／テレビ／58,000／15\nB01／冷蔵庫／65,000／8\nB05／洗濯機／48,000／10\nB06／乾燥機／35,000／5\n\n表 Y（商品番号／数量）\nA01／20\nA02／15\nB01／8\nB05／10\nB06／5",
+    "choices": [
+      "結合（join）",
+      "射影（projection）",
+      "選択（selection）",
+      "併合（merge）"
+    ],
+    "answer": 1,
+    "explanation": "表 Y は、表 X の行をすべて残したまま「商品番号」と「数量」の列だけを取り出しています。特定の列を取り出す演算は射影です。選択は条件に合う行を取り出す演算、結合は複数の表を共通の列でつなぐ演算です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問24（表を文字で表記）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-025",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "ネットワーク",
+    "difficulty": 1,
+    "stem": "IoT で用いられる無線通信技術であり，近距離の IT 機器同士が通信する無線 PAN（Personal Area Network）と呼ばれるネットワークに利用されるものはどれか。",
+    "choices": [
+      "BLE（Bluetooth Low Energy）",
+      "LTE（Long Term Evolution）",
+      "PLC（Power Line Communication）",
+      "PPP（Point-to-Point Protocol）"
+    ],
+    "answer": 0,
+    "explanation": "BLE は Bluetooth の省電力版で、近距離の機器同士をつなぐ無線 PAN に使われます。LTE は携帯電話の広域無線通信、PLC は電力線を使う有線通信、PPP は 2 点間を結ぶデータリンク層のプロトコルです。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問25",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-026",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "ネットワーク",
+    "difficulty": 1,
+    "stem": "1.5 M ビット／秒の伝送路を用いて 12 M バイトのデータを転送するのに必要な伝送時間は何秒か。ここで，伝送路の伝送効率を 50％とする。",
+    "choices": [
+      "16",
+      "32",
+      "64",
+      "128"
+    ],
+    "answer": 3,
+    "explanation": "データ量は 12M バイト × 8 ＝ 96M ビットです。実効速度は 1.5M ビット／秒 × 0.5 ＝ 0.75M ビット／秒なので、96 ÷ 0.75 ＝ 128 秒です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問26",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-027",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "ネットワーク",
+    "difficulty": 1,
+    "stem": "TCP/IP を利用している環境で，電子メールに画像データなどを添付するための規格はどれか。",
+    "choices": [
+      "JPEG",
+      "MIME",
+      "MPEG",
+      "SMTP"
+    ],
+    "answer": 1,
+    "explanation": "MIME は、テキストしか扱えなかった電子メールで、画像や音声などのバイナリデータや日本語を扱えるようにする規格です。JPEG は静止画、MPEG は動画の圧縮規格で、SMTP はメールを送信するプロトコルです。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問27",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-028",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "ネットワーク",
+    "difficulty": 1,
+    "stem": "トランスポート層のプロトコルであり，信頼性よりもリアルタイム性が重視される場合に用いられるものはどれか。",
+    "choices": [
+      "HTTP",
+      "IP",
+      "TCP",
+      "UDP"
+    ],
+    "answer": 3,
+    "explanation": "UDP はコネクションの確立や再送制御を行わないため、信頼性は低い代わりに遅延が小さく、音声通話や動画配信に向きます。TCP は同じトランスポート層ですが信頼性重視です。HTTP はアプリケーション層、IP はネットワーク層のプロトコルです。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問28",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-029",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "ネットワーク",
+    "difficulty": 1,
+    "stem": "PC と Web サーバが HTTP で通信している。PC から Web サーバ宛てのパケットでは，送信元ポート番号は PC 側で割り当てた 50001，宛先ポート番号は 80 であった。Web サーバから PC への戻りのパケットでのポート番号の組合せはどれか。",
+    "choices": [
+      "送信元（Web サーバ）：80，宛先（PC）：50001",
+      "送信元（Web サーバ）：50001，宛先（PC）：80",
+      "送信元（Web サーバ）：80 と 50001 以外からサーバ側で割り当てた番号，宛先（PC）：80",
+      "送信元（Web サーバ）：80 と 50001 以外からサーバ側で割り当てた番号，宛先（PC）：50001"
+    ],
+    "answer": 0,
+    "explanation": "戻りのパケットでは、行きの送信元と宛先が入れ替わります。Web サーバは待ち受けている 80 番から、PC が割り当てた 50001 番に向けて返信します。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問29",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-030",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "セキュリティ",
+    "difficulty": 1,
+    "stem": "緊急事態を装って組織内部の人間からパスワードや機密情報を入手する不正な行為は，どれに分類されるか。",
+    "choices": [
+      "ソーシャルエンジニアリング",
+      "トロイの木馬",
+      "踏み台攻撃",
+      "ブルートフォース攻撃"
+    ],
+    "answer": 0,
+    "explanation": "技術ではなく、人の心理や油断につけ込んで情報を聞き出す手口をソーシャルエンジニアリングと呼びます。トロイの木馬は有用なソフトを装うマルウェア、踏み台攻撃は他人のコンピュータを経由した攻撃、ブルートフォース攻撃はパスワードの総当たりです。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問30",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-031",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "セキュリティ",
+    "difficulty": 1,
+    "stem": "ボットネットにおける C&C サーバの役割として，適切なものはどれか。",
+    "choices": [
+      "Web サイトのコンテンツをキャッシュし，本来のサーバに代わってコンテンツを利用者に配信することによって，ネットワークやサーバの負荷を軽減する。",
+      "外部からインターネットを経由して社内ネットワークにアクセスする際に，CHAP などのプロトコルを中継することによって，利用者認証時のパスワードの盗聴を防止する。",
+      "外部からインターネットを経由して社内ネットワークにアクセスする際に，時刻同期方式を採用したワンタイムパスワードを発行することによって，利用者認証時のパスワードの盗聴を防止する。",
+      "侵入して乗っ取ったコンピュータに対して，他のコンピュータへの攻撃などの不正な操作をするよう，外部から命令を出したり応答を受け取ったりする。"
+    ],
+    "answer": 3,
+    "explanation": "C&C（Command and Control）サーバは、ボットに感染したコンピュータ群に指令を出し、結果を受け取る司令塔です。アはキャッシュサーバや CDN、イは認証の中継サーバ、ウはワンタイムパスワードの認証サーバの説明です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問31",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-032",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "セキュリティ",
+    "difficulty": 1,
+    "stem": "メッセージ認証符号の利用目的に該当するものはどれか。",
+    "choices": [
+      "メッセージが改ざんされていないことを確認する。",
+      "メッセージの暗号化方式を確認する。",
+      "メッセージの概要を確認する。",
+      "メッセージの秘匿性を確保する。"
+    ],
+    "answer": 0,
+    "explanation": "メッセージ認証符号（MAC）は、共通鍵とメッセージから作る値で、受信側が同じ計算をして一致すれば改ざんされていないことを確認できます。MAC はメッセージを暗号化しないので、秘匿性は確保しません。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問32",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-033",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "セキュリティ",
+    "difficulty": 1,
+    "stem": "UPS の導入によって期待できる情報セキュリティ対策としての効果はどれか。",
+    "choices": [
+      "PC が電力線通信（PLC）からマルウェアに感染することを防ぐ。",
+      "サーバと端末間の通信における情報漏えいを防ぐ。",
+      "電源の瞬断に起因するデータの破損を防ぐ。",
+      "電子メールの内容が改ざんされることを防ぐ。"
+    ],
+    "answer": 2,
+    "explanation": "UPS（無停電電源装置）は、停電や瞬断のときにバッテリから電力を供給し、安全に停止するまでの時間を確保します。これにより、書込み中の電源断によるデータ破損を防げます（可用性・完全性の確保）。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問33",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-034",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "セキュリティ",
+    "difficulty": 1,
+    "stem": "ファジングに該当するものはどれか。",
+    "choices": [
+      "サーバに FIN パケットを送信し，サーバからの応答を観測して，稼働しているサービスを見つけ出す。",
+      "サーバの OS やアプリケーションソフトウェアが生成したログやコマンド履歴などを解析して，ファイルサーバに保存されているファイルの改ざんを検知する。",
+      "ソフトウェアに，問題を引き起こしそうな多様なデータを入力し，挙動を監視して，脆弱性を見つけ出す。",
+      "ネットワーク上を流れるパケットを収集し，そのプロトコルヘッダやペイロードを解析して，あらかじめ登録された攻撃パターンと一致するものを検出する。"
+    ],
+    "answer": 2,
+    "explanation": "ファジングは、異常値や想定外の形式のデータ（ファズ）を大量に入力し、異常終了などの挙動から脆弱性を見つける検査手法です。アはポートスキャン、イはログ解析による改ざん検知、エはシグネチャ型 IDS の説明です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問34",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-035",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "セキュリティ",
+    "difficulty": 2,
+    "stem": "マルウェアの動的解析に該当するものはどれか。",
+    "choices": [
+      "検体のハッシュ値を計算し，オンラインデータベースに登録された既知のマルウェアのハッシュ値のリストと照合してマルウェアを特定する。",
+      "検体をサンドボックス上で実行し，その動作や外部との通信を観測する。",
+      "検体をネットワーク上の通信データから抽出し，さらに，逆コンパイルして取得したコードから検体の機能を調べる。",
+      "ハードディスク内のファイルの拡張子とファイルヘッダの内容を基に，拡張子が偽装された不正なプログラムファイルを検出する。"
+    ],
+    "answer": 1,
+    "explanation": "動的解析は、検体を隔離された環境（サンドボックス）で実際に動かし、その振る舞いを観察する方法です。ア・ウ・エはいずれも検体を実行せずに調べる静的な解析・検出手法です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問35",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-036",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "セキュリティ",
+    "difficulty": 1,
+    "stem": "SQL インジェクション攻撃による被害を防ぐ方法はどれか。",
+    "choices": [
+      "入力された文字が，データベースへの問合せや操作において，特別な意味をもつ文字として解釈されないようにする。",
+      "入力に HTML タグが含まれていたら，HTML タグとして解釈されない他の文字列に置き換える。",
+      "入力に上位ディレクトリを指定する文字列（../）が含まれているときは受け付けない。",
+      "入力の全体の長さが制限を超えているときは受け付けない。"
+    ],
+    "answer": 0,
+    "explanation": "SQL インジェクションは、入力に含めた ' などの特殊文字によって SQL 文の構造を変える攻撃なので、それらが特別な意味をもたないようにエスケープやプレースホルダで処理します。イはクロスサイトスクリプティング、ウはディレクトリトラバーサル、エはバッファオーバフローへの対策です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問36",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-037",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "セキュリティ",
+    "difficulty": 1,
+    "stem": "電子メールをドメイン A の送信者がドメイン B の宛先に送信するとき，送信者をドメイン A のメールサーバで認証するためのものはどれか。",
+    "choices": [
+      "APOP",
+      "POP3S",
+      "S/MIME",
+      "SMTP-AUTH"
+    ],
+    "answer": 3,
+    "explanation": "SMTP-AUTH は、メール送信（SMTP）の際に利用者 ID とパスワードで送信者を認証する仕組みです。APOP と POP3S はメールを受信するときの認証・暗号化、S/MIME はメール本文の暗号化と電子署名の規格です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問37",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-038",
+    "exam": "A",
+    "field": "tech",
+    "major": "開発技術",
+    "minor": "システム開発技術",
+    "difficulty": 1,
+    "stem": "オブジェクト指向プログラムにおいて，データとメソッドを一つにまとめ，オブジェクトの実装の詳細をユーザから見えなくすることを何と呼ぶか。",
+    "choices": [
+      "インスタンス",
+      "カプセル化",
+      "クラスタ化",
+      "抽象化"
+    ],
+    "answer": 1,
+    "explanation": "データとそれを操作するメソッドを一体にし、内部の実装を外から隠すことをカプセル化（情報隠蔽）と呼びます。インスタンスはクラスから作られた個々のオブジェクト、抽象化は共通の性質を取り出してモデル化することです。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問38",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-039",
+    "exam": "A",
+    "field": "tech",
+    "major": "開発技術",
+    "minor": "システム開発技術",
+    "difficulty": 1,
+    "stem": "モジュール結合度が最も弱くなるものはどれか。",
+    "choices": [
+      "一つのモジュールで，できるだけ多くの機能を実現する。",
+      "二つのモジュール間で必要なデータ項目だけを引数として渡す。",
+      "他のモジュールとデータ項目を共有するためにグローバルな領域を使用する。",
+      "他のモジュールを呼び出すときに，呼び出したモジュールの論理を制御するための引数を渡す。"
+    ],
+    "answer": 1,
+    "explanation": "必要なデータ項目だけを引数で渡すのはデータ結合で、結合度が最も弱く、独立性が高い形です。ウは共通結合や外部結合、エは制御結合で、いずれもデータ結合より強い結合です。アは結合度ではなく強度（凝集度）を下げる設計です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問39",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-040",
+    "exam": "A",
+    "field": "tech",
+    "major": "開発技術",
+    "minor": "システム開発技術",
+    "difficulty": 1,
+    "stem": "モジュールの内部構造を考慮することなく，仕様書どおりに機能するかどうかをテストする手法はどれか。",
+    "choices": [
+      "トップダウンテスト",
+      "ブラックボックステスト",
+      "ボトムアップテスト",
+      "ホワイトボックステスト"
+    ],
+    "answer": 1,
+    "explanation": "内部構造を見ずに、入力と出力が仕様どおりかを確かめるのはブラックボックステストです。ホワイトボックステストは内部の論理を基に命令や分岐を網羅するテストで、トップダウンとボトムアップは結合テストの進め方です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問40",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-041",
+    "exam": "A",
+    "field": "tech",
+    "major": "開発技術",
+    "minor": "ソフトウェア開発管理技術",
+    "difficulty": 2,
+    "stem": "アジャイル開発のスクラムにおけるスプリントのルールのうち，適切なものはどれか。",
+    "choices": [
+      "スプリントの期間を決定したら，スプリントの 1 回目には要件定義工程を，2 回目には設計工程を，3 回目にはコード作成工程を，4 回目にはテスト工程をそれぞれ割り当てる。",
+      "成果物の内容を確認するスプリントレビューを，スプリントの期間の中間時点で実施する。",
+      "プロジェクトで設定したスプリントの期間でリリース判断が可能なプロダクトインクリメントができるように，スプリントゴールを設定する。",
+      "毎回のスプリントプランニングにおいて，スプリントの期間をゴールの難易度に応じて，1 週間から 1 か月までの範囲に設定する。"
+    ],
+    "answer": 2,
+    "explanation": "スクラムでは、各スプリントで使える可能性のあるインクリメントを完成させることを目指し、そのためのスプリントゴールを決めます。アのように工程ごとに分けるのはウォーターフォール的な進め方です。スプリントレビューはスプリントの終わりに行い（イは誤り）、期間は固定するのが原則です（エは誤り）。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問41",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-042",
+    "exam": "A",
+    "field": "mgmt",
+    "major": "プロジェクトマネジメント",
+    "minor": "プロジェクトマネジメント",
+    "difficulty": 2,
+    "stem": "プロジェクトライフサイクルの一般的な特性はどれか。",
+    "choices": [
+      "開発要員数は，プロジェクト開始時が最多であり，プロジェクトが進むにつれて減少し，完了に近づくと再度増加する。",
+      "ステークホルダがコストを変えずにプロジェクトの成果物に対して及ぼすことができる影響の度合いは，プロジェクト完了直前が最も大きくなる。",
+      "プロジェクトが完了に近づくほど，変更やエラーの修正がプロジェクトに影響する度合いは小さくなる。",
+      "リスクは，プロジェクトが完了に近づくにつれて減少する。"
+    ],
+    "answer": 3,
+    "explanation": "プロジェクトが進むにつれて不確実な要素が確定していくため、リスクは完了に近づくほど小さくなります。要員数は開始時に少なく中盤で最大になり（ア）、ステークホルダの影響度は開始時が最大で（イ）、変更の影響は完了に近づくほど大きくなります（ウ）。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問42",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-043",
+    "exam": "A",
+    "field": "mgmt",
+    "major": "プロジェクトマネジメント",
+    "minor": "プロジェクトマネジメント",
+    "difficulty": 1,
+    "stem": "ソフトウェア開発の見積方法の一つであるファンクションポイント法の説明として，適切なものはどれか。",
+    "choices": [
+      "開発規模が分かっていることを前提として，工数と工期を見積もる方法である。ビジネス分野に限らず，全分野に適用可能である。",
+      "過去に経験した類似のソフトウェアについてのデータを基にして，ソフトウェアの相違点を調べ，同じ部分については過去のデータを使い，異なった部分は経験に基づいて，規模と工数を見積もる方法である。",
+      "ソフトウェアの機能を入出力データ数やファイル数などによって定量的に計測し，複雑さによる調整を行って，ソフトウェア規模を見積もる方法である。",
+      "単位作業項目に適用する作業量の基準値を決めておき，作業項目を単位作業項目まで分解し，基準値を適用して算出した作業量の積算で全体の作業量を見積もる方法である。"
+    ],
+    "answer": 2,
+    "explanation": "ファンクションポイント法は、外部入力・外部出力・内部論理ファイルなどの機能の数を数え、複雑さで重み付け・調整して規模を求める方法です。アは COCOMO、イは類推見積法、エは標準タスク法（積算法）の説明です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問43",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-045",
+    "exam": "A",
+    "field": "mgmt",
+    "major": "サービスマネジメント",
+    "minor": "サービスマネジメント",
+    "difficulty": 1,
+    "stem": "サービスマネジメントのプロセス改善におけるベンチマーキングはどれか。",
+    "choices": [
+      "IT サービスのパフォーマンスを財務，顧客，内部プロセス，学習と成長の観点から測定し，戦略的な活動をサポートする。",
+      "業界内外の優れた業務方法（ベストプラクティス）と比較して，サービス品質及びパフォーマンスのレベルを評価する。",
+      "サービスのレベルで可用性，信頼性，パフォーマンスを測定し，顧客に報告する。",
+      "強み，弱み，機会，脅威の観点から IT サービスマネジメントの現状を分析する。"
+    ],
+    "answer": 1,
+    "explanation": "ベンチマーキングは、業界内外の優れた事例（ベストプラクティス）を基準にして自社と比較し、改善点を見つける手法です。アはバランススコアカード、ウはサービスレベルの報告、エは SWOT 分析の説明です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問45",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-046",
+    "exam": "A",
+    "field": "tech",
+    "major": "技術要素",
+    "minor": "データベース",
+    "difficulty": 1,
+    "stem": "ディスク障害時に，フルバックアップを取得してあるテープからディスクにデータを復元した後，フルバックアップ取得時以降の更新後コピーをログから反映させてデータベースを回復する方法はどれか。",
+    "choices": [
+      "チェックポイントリスタート",
+      "リブート",
+      "ロールバック",
+      "ロールフォワード"
+    ],
+    "answer": 3,
+    "explanation": "バックアップを戻した後、ログの更新後情報を使って障害直前の状態まで処理を進め直すのがロールフォワードです。ロールバックは更新前情報を使ってトランザクション開始前の状態に戻す方法です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問46",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-047",
+    "exam": "A",
+    "field": "mgmt",
+    "major": "サービスマネジメント",
+    "minor": "システム監査",
+    "difficulty": 1,
+    "stem": "経営者が社内のシステム監査人の外観上の独立性を担保するために講じる措置として，最も適切なものはどれか。",
+    "choices": [
+      "システム監査人に IT に関する継続的学習を義務付ける。",
+      "システム監査人に必要な知識や経験を定めて公表する。",
+      "システム監査人の監査技法研修制度を設ける。",
+      "システム監査人の所属部署を内部監査部門とする。"
+    ],
+    "answer": 3,
+    "explanation": "外観上の独立性とは、監査対象から組織的に独立していると第三者から見えることです。監査人を監査対象の部門ではなく内部監査部門に所属させることで確保できます。ア〜ウは監査人の専門能力を高める措置で、独立性とは別の話です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問47",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-048",
+    "exam": "A",
+    "field": "mgmt",
+    "major": "サービスマネジメント",
+    "minor": "システム監査",
+    "difficulty": 1,
+    "stem": "情報セキュリティ監査において，可用性を確認するチェック項目はどれか。",
+    "choices": [
+      "外部記憶媒体の無断持出しが禁止されていること",
+      "中断時間を定めた SLA の水準が保たれるように管理されていること",
+      "データ入力時のエラーチェックが適切に行われていること",
+      "データベースが暗号化されていること"
+    ],
+    "answer": 1,
+    "explanation": "可用性は、必要なときにサービスやデータを使える状態であることなので、中断時間の水準（SLA）が守られているかを確認するのが該当します。アとエは機密性、ウは完全性に関するチェック項目です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問48",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-049",
+    "exam": "A",
+    "field": "strat",
+    "major": "システム戦略",
+    "minor": "システム戦略",
+    "difficulty": 1,
+    "stem": "テレワークで活用している VDI に関する記述として，適切なものはどれか。",
+    "choices": [
+      "PC 環境を仮想化してサーバ上に置くことで，社外から端末の種類を選ばず自分のデスクトップ PC 環境として利用できるシステム",
+      "インターネット上に仮想の専用線を設定し，特定の人だけが利用できる専用ネットワーク",
+      "紙で保管されている資料を，ネットワークを介して遠隔地からでも参照可能な電子書類に変換・保存することができるツール",
+      "対面での会議開催が困難な場合に，ネットワークを介して対面と同じようなコミュニケーションができるツール"
+    ],
+    "answer": 0,
+    "explanation": "VDI（仮想デスクトップ基盤）は、デスクトップ環境をサーバ上で動かし、手元の端末には画面だけを転送する仕組みです。端末にデータが残りにくい利点もあります。イは VPN、ウは文書の電子化ツール、エは Web 会議システムの説明です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問49",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-050",
+    "exam": "A",
+    "field": "strat",
+    "major": "システム戦略",
+    "minor": "システム戦略",
+    "difficulty": 2,
+    "stem": "投資案件において，5 年間の投資効果を ROI（Return On Investment）で評価した場合，四つの案件 a～d のうち，最も ROI が高いものはどれか。ここで，割引率は考慮しなくてもよいものとする。\n\n（1〜5 年目の利益／投資額）\na：15，30，45，30，15／100\nb：105，75，45，15，0／200\nc：60，75，90，75，60／300\nd：105，105，105，105，105／400",
+    "choices": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "answer": 0,
+    "explanation": "ROI ＝（利益 － 投資額）÷ 投資額 で比べます。利益の合計は a ＝ 135、b ＝ 240、c ＝ 360、d ＝ 525 なので、ROI は a ＝ 35％、b ＝ 20％、c ＝ 20％、d ≒ 31％となり、a が最も高くなります。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問50（表を文字で表記）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-051",
+    "exam": "A",
+    "field": "strat",
+    "major": "企業と法務",
+    "minor": "企業活動",
+    "difficulty": 1,
+    "stem": "国や地方公共団体が，環境への配慮を積極的に行っていると評価されている製品・サービスを選んでいる。この取組を何というか。",
+    "choices": [
+      "CSR",
+      "エコマーク認定",
+      "環境アセスメント",
+      "グリーン購入"
+    ],
+    "answer": 3,
+    "explanation": "製品やサービスを買うときに、環境負荷の小さいものを優先して選ぶ取組をグリーン購入と呼び、国などにはグリーン購入法で義務付けられています。CSR は企業の社会的責任、エコマーク認定は環境に配慮した商品へのマーク付与、環境アセスメントは開発事業が環境に与える影響の事前評価です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問51",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-052",
+    "exam": "A",
+    "field": "strat",
+    "major": "経営戦略",
+    "minor": "経営戦略マネジメント",
+    "difficulty": 1,
+    "stem": "コアコンピタンスの説明はどれか。",
+    "choices": [
+      "競合他社にはまねのできない自社ならではの卓越した能力",
+      "経営を行う上で法令や各種規制，社会的規範などを遵守する企業活動",
+      "市場・技術・商品（サービス）の観点から設定した，事業の展開領域",
+      "組織活動の目的を達成するために行う，業務とシステムの全体最適化手法"
+    ],
+    "answer": 0,
+    "explanation": "コアコンピタンスは、競合他社がまねできない、自社の競争力の核となる能力です。イはコンプライアンス、ウは事業ドメイン、エはエンタープライズアーキテクチャの説明です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問52",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-053",
+    "exam": "A",
+    "field": "strat",
+    "major": "経営戦略",
+    "minor": "技術戦略マネジメント",
+    "difficulty": 1,
+    "stem": "新しい事業に取り組む際の手法として，E.リースが提唱したリーンスタートアップの説明はどれか。",
+    "choices": [
+      "国・地方公共団体など，公共機関の補助金・助成金の交付を前提とし，事前に詳細な事業計画を検討・立案した上で，公共性のある事業を立ち上げる手法",
+      "市場環境の変化によって競争力を喪失した事業分野に対して，経営資源を大規模に追加投入し，リニューアルすることによって，基幹事業として再出発を期す手法",
+      "持続可能な事業を迅速に構築し，展開するために，あらかじめ詳細に立案された事業計画を厳格に遂行して，成果の検証や計画の変更を最小限にとどめる手法",
+      "実用最小限の製品・サービスを短期間で作り，構築・計測・学習というフィードバックループで改良や方向転換をして，継続的にイノベーションを行う手法"
+    ],
+    "answer": 3,
+    "explanation": "リーンスタートアップは、MVP（実用最小限の製品）を素早く作って顧客の反応を測り、学んだことを基に改良や方向転換（ピボット）を繰り返す手法です。ア〜ウはいずれも詳細な計画を前提にしていたり大規模な投資を伴ったりするもので、リーンスタートアップの考え方とは逆です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問53",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-054",
+    "exam": "A",
+    "field": "strat",
+    "major": "経営戦略",
+    "minor": "ビジネスインダストリ",
+    "difficulty": 1,
+    "stem": "IoT の応用事例のうち，HEMS の説明はどれか。",
+    "choices": [
+      "工場内の機械に取り付けたセンサで振動，温度，音などを常時計測し，収集したデータを基に機械の劣化状態を分析して，適切なタイミングで部品を交換する。",
+      "自動車に取り付けたセンサで車両の状態，路面状況などのデータを計測し，ネットワークを介して保存し分析することによって，効率的な運転を支援する。",
+      "情報通信技術や環境技術を駆使して，街灯などの公共設備や交通システムをはじめとする都市基盤のエネルギーの可視化と消費の最適制御を行う。",
+      "太陽光発電装置などのエネルギー機器，家電機器，センサ類などを家庭内通信ネットワークに接続して，エネルギーの可視化と消費の最適制御を行う。"
+    ],
+    "answer": 3,
+    "explanation": "HEMS（Home Energy Management System）は、家庭内の家電や発電設備をネットワークでつなぎ、エネルギー使用を見える化・最適化する仕組みです。アは予知保全、イはテレマティクスなどのコネクテッドカー、ウはスマートシティの説明です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問54",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-055",
+    "exam": "A",
+    "field": "strat",
+    "major": "経営戦略",
+    "minor": "ビジネスインダストリ",
+    "difficulty": 1,
+    "stem": "ロングテールの説明はどれか。",
+    "choices": [
+      "Web コンテンツを構成するテキストや画像などのデジタルコンテンツに，統合的・体系的な管理，配信などの必要な処理を行うこと",
+      "インターネットショッピングで，売上の全体に対して，あまり売れない商品群の売上合計が無視できない割合になっていること",
+      "自分の Web サイトやブログに企業へのリンクを掲載し，他者がこれらのリンクを経由して商品を購入したときに，企業が紹介料を支払うこと",
+      "メーカや卸売業者から商品を直接発送することによって，在庫リスクを負うことなく自分の Web サイトで商品が販売できること"
+    ],
+    "answer": 1,
+    "explanation": "ロングテールは、売上順に並べたグラフで長く伸びる「尾」の部分にあたる、あまり売れない多数の商品の売上合計が無視できない大きさになる現象です。在庫や陳列の制約が小さいネット販売で目立ちます。アは CMS、ウはアフィリエイト、エはドロップシッピングの説明です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問55",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-056",
+    "exam": "A",
+    "field": "strat",
+    "major": "経営戦略",
+    "minor": "ビジネスインダストリ",
+    "difficulty": 1,
+    "stem": "CGM（Consumer Generated Media）の例はどれか。",
+    "choices": [
+      "企業が，経営状況や財務状況，業績動向に関する情報を，個人投資家向けに公開する自社の Web サイト",
+      "企業が，自社の商品の特徴や使用方法に関する情報を，一般消費者向けに発信する自社の Web サイト",
+      "行政機関が，政策，行政サービスに関する情報を，一般市民向けに公開する自組織の Web サイト",
+      "個人が，自らが使用した商品などの評価に関する情報を，不特定多数に向けて発信するブログや SNS などの Web サイト"
+    ],
+    "answer": 3,
+    "explanation": "CGM は消費者（一般の利用者）自身が内容を作って発信するメディアで、口コミサイトやブログ、SNS が代表例です。ア〜ウは企業や行政機関が発信する Web サイトなので該当しません。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問56",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-057",
+    "exam": "A",
+    "field": "strat",
+    "major": "企業と法務",
+    "minor": "企業活動",
+    "difficulty": 2,
+    "stem": "製品 X 及び Y を生産するために 2 種類の原料 A，B が必要である。製品 1 個の生産に必要となる原料の量と調達可能量は次に示すとおりである。製品 X と Y の 1 個当たりの販売利益が，それぞれ 100 円，150 円であるとき，最大利益は何円か。\n\n原料 A：製品 X の 1 個当たりの必要量 2，製品 Y の 1 個当たりの必要量 1，調達可能量 100\n原料 B：製品 X の 1 個当たりの必要量 1，製品 Y の 1 個当たりの必要量 2，調達可能量 80",
+    "choices": [
+      "5,000",
+      "6,000",
+      "7,000",
+      "8,000"
+    ],
+    "answer": 2,
+    "explanation": "X を x 個、Y を y 個作るとき、2x ＋ y ≦ 100、x ＋ 2y ≦ 80 の範囲で 100x ＋ 150y を最大にします。最大値は境界の交点や端点で得られ、交点 x ＝ 40、y ＝ 20 では 4,000 ＋ 3,000 ＝ 7,000 円です。端点 (50, 0) は 5,000 円、(0, 40) は 6,000 円なので、最大利益は 7,000 円です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問57（表を文字で表記）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-058",
+    "exam": "A",
+    "field": "strat",
+    "major": "企業と法務",
+    "minor": "企業活動",
+    "difficulty": 2,
+    "stem": "令和 2 年 4 月に 30 万円で購入した PC を 3 年後に 1 万円で売却するとき，固定資産売却損は何万円か。ここで，耐用年数は 4 年，減価償却は定額法，定額法の償却率は 0.250，残存価額は 0 円とする。",
+    "choices": [
+      "6.0",
+      "6.5",
+      "7.0",
+      "7.5"
+    ],
+    "answer": 1,
+    "explanation": "毎年の減価償却費は 30 × 0.250 ＝ 7.5 万円で、3 年分は 22.5 万円です。売却時の帳簿価額は 30 － 22.5 ＝ 7.5 万円なので、1 万円で売ると 7.5 － 1 ＝ 6.5 万円の売却損になります。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問58",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-059",
+    "exam": "A",
+    "field": "strat",
+    "major": "企業と法務",
+    "minor": "企業活動",
+    "difficulty": 2,
+    "stem": "売上高が 100 百万円のとき，変動費が 60 百万円，固定費が 30 百万円掛かる。変動費率，固定費は変わらないものとして，目標利益 18 百万円を達成するのに必要な売上高は何百万円か。",
+    "choices": [
+      "108",
+      "120",
+      "156",
+      "180"
+    ],
+    "answer": 1,
+    "explanation": "変動費率は 60 ÷ 100 ＝ 0.6 なので、限界利益率は 0.4 です。必要売上高 ＝（固定費 ＋ 目標利益）÷ 限界利益率 ＝（30 ＋ 18）÷ 0.4 ＝ 120 百万円です。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問59",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  },
+  {
+    "id": "ipa-sample-a-060",
+    "exam": "A",
+    "field": "strat",
+    "major": "企業と法務",
+    "minor": "法務",
+    "difficulty": 1,
+    "stem": "労働者派遣法に基づく，派遣元企業・派遣先企業・労働者の三者の関係のうち，派遣先企業と労働者との関係はどれか。",
+    "choices": [
+      "請負契約関係",
+      "雇用契約関係",
+      "指揮命令関係",
+      "労働者派遣契約関係"
+    ],
+    "answer": 2,
+    "explanation": "労働者派遣では、労働者は派遣元企業と雇用契約を結び、派遣元と派遣先の間には労働者派遣契約があります。派遣先企業は雇用関係のない労働者に対して、業務上の指揮命令だけを行います。",
+    "shuffle": false,
+    "source": {
+      "type": "ipa",
+      "title": "基本情報技術者試験 科目A試験 サンプル問題（60問）セット",
+      "number": "問60（図を文章に改変）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/henkou/2022/gmcbt80000007cfs-att/fe_kamoku_a_set_sample_qs.pdf"
+    }
+  }
+]

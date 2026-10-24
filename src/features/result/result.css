@@ -1,0 +1,46 @@
+/* S04 結果 */
+.page--focus { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 24px); }
+.result__head { display: flex; flex-direction: column; gap: 2px; }
+.result__score { gap: 10px; }
+.result__big { display: flex; align-items: baseline; gap: 6px; color: var(--c-heading); }
+.result__n { font-size: var(--fs-num); font-weight: 600; line-height: 1; padding: 0 4px; }
+.result__total { font-size: var(--fs-xl); }
+.result__pct { margin-left: auto; font-size: var(--fs-2xl); font-weight: 600; }
+.result__msg { font-size: 14px; }
+.result__msg.is-ok { color: var(--c-ok); }
+.result__msg.is-ng { color: var(--c-text); }
+
+/* rate bars with the 60% pass line (shared look with S07) */
+.rbars { display: grid; grid-template-columns: 88px 1fr auto; align-items: center; gap: 8px 10px; font-size: var(--fs-sm); }
+.rbars__val { text-align: right; min-width: 3em; }
+.rate-bar { position: relative; height: 10px; background: var(--c-line); border-radius: var(--r-pill); }
+.rate-bar__fill { height: 100%; background: var(--c-text); border-radius: var(--r-pill); }
+.rate-bar__fill.is-low { background: var(--c-ng); }
+.rate-bar__line { position: absolute; top: -3px; bottom: -3px; border-left: 2px dashed var(--c-info); }
+
+.result__wrong { display: flex; flex-direction: column; gap: 8px; }
+.wrong { background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--r-md); }
+.wrong__summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--tap);
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.wrong__summary::-webkit-details-marker { display: none; }
+.wrong__summary > svg { flex: none; color: var(--c-muted); transition: transform 160ms var(--ease); }
+.wrong[open] .wrong__summary > svg { transform: rotate(90deg); }
+.wrong__stem { flex: 1; min-width: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.wrong[open] .wrong__stem { display: block; white-space: pre-line; }
+.wrong__body { padding: 0 14px 14px; display: flex; flex-direction: column; gap: 10px; }
+.wrong__choices { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+.wrong__choices li { display: flex; gap: 10px; white-space: pre-line; }
+.wrong__choices li.is-correct { color: var(--c-ok); font-weight: 700; }
+.wrong__choices li.is-wrong { color: var(--c-ng); }
+.wrong__label { flex: none; font-weight: 700; }
+.wrong__exp { white-space: pre-line; font-size: 14px; line-height: 1.8; }
+
+.result__actions { margin-top: auto; display: flex; flex-direction: column; gap: 10px; padding-top: 8px; }

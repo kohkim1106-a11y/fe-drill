@@ -1,0 +1,341 @@
+[
+  {
+    "id": "b-algo-001",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 1,
+    "stem": "関数 findMax は、整数型の配列 data の要素の最大値を返す。data の要素数は1以上とする。\nプログラム中の〔 a 〕に入れる正しい答えを選べ。",
+    "code": "○整数型: findMax(整数型の配列: data)\n  整数型: max, i\n  max ← data[1]\n  for (i を 2 から 要素数(data) まで 1 ずつ増やす)\n    if (〔 a 〕)\n      max ← data[i]\n    endif\n  endfor\n  return max",
+    "choices": [
+      "data[i] > max",
+      "data[i] < max",
+      "data[i] > data[i − 1]",
+      "data[i] ≧ data[1]"
+    ],
+    "answer": 0,
+    "explanation": "max には「それまでに見た要素の最大値」を保持し、より大きい要素が現れたら更新する。よって data[i] > max。data[i] < max では最小値を探す動きになる。data[i] > data[i − 1] は隣同士しか比べないので、{5, 1, 2} では 2 を返してしまう。data[i] ≧ data[1] も先頭とだけ比べるため、{1, 9, 3} では 3 を返す。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-002",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 1,
+    "stem": "関数 sumUp を sumUp({3, 8, 2, 7, 6}) として呼び出したときの戻り値を選べ。",
+    "code": "○整数型: sumUp(整数型の配列: data)\n  整数型: i, s\n  s ← 0\n  for (i を 2 から 要素数(data) まで 1 ずつ増やす)\n    if (data[i] > data[i − 1])\n      s ← s + data[i]\n    endif\n  endfor\n  return s",
+    "choices": [
+      "18",
+      "15",
+      "26",
+      "5"
+    ],
+    "answer": 1,
+    "explanation": "直前の要素より大きい要素だけを合計する。i=2: 8>3 で s=8、i=3: 2>8 は偽、i=4: 7>2 で s=15、i=5: 6>7 は偽。戻り値は 15。先頭の3も足すと18、全要素の合計は26、直前の要素（3と2）を足すと5になる。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-003",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "関数 search は、整数型の配列 data を先頭から順に調べ、x と等しい最初の要素の添字を返す。見つからなければ −1 を返す。なお、and は左側が偽のとき右側を評価しない。\nプログラム中の〔 a 〕に入れる正しい答えを選べ。",
+    "code": "○整数型: search(整数型の配列: data,\n                整数型: x)\n  整数型: i ← 1\n  while (〔 a 〕)\n    i ← i + 1\n  endwhile\n  if (i ≦ 要素数(data))\n    return i\n  endif\n  return −1",
+    "choices": [
+      "i < 要素数(data) and data[i] ≠ x",
+      "i ≦ 要素数(data) or data[i] ≠ x",
+      "i ≦ 要素数(data) and data[i] ≠ x",
+      "i ≦ 要素数(data) and data[i] = x"
+    ],
+    "answer": 2,
+    "explanation": "「範囲内」かつ「まだ x でない」間だけ i を進める。i ≦ 要素数(data) を先に評価するので、範囲外の data[i] は参照されない。< にすると、x が無いとき i = 要素数(data) で止まり、その添字を誤って返す。or にすると範囲外を参照する。= にすると data[1] ≠ x のとき1回も繰り返さず 1 を返してしまう。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-004",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "関数 binSearch は、昇順に整列済みの整数型の配列 data から x を二分探索し、見つかった添字を返す。見つからなければ −1 を返す。\nプログラム中の〔 a 〕と〔 b 〕に入れる正しい答えの組合せを選べ。",
+    "code": "○整数型: binSearch(整数型の配列: data,\n                   整数型: x)\n  整数型: low, high, mid\n  low ← 1\n  high ← 要素数(data)\n  while (low ≦ high)\n    mid ← (low + high) ÷ 2 の商\n    if (data[mid] = x)\n      return mid\n    elseif (data[mid] < x)\n      〔 a 〕\n    else\n      〔 b 〕\n    endif\n  endwhile\n  return −1",
+    "choices": [
+      "a: low ← mid + 1, b: high ← mid − 1",
+      "a: low ← mid, b: high ← mid",
+      "a: high ← mid − 1, b: low ← mid + 1",
+      "a: high ← mid, b: low ← mid"
+    ],
+    "answer": 0,
+    "explanation": "data[mid] < x なら x は mid より右にあるので low ← mid + 1、そうでなければ左にあるので high ← mid − 1。mid そのものは調べ終わっているので ±1 する。low ← mid / high ← mid とすると、low と high が隣り合ったときに範囲が縮まらず無限ループになりうる。a と b を逆にすると、x がない側を探してしまう。",
+    "shuffle": false,
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-005",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "次の関数 binSearch で、data が {2, 5, 8, 12, 16, 23, 38, 56, 72, 91}、x が 23 のとき、mid に代入される値を順に並べたものを選べ。",
+    "code": "○整数型: binSearch(整数型の配列: data,\n                   整数型: x)\n  整数型: low, high, mid\n  low ← 1\n  high ← 要素数(data)\n  while (low ≦ high)\n    mid ← (low + high) ÷ 2 の商\n    if (data[mid] = x)\n      return mid\n    elseif (data[mid] < x)\n      low ← mid + 1\n    else\n      high ← mid − 1\n    endif\n  endwhile\n  return −1",
+    "choices": [
+      "5, 8, 6",
+      "5, 8, 7",
+      "5, 7, 6",
+      "6, 8, 7"
+    ],
+    "answer": 0,
+    "explanation": "low=1, high=10 → mid=5（16 < 23 なので low=6）。low=6, high=10 → mid=8（56 > 23 なので high=7）。low=6, high=7 → mid=6（23 = 23 で見つかる）。よって 5, 8, 6 で、戻り値は 6。(6 + 7) ÷ 2 の商は 6 であり、切り上げて 7 としないことに注意。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-006",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "手続 bubbleSort は、整数型の配列 data をバブルソートで昇順に整列する。正しく整列でき、かつ比較の回数が最も少なくなるように、プログラム中の〔 a 〕に入れる正しい答えを選べ。",
+    "code": "○bubbleSort(整数型の配列: data)\n  整数型: n, i, j, tmp\n  n ← 要素数(data)\n  for (i を 1 から n − 1 まで 1 ずつ増やす)\n    for (j を 1 から 〔 a 〕 まで 1 ずつ増やす)\n      if (data[j] > data[j + 1])\n        tmp ← data[j]\n        data[j] ← data[j + 1]\n        data[j + 1] ← tmp\n      endif\n    endfor\n  endfor",
+    "choices": [
+      "n − i + 1",
+      "n − i",
+      "n",
+      "i"
+    ],
+    "answer": 1,
+    "explanation": "i 回目の外側の繰返しが終わると、末尾の i 個は確定する。i 回目は data[1]〜data[n − i + 1] の範囲で隣同士を比べればよく、j + 1 ≦ n − i + 1、つまり j の終値は n − i。n − i + 1 や n では i = 1 のとき data[n + 1] を参照してしまう。i では i = 1 のとき先頭の1組しか比べず整列できない。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-007",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "手続 bubbleSort を、data が {5, 3, 8, 1, 4} の状態で呼び出した。外側の for の i = 1 の繰返しが終わった直後の data の内容を選べ。",
+    "code": "○bubbleSort(整数型の配列: data)\n  整数型: n, i, j, tmp\n  n ← 要素数(data)\n  for (i を 1 から n − 1 まで 1 ずつ増やす)\n    for (j を 1 から n − i まで 1 ずつ増やす)\n      if (data[j] > data[j + 1])\n        tmp ← data[j]\n        data[j] ← data[j + 1]\n        data[j + 1] ← tmp\n      endif\n    endfor\n  endfor",
+    "choices": [
+      "{3, 5, 8, 1, 4}",
+      "{3, 1, 4, 5, 8}",
+      "{3, 5, 1, 4, 8}",
+      "{1, 3, 4, 5, 8}"
+    ],
+    "answer": 2,
+    "explanation": "i = 1 では j = 1〜4。j=1: 5>3 で交換 → {3,5,8,1,4}。j=2: 5>8 は偽。j=3: 8>1 で交換 → {3,5,1,8,4}。j=4: 8>4 で交換 → {3,5,1,4,8}。最大値 8 が末尾に移る。{3, 1, 4, 5, 8} は i = 2 の後、{1, 3, 4, 5, 8} は整列完了後の状態。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-008",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "手続 selectionSort を、data が {6, 9, 3, 8, 2} の状態で呼び出した。外側の for の i = 2 の繰返しが終わった直後の data の内容を選べ。",
+    "code": "○selectionSort(整数型の配列: data)\n  整数型: n, i, j, m, tmp\n  n ← 要素数(data)\n  for (i を 1 から n − 1 まで 1 ずつ増やす)\n    m ← i\n    for (j を i + 1 から n まで 1 ずつ増やす)\n      if (data[j] < data[m])\n        m ← j\n      endif\n    endfor\n    tmp ← data[i]\n    data[i] ← data[m]\n    data[m] ← tmp\n  endfor",
+    "choices": [
+      "{2, 9, 3, 8, 6}",
+      "{2, 3, 6, 8, 9}",
+      "{2, 3, 8, 9, 6}",
+      "{2, 3, 9, 8, 6}"
+    ],
+    "answer": 3,
+    "explanation": "選択ソートは、未整列部分の最小値を探して先頭と交換する。i=1: 最小値 2（添字5）と data[1]=6 を交換 → {2,9,3,8,6}。i=2: data[2]〜data[5] の最小値 3（添字3）と data[2]=9 を交換 → {2,3,9,8,6}。{2, 9, 3, 8, 6} は i = 1 の後、{2, 3, 6, 8, 9} は整列完了後の状態。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-009",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 3,
+    "stem": "手続 insertionSort は、整数型の配列 data を挿入ソートで昇順に整列する。なお、and は左側が偽のとき右側を評価しない。\nプログラム中の〔 a 〕と〔 b 〕に入れる正しい答えの組合せを選べ。",
+    "code": "○insertionSort(整数型の配列: data)\n  整数型: i, j, key\n  for (i を 2 から 要素数(data) まで 1 ずつ増やす)\n    key ← data[i]\n    j ← i − 1\n    while (j ≧ 1 and 〔 a 〕)\n      data[j + 1] ← data[j]\n      j ← j − 1\n    endwhile\n    〔 b 〕\n  endfor",
+    "choices": [
+      "a: data[j] < key, b: data[j] ← key",
+      "a: data[j] < key, b: data[j + 1] ← key",
+      "a: data[j] > key, b: data[j] ← key",
+      "a: data[j] > key, b: data[j + 1] ← key"
+    ],
+    "answer": 3,
+    "explanation": "整列済みの部分を後ろから見て、key より大きい要素を1つずつ右へずらす（data[j] > key の間）。ループを抜けたとき j は「key 以下の要素の位置（または 0）」なので、key を入れる場所はその1つ右の data[j + 1]。data[j] < key にすると降順になる。data[j] ← key では、j = 0 のとき範囲外となり、それ以外でも key 以下の要素を上書きしてしまう。",
+    "shuffle": false,
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-010",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "手続 insertionSort を、data が {4, 1, 3, 5, 2} の状態で呼び出した。整列が終わるまでに「data[j + 1] ← data[j]」が実行される回数を選べ。",
+    "code": "○insertionSort(整数型の配列: data)\n  整数型: i, j, key\n  for (i を 2 から 要素数(data) まで 1 ずつ増やす)\n    key ← data[i]\n    j ← i − 1\n    while (j ≧ 1 and data[j] > key)\n      data[j + 1] ← data[j]\n      j ← j − 1\n    endwhile\n    data[j + 1] ← key\n  endfor",
+    "choices": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "answer": 1,
+    "explanation": "i=2（key=1）: 4 をずらす（1回）→ {1,4,3,5,2}。i=3（key=3）: 4 をずらす（1回）→ {1,3,4,5,2}。i=4（key=5）: ずらさない。i=5（key=2）: 5, 4, 3 をずらす（3回）→ {1,2,3,4,5}。合計 5 回。これは「前にあるのに後ろの要素より大きい組」（転倒数）の個数に等しい。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-011",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 1,
+    "stem": "関数 fact を fact(5) として呼び出したとき、fact が呼び出される回数（最初の呼出しを含む）を選べ。",
+    "code": "○整数型: fact(整数型: n)\n  if (n ≦ 1)\n    return 1\n  endif\n  return n × fact(n − 1)",
+    "choices": [
+      "4",
+      "6",
+      "5",
+      "120"
+    ],
+    "answer": 2,
+    "explanation": "fact(5) → fact(4) → fact(3) → fact(2) → fact(1) と呼ばれ、fact(1) で再帰が止まる。呼出しは合計 5 回で、戻り値は 5 × 4 × 3 × 2 × 1 = 120。fact(0) までは呼ばれないので 6 回ではない。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-012",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 3,
+    "stem": "関数 fib を fib(5) として呼び出したときの戻り値と、fib が呼び出される総回数（最初の呼出しを含む）の組合せを選べ。",
+    "code": "○整数型: fib(整数型: n)\n  if (n ≦ 2)\n    return 1\n  endif\n  return fib(n − 1) + fib(n − 2)",
+    "choices": [
+      "戻り値 8、呼出し回数 9",
+      "戻り値 8、呼出し回数 15",
+      "戻り値 5、呼出し回数 9",
+      "戻り値 5、呼出し回数 15"
+    ],
+    "answer": 2,
+    "explanation": "fib(1)=fib(2)=1、fib(3)=2、fib(4)=3、fib(5)=5。fib(n) の呼出し回数を C(n) とすると C(1)=C(2)=1、C(n)=1+C(n−1)+C(n−2) なので C(3)=3、C(4)=5、C(5)=9。戻り値 8・呼出し 15 回は fib(6) の場合。同じ値を何度も計算するため、呼出し回数は n に対して指数的に増える。",
+    "shuffle": false,
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-013",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "手続 move はハノイの塔の手順を再帰で求め、円盤を1枚動かすたびに大域変数 count を1増やす。count が 0 の状態で move(4, \"A\", \"C\", \"B\") を呼び出した。終了後の count の値を選べ。",
+    "code": "大域: 整数型: count ← 0\n\n○move(整数型: n, 文字列型: src,\n      文字列型: dst, 文字列型: via)\n  if (n ≧ 1)\n    move(n − 1, src, via, dst)\n    count ← count + 1\n    move(n − 1, via, dst, src)\n  endif",
+    "choices": [
+      "15",
+      "8",
+      "16",
+      "31"
+    ],
+    "answer": 0,
+    "explanation": "n 枚の移動回数を T(n) とすると T(0)=0、T(n)=2×T(n−1)+1。T(1)=1、T(2)=3、T(3)=7、T(4)=15。一般に T(n)=2^n − 1。16 は 2^4 をそのまま答えた誤り、31 は5枚の場合。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-014",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 1,
+    "stem": "配列でスタックを実装した。空の状態から次の順に操作したとき、pop が返す値を順に並べたものを選べ。\npush(3), push(5), pop(), push(7), push(2), pop(), pop()",
+    "code": "大域: 整数型の配列: stk ← {0, 0, 0, 0, 0}\n大域: 整数型: top ← 0\n\n○push(整数型: x)\n  top ← top + 1\n  stk[top] ← x\n\n○整数型: pop()\n  整数型: x\n  x ← stk[top]\n  top ← top − 1\n  return x",
+    "choices": [
+      "3, 5, 7",
+      "5, 2, 7",
+      "5, 7, 2",
+      "2, 7, 5"
+    ],
+    "answer": 1,
+    "explanation": "スタックは後入れ先出し（LIFO）。[3] → [3,5] → pop で 5 → [3] → [3,7] → [3,7,2] → pop で 2 → pop で 7。よって 5, 2, 7 で、最後に 3 が残る。3, 5, 7 はキュー（先入れ先出し）とみなした場合の結果。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-015",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "要素数4の配列 q を環状に使ってキューを実装した。最後の要素 q[4] の次は q[1] に戻る。満杯のときに enqueue、空のときに dequeue は呼ばれないものとする。\nプログラム中の〔 a 〕に入れる正しい答えを選べ。",
+    "code": "大域: 整数型の配列: q ← {0, 0, 0, 0}\n大域: 整数型: head ← 1\n大域: 整数型: tail ← 1\n\n○enqueue(整数型: x)\n  q[tail] ← x\n  tail ← 〔 a 〕\n\n○整数型: dequeue()\n  整数型: x\n  x ← q[head]\n  head ← (head mod 4) + 1\n  return x",
+    "choices": [
+      "tail mod 4",
+      "(tail + 1) mod 4",
+      "(tail mod 4) + 1",
+      "tail + 1"
+    ],
+    "answer": 2,
+    "explanation": "tail は 1→2→3→4→1 と進めたい。(tail mod 4) + 1 は tail=1,2,3 で 2,3,4、tail=4 で 1 になる。tail mod 4 は tail=1 のとき 1 のままで進まない。(tail + 1) mod 4 は tail=3 で 0 になり範囲外。tail + 1 は 4 の次が 5 で範囲外になる。dequeue の head の更新と同じ形になることもヒント。",
+    "source": {
+      "type": "original"
+    }
+  },
+  {
+    "id": "b-algo-016",
+    "exam": "B",
+    "field": "algo",
+    "major": "科目B",
+    "minor": "アルゴリズムとプログラミング",
+    "difficulty": 2,
+    "stem": "配列 val と nxt で単方向連結リストを表す。nxt[p] は val[p] の次の要素の添字で、0 はリストの終わりを表す。printList(1) を呼び出したときの出力を選べ。手続 print は引数の値を出力する。",
+    "code": "大域: 文字列型の配列: val ←\n  {\"A\", \"B\", \"C\", \"D\", \"E\"}\n大域: 整数型の配列: nxt ←\n  {3, 0, 5, 2, 4}\n\n○printList(整数型: head)\n  整数型: p ← head\n  while (p ≠ 0)\n    print(val[p])\n    p ← nxt[p]\n  endwhile",
+    "choices": [
+      "A B C D E",
+      "A C E B D",
+      "A C E D",
+      "A C E D B"
+    ],
+    "answer": 3,
+    "explanation": "p=1: A を出力し p=nxt[1]=3。p=3: C、p=nxt[3]=5。p=5: E、p=nxt[5]=4。p=4: D、p=nxt[4]=2。p=2: B、p=nxt[2]=0 で終了。出力は A C E D B。配列の並び順ではなく、nxt をたどった順になる。",
+    "source": {
+      "type": "original"
+    }
+  }
+]

@@ -1,0 +1,82 @@
+/* S05 カードメニュー */
+.cards__stats { gap: 10px; }
+.cards__count { display: flex; align-items: baseline; gap: 4px; }
+.cards__n { font-size: var(--fs-2xl); font-weight: 600; line-height: 1; padding: 0 3px; color: var(--c-heading); }
+.cards__start { margin-top: auto; display: flex; flex-direction: column; gap: 8px; }
+
+/* S06 カード学習 (B3-Cards) */
+.flash__bar { height: 4px; margin: 0 4px; }
+.flash__main {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 36px;
+  overflow: hidden;
+}
+.flash__side {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+.flash__side span { writing-mode: vertical-rl; }
+.flash__side--left { left: 6px; color: var(--c-ng); }
+.flash__side--right { right: 6px; color: var(--c-ok); }
+
+.flash__stack { position: relative; width: min(300px, 100%); height: min(470px, 100%); }
+.flash__behind {
+  position: absolute;
+  border-radius: 20px;
+  border: 1px solid var(--c-line);
+  background: var(--c-surface-2);
+}
+.flash__behind--1 { left: 10px; right: 10px; top: 12px; bottom: -12px; }
+.flash__behind--2 { left: 20px; right: 20px; top: 24px; bottom: -24px; opacity: 0.6; }
+
+.flash__card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 22px 20px;
+  border-radius: 20px;
+  border: 1px solid var(--c-line);
+  background: var(--c-surface);
+  color: var(--c-text);
+  text-align: left;
+  box-shadow: 0 16px 36px var(--c-scrim);
+  touch-action: pan-y; /* horizontal drags are ours, vertical scroll stays native */
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform 200ms var(--ease);
+}
+.flash__card.is-dragging { transition: none; }
+.flash__top { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.flash__center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; width: 100%; text-align: center; min-height: 0; }
+.flash__term { font-size: var(--fs-2xl); font-weight: 700; line-height: 1.4; padding: 0 4px; color: var(--c-heading); overflow-wrap: anywhere; }
+.flash__reading { font-size: var(--fs-md); color: var(--c-muted); }
+.flash__center--back { align-items: stretch; justify-content: flex-start; text-align: left; padding-top: 16px; overflow-y: auto; }
+.flash__term-sm { font-size: var(--fs-lg); font-weight: 700; color: var(--c-heading); }
+.flash__meaning { font-size: var(--fs-md); line-height: 1.8; white-space: pre-line; }
+.flash__foot { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; color: var(--c-muted); font-size: 15px; }
+
+.flash__footer { display: flex; flex-direction: column; gap: 10px; padding: 16px 20px 24px; max-width: 560px; width: 100%; margin: 0 auto; }
+.flash__help { text-align: center; font-size: var(--fs-sm); color: var(--c-muted); }
+.flash__buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.flash__btn { min-height: 56px; border-radius: 16px; font-size: var(--fs-lg); font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.flash__btn--ng { border: 1px solid var(--c-ng); background: transparent; color: var(--c-ng); }
+
+.flash__done { flex: 1; display: flex; flex-direction: column; gap: 14px; padding: 24px 20px; max-width: 480px; width: 100%; margin: 0 auto; }
+.flash__summary { gap: 4px; }
+.flash__sum-row { display: flex; justify-content: space-between; align-items: baseline; min-height: var(--tap); }
+.flash__sum-n { font-size: var(--fs-2xl); font-weight: 600; padding: 0 3px; }
+.flash__done-actions { margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
